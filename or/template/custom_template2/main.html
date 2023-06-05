@@ -194,31 +194,30 @@
 </head>
 
 <body>
-    <div id="main_wrapper">
-        <header>
-            <nav class="header__nav flex">
-                <div class="header__logo">
-                    <a href="{url_index}"><img class="header__logo__img" src="https://cdn.jsdelivr.net/gh/Boolean-Autocrat/MLS-Sample-Images@main/Harpreet-Rakhra-01.webp" alt="logo" /></a>
-                </div>
-                <div class="header__wordart">
-                    <img src="https://cdn.jsdelivr.net/gh/Boolean-Autocrat/MLS-Sample-Images@main/text-art-2.png" alt="wordart" />
-                </div>
-                <div class="header__navbar">
-                    <ul>
-                        <li><a href="{url_index}">HOME <i class="fa-solid fa-house"></i></a></li>
-                        <li><a href="{page_link_2}">FOR SALE <i class="fa-solid fa-tag"></i></a></li>
-                        <li><a href="{page_link_3}">OUR SERVICES</a></li>
-                        <li><a href="{page_link_4}">OUR TEAM</a></li>
-                        <li><a href="{page_link_5}">TESTIMONIALS</a></li>
-                        <li><a href="{page_link_6}">CONTACT US</a></li>
-                    </ul>
-                </div>
-                <div class="header__menu-btn">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </nav>
-        </header>
-        <!-- <h1>{company_name}</h1>
+    <header>
+        <nav class="header__nav flex">
+            <div class="header__logo">
+                <a href="{url_index}"><img class="header__logo__img" src="https://cdn.jsdelivr.net/gh/Boolean-Autocrat/MLS-Sample-Images@main/Harpreet-Rakhra-01.webp" alt="logo" /></a>
+            </div>
+            <div class="header__wordart">
+                <img src="https://cdn.jsdelivr.net/gh/Boolean-Autocrat/MLS-Sample-Images@main/text-art-2.png" alt="wordart" />
+            </div>
+            <div class="header__navbar">
+                <ul>
+                    <li><a href="{url_index}">HOME <i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="{page_link_2}">FOR SALE <i class="fa-solid fa-tag"></i></a></li>
+                    <li><a href="{page_link_3}">OUR SERVICES</a></li>
+                    <li><a href="{page_link_4}">OUR TEAM</a></li>
+                    <li><a href="{page_link_5}">TESTIMONIALS</a></li>
+                    <li><a href="{page_link_6}">CONTACT US</a></li>
+                </ul>
+            </div>
+            <div class="header__menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+    <!-- <h1>{company_name}</h1>
             <h2>{company_location}</h2>
 
             <nav id="top_nav">
@@ -226,137 +225,136 @@
             </nav>
             <div class="clear"></div> -->
 
-        <div class="space_5"></div>
-        <!--  Left navigation -->
+    <div class="space_5"></div>
+    <!--  Left navigation -->
 
-        <nav id="menu_nav">
-            <div id="menu_nav_inner">
-                {render_menu_1}
-            </div>
-            <div class="clear"></div>
-        </nav>
-
-
+    <nav id="menu_nav">
+        <div id="menu_nav_inner">
+            {render_menu_1}
+        </div>
+        <div class="clear"></div>
+    </nav>
 
 
-        <!-- main page content -->
-        <article>
-            <div id="article_inner">
-                {content}
-            </div>
-        </article>
 
 
-        <!--  Footer  -->
-        <footer>
-            <p>&copy; {company_name} 2015 - | <a href="{page_link_4}">Legal Notice and Disclaimer</a> <br /> Powered by <a href="http://open-realty.org" title="Open-Realty&reg;" rel="noopener noreferrer" target="_blank" target="_blank">Open-Realty</a>
-                <span class="reg_mark_h2">&#174;</span>- &copy;2021 - All Rights Reserved.</p>
-            {mobile_full_template_link}
-        </footer>
+    <!-- main page content -->
+    <article>
+        <div id="article_inner">
+            {content}
+        </div>
+    </article>
 
 
-        <!--  Persistant Admin bar. Only appears at top if user is logged in -->
-        {check_member}
+    <!--  Footer  -->
+    <footer>
+        <p>&copy; {company_name} 2015 - | <a href="{page_link_4}">Legal Notice and Disclaimer</a> <br /> Powered by <a href="http://open-realty.org" title="Open-Realty&reg;" rel="noopener noreferrer" target="_blank" target="_blank">Open-Realty</a>
+            <span class="reg_mark_h2">&#174;</span>- &copy;2021 - All Rights Reserved.</p>
+        {mobile_full_template_link}
+    </footer>
 
-        <div id="oradminbar">
-            <div class="quicklinks">
 
-                <ul id="or-admin-bar">
+    <!--  Persistant Admin bar. Only appears at top if user is logged in -->
+    {check_member}
+
+    <div id="oradminbar">
+        <div class="quicklinks">
+
+            <ul id="or-admin-bar">
+                {check_agent}
+                <li class="menupop"><a href="{baseurl}/admin/" title="Admin Area"><span>{lang_index_admin}</span></a> {/check_agent} {!check_agent}
+                    <li class="menupop"><a href="#" title="My Account"><span>MY ACCOUNT</span></a> {/!check_agent}
+
+                        <ul>
+                            {!check_agent}
+                            <li><a href="{url_view_favorites}" title="View Favorites">View Favorites</a></li>
+                            <li><a href="{url_view_saved_searches}" title="Saved Searches">Saved Searches</a></li>
+                            <li><a href="{url_edit_profile}" title="Edit my Account">Edit my Account</a></li>
+                            {/!check_agent} {check_agent}
+                            <li><a href="{baseurl}/admin/index.php?action=edit_user&amp;user_id={current_user_id}">{lang_admin_edit_my_account}</a></li>
+
+                            <li><a href="{baseurl}/admin/index.php?action=my_leadmanager">{lang_admin_view_my_leads}</a></li>
+                            <li><a href="{baseurl}/admin/index.php?action=edit_my_listings">{lang_admin_edit_my_listings}</a></li>
+
+                            {check_edit_all_listings}
+                            <li><a href="{baseurl}/admin/index.php?action=edit_listings">{lang_admin_edit_all_listings}</a></li>
+                            {/check_edit_all_listings} {check_edit_all_leads}
+                            <li><a href="{baseurl}/admin/index.php?action=leadmanager">{lang_admin_view_leads}</a></li>
+                            {/check_edit_all_leads} {check_edit_all_users}
+                            <li><a href="{baseurl}/admin/index.php?action=user_manager">{lang_admin_user_manager}</a></li>
+                            {/check_edit_all_users} {check_edit_site_config}
+                            <li><a href="{baseurl}/admin/index.php?action=configure">{lang_admin_site_config}</a></li>
+                            {/check_edit_site_config} {/check_agent}
+                        </ul>
+                    </li>
+
                     {check_agent}
-                    <li class="menupop"><a href="{baseurl}/admin/" title="Admin Area"><span>{lang_index_admin}</span></a> {/check_agent} {!check_agent}
-                        <li class="menupop"><a href="#" title="My Account"><span>MY ACCOUNT</span></a> {/!check_agent}
+                    <li class="menupop">
+                        <a href="#"><span>ADD</span></a>
+                        <ul>
+                            <li><a href="{baseurl}/admin/index.php?action=leadmanager_add_lead" title="Add Lead">{lang_admin_add_lead}</a></li>
+                            <li><a href="#" id="menu_add_listing_link" title="Add Listing">{lang_admin_add_listing}</a></li>
+                            {check_access_blog_manager}
+                            <li><a href="{baseurl}/admin/index.php?action=edit_blog">{lang_admin_blog_manager}</a></li>
+                            {/check_access_blog_manager} {check_edit_pages}
+                            <li><a href="{baseurl}/admin/index.php?action=edit_page">{lang_admin_page_editor_caption}</a></li>
+                            {/check_edit_pages}
+                        </ul>
+                    </li>
+                    {/check_agent}
 
-                            <ul>
-                                {!check_agent}
-                                <li><a href="{url_view_favorites}" title="View Favorites">View Favorites</a></li>
-                                <li><a href="{url_view_saved_searches}" title="Saved Searches">Saved Searches</a></li>
-                                <li><a href="{url_edit_profile}" title="Edit my Account">Edit my Account</a></li>
-                                {/!check_agent} {check_agent}
-                                <li><a href="{baseurl}/admin/index.php?action=edit_user&amp;user_id={current_user_id}">{lang_admin_edit_my_account}</a></li>
-
-                                <li><a href="{baseurl}/admin/index.php?action=my_leadmanager">{lang_admin_view_my_leads}</a></li>
-                                <li><a href="{baseurl}/admin/index.php?action=edit_my_listings">{lang_admin_edit_my_listings}</a></li>
-
-                                {check_edit_all_listings}
-                                <li><a href="{baseurl}/admin/index.php?action=edit_listings">{lang_admin_edit_all_listings}</a></li>
-                                {/check_edit_all_listings} {check_edit_all_leads}
-                                <li><a href="{baseurl}/admin/index.php?action=leadmanager">{lang_admin_view_leads}</a></li>
-                                {/check_edit_all_leads} {check_edit_all_users}
-                                <li><a href="{baseurl}/admin/index.php?action=user_manager">{lang_admin_user_manager}</a></li>
-                                {/check_edit_all_users} {check_edit_site_config}
-                                <li><a href="{baseurl}/admin/index.php?action=configure">{lang_admin_site_config}</a></li>
-                                {/check_edit_site_config} {/check_agent}
-                            </ul>
-                        </li>
-
-                        {check_agent}
-                        <li class="menupop">
-                            <a href="#"><span>ADD</span></a>
-                            <ul>
-                                <li><a href="{baseurl}/admin/index.php?action=leadmanager_add_lead" title="Add Lead">{lang_admin_add_lead}</a></li>
-                                <li><a href="#" id="menu_add_listing_link" title="Add Listing">{lang_admin_add_listing}</a></li>
-                                {check_access_blog_manager}
-                                <li><a href="{baseurl}/admin/index.php?action=edit_blog">{lang_admin_blog_manager}</a></li>
-                                {/check_access_blog_manager} {check_edit_pages}
-                                <li><a href="{baseurl}/admin/index.php?action=edit_page">{lang_admin_page_editor_caption}</a></li>
-                                {/check_edit_pages}
-                            </ul>
-                        </li>
-                        {/check_agent}
-
-                        <li><a href="{url_logout}">{lang_index_logout}</a></li>
-                </ul>
-            </div>
-
-            <div style="float:right;height:18px;padding:3px;margin:0; margin-right: 5px; margin-top: 3px;">
-                Logged In: {current_user_first_name} {current_user_last_name}&nbsp;&nbsp;<span id="online_status"></span>
-            </div>
-
+                    <li><a href="{url_logout}">{lang_index_logout}</a></li>
+            </ul>
         </div>
 
-        {/check_member}
+        <div style="float:right;height:18px;padding:3px;margin:0; margin-right: 5px; margin-top: 3px;">
+            Logged In: {current_user_first_name} {current_user_last_name}&nbsp;&nbsp;<span id="online_status"></span>
+        </div>
 
-        <!-- Quick Search popup -->
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#quicksearch").uitabs();
-            });
-        </script>
-        <div class="quicksearch_wrapper_collapse">
-            <img src="{template_url}/images/quicksearch.png" class="menu_collapse" id="show" alt="Click Me!" title="Click Me!" />
-            <div id="quicksearch_form_div">
+    </div>
 
-                <h3>Persistent Collapsing Quick Search</h3>
+    {/check_member}
 
-                <div id="quicksearch">
-                    <!--  generate the unordered list with links that becomes our tabs -->
-                    <ul>
-                        {foreach_pclass_block}
-                        <li><a href="#pane_{pclass_id}">{pclass_name}</a></li>
-                        {/foreach_pclass_block}
-                    </ul>
+    <!-- Quick Search popup -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#quicksearch").uitabs();
+        });
+    </script>
+    <div class="quicksearch_wrapper_collapse">
+        <img src="{template_url}/images/quicksearch.png" class="menu_collapse" id="show" alt="Click Me!" title="Click Me!" />
+        <div id="quicksearch_form_div">
 
-                    <!--  Search panes div  -->
+            <h3>Persistent Collapsing Quick Search</h3>
+
+            <div id="quicksearch">
+                <!--  generate the unordered list with links that becomes our tabs -->
+                <ul>
                     {foreach_pclass_block}
-                    <div id="pane_{pclass_id}">
-                        <div class="templated_search_form">
-                            <div class="templated_search_form_data">
-                                {templated_search_form_{pclass_id}}
-                            </div>
+                    <li><a href="#pane_{pclass_id}">{pclass_name}</a></li>
+                    {/foreach_pclass_block}
+                </ul>
+
+                <!--  Search panes div  -->
+                {foreach_pclass_block}
+                <div id="pane_{pclass_id}">
+                    <div class="templated_search_form">
+                        <div class="templated_search_form_data">
+                            {templated_search_form_{pclass_id}}
                         </div>
                     </div>
-                    {/foreach_pclass_block}
                 </div>
-
-
+                {/foreach_pclass_block}
             </div>
-            <div class="space_10"></div>
+
 
         </div>
+        <div class="space_10"></div>
 
-
-        {load_js_last}
     </div>
+
+
+    {load_js_last}
 </body>
 
 </html>
