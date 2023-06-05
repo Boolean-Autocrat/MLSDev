@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>{site_title}</title>
+    {load_meta_description_short} {load_meta_keywords}
+    <meta http-equiv="content-type" content="text/html;charset={charset}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="robots" content="{meta_index},{meta_follow}" />
+    {meta_canonical_block}
+    <link rel="canonical" href="{canonical_link}" />
+    {/meta_canonical_block}
+    <meta name="Generator" content="Open-Realty" />
+    <link rel="shortcut icon" href="{template_url}/images/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    {load_css_style_default} {load_css_style_main}
+    <!--[if lte IE 6]>{load_css_style_ie6}<![endif]-->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{company_name} - {lang_rss_lastmodified_link_title}"
+      href="{rss_lastmodified}"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{company_name} - {lang_rss_featured_link_title}"
+      href="{rss_featured}"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{company_name} - {lang_rss_blog_post_link_title}"
+      href="{rss_blog_posts}"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{company_name} - {lang_rss_blog_comments_link_title}"
+      href="{rss_blog_comments}"
+    />
+
+    <link
+      href="{baseurl}/node_modules/lightslider/dist/css/lightslider.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/jquery/dist/jquery.min.js"
+    ></script>
+    <script type="text/javascript">
+      /* solution to undefined msie */
+      jQuery.browser = {};
+      (function () {
+        jQuery.browser.msie = false;
+        jQuery.browser.version = 0;
+        if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+          jQuery.browser.msie = true;
+          jQuery.browser.version = RegExp.$1;
+        }
+      })();
+      /* solution to undefined msie */
+    </script>
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/lightslider/dist/js/lightslider.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/jquery-migrate/dist/jquery-migrate.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/jquery-ui/jquery-ui.min.js"
+    ></script>
+    <script type="text/javascript">
+      $.fn.uitabs = $.fn.tabs;
+    </script>
+    <script
+      type="text/javascript"
+      src="{baseurl}/include/class/jquery/jquery_plugins/jquery.betterserialize.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/jquery-colorbox/jquery.colorbox-min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{base_url}/node_modules/superfish/dist/js/superfish.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{base_url}/node_modules/@audithsoftworks/jquery.uniform/dist/js/jquery.uniform.standalone.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{base_url}/node_modules/jquery-equalheights/jquery.equalheights.min.js"
+    ></script>
+    <script type="text/javascript">
+      jQuery.validator.messages.required = "{lang_field_is_required}";
+      jQuery.validator.defaults.errorClass = "redtext";
+      /* Eable the Validator Plugins Debug Feature
+     jQuery.validator.defaults.debug = true;
+    */
+      jQuery.validator.defaults.meta = "validate";
+      jQuery.validator.addMethod(
+        "ordate",
+        function (value, element, datefmt) {
+          if (value == "") {
+            return true;
+          }
+          if (datefmt == 1) {
+            return value.match(
+              /^(01|02|03|04|05|06|07|08|09|10|11|12)\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/\d\d\d\d$/
+            );
+          }
+          if (datefmt == 2) {
+            return value.match(
+              /^\d\d\d\d\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)$/
+            );
+          }
+          if (datefmt == 3) {
+            return value.match(
+              /^(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)\/\d\d\d\d$/
+            );
+          }
+        },
+        "{lang_enter_date_in_format} "
+      );
+    </script>
+
+    {load_ORjs}
+  </head>
+  <body>
+      <!-- bof HEADER -->
+                  <div class="header container">
+                    <div class="header_left">
+                      <div class="header_left_content">
+                        <div class="logo">&nbsp;</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- eof HEADER -->
+                  <!-- bof TOPBAR-->
+                  <div class="topbar">
+                    <div class="topbar_left">
+                      <div class="topbar_right">
+                        <!-- bof HORIZONTAL MENU -->
+                        <div class="main_horiz_menu">
+                          <ul>
+                            <li><a href="{url_index}">HOME&nbsp;&nbsp;<i class="fa-solid fa-house"></i></a></li>
+                            <li><a href="{page_link_2}">FOR SALE&nbsp;&nbsp;<i class="fa-solid fa-tag"></i></a></li>
+                            <li><a href="{page_link_3}">OUR SERVICES</a></li>
+                            <li><a href="{page_link_4}">OUR TEAM</a></li>
+                            <li><a href="{page_link_5}">TESTIMONIALS</a></li>
+                            <li><a href="{page_link_6}">CONTACT US</a></li>
+                          </ul>
+                        </div>
+                        <!-- eof HORIZONTAL MENU -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- eof TOPBAR-->
+                  <!-- bof MAIN CONTENT -->
+                  <div class="main_content">
+                    <!-- bof TOP BORDERS SETTINGS -->
+                    <div class="main_content_top">
+                      <div class="main_content_top_left">
+                        <div class="main_content_top_right"></div>
+                      </div>
+                    </div>
+                    <!-- eof TOP BORDERS SETTINGS -->
+                    <!-- bof WEBSITE CONTENT -->
+                    <div class="website_content">
+                      <!-- bof CONTENT AREA -->
+                      <div class="content_area">
+                        <!-- bof LEFT CONTENT -->
+                        <div class="content_left">
+                          <!-- bof BOXES ON LEFT CONTENT-->
+                          <div class="box menu_vertical">
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_top">
+                              <div class="box_top_left">
+                                <div class="box_top_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                            <!-- bof BOX CONTENT -->
+                            <div class="box_content">
+                              <h6>MENU</h6>
+                              <ul class="menu">
+                                <li>
+                                  <a
+                                    href="{url_search_results}"
+                                    title="View All Listings"
+                                    >View All Listings</a
+                                  >
+                                </li>
+                                <li>
+                                  <a href="{url_search}" title="Search Listings"
+                                    >Search Listings</a
+                                  >
+                                </li>
+                                <li>
+                                  <a href="{url_blog}" title="View Blog"
+                                    >View Blog</a
+                                  >
+                                </li>
+                                <li>
+                                  <a href="{url_view_agents}" title=""
+                                    >View Agents</a
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="{url_view_calculator}"
+                                    onclick="window.open(this.href,'_blank','location=0,status=0,scrollbars=1,toolbar=0,menubar=0,width=500,height=520');return false"
+                                    title="Loan Calculators"
+                                    >Loan Calculators</a
+                                  >
+                                </li>
+                                <!-- eof HIDE IF MEMBER, AGENT OR ADMIN IS LOGGED -->
+                              </ul>
+                            </div>
+                            <!-- eof BOX CONTENT -->
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_bottom">
+                              <div class="box_bottom_left">
+                                <div class="box_bottom_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                          </div>
+                          <!-- bof SHOW ONLY IF MEMBER, AGENT AND ADMIN IS LOGGED -->
+                          {check_member}
+                          <div class="box menu_vertical">
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_top">
+                              <div class="box_top_left">
+                                <div class="box_top_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                            <!-- bof BOX CONTENT -->
+                            <div class="box_content">
+                              <h6>USER MENU</h6>
+                              <ul class="menu">
+                                <!-- bof HIDE IF AGENT IS LOGGED -->
+                                {!check_agent}
+                                <li>
+                                  <a
+                                    href="{url_view_favorites}"
+                                    title="View Favorites"
+                                    >View Favorites</a
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="{url_view_saved_searches}"
+                                    title="Saved Searches"
+                                    >Saved Searches</a
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="{url_edit_profile}"
+                                    title="Edit my Account"
+                                    >Edit my Account</a
+                                  >
+                                </li>
+                                {/!check_agent}
+                                <!-- eof SHOW ONLY IF AGENT IS LOGGED -->
+
+                                <!-- bof SHOW ONLY IF ADMIN IS LOGGED -->
+                                {check_agent}
+                                <li>
+                                  <a href="{baseurl}/admin/" title="Admin Area"
+                                    >Admin Area</a
+                                  >
+                                </li>
+                                {/check_agent}
+                                <!-- eof SHOW ONLY IF ADMIN IS LOGGED -->
+                                <li>
+                                  <a href="{url_logout}" title="Logout"
+                                    >Logout</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                            <!-- eof BOX CONTENT -->
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_bottom">
+                              <div class="box_bottom_left">
+                                <div class="box_bottom_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                          </div>
+                          {/check_member}
+                          <!-- eof SHOW ONLY IF MEMBER, AGENT AND ADMIN IS LOGGED -->
+                          <div class="box menu_vertical">
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_top">
+                              <div class="box_top_left">
+                                <div class="box_top_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                            <!-- bof BOX CONTENT -->
+                            <div class="box_content">
+                              <h6>BLOG CATEGORIES</h6>
+                              <ul class="menu">
+                                {blog_category_link_block}
+                                <li>
+                                  <a
+                                    href="{blog_cat_url}"
+                                    title="{blog_cat_title}"
+                                    >{blog_cat_title}</a
+                                  >
+                                </li>
+                                {/blog_category_link_block}
+                              </ul>
+                              <div class="space_5"></div>
+                            </div>
+                            <!-- eof BOX CONTENT -->
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_bottom">
+                              <div class="box_bottom_left">
+                                <div class="box_bottom_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                          </div>
+                          <div class="box menu_vertical">
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_top">
+                              <div class="box_top_left">
+                                <div class="box_top_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                            <!-- bof BOX CONTENT -->
+                            <div class="box_content">
+                              <h6>BLOG ARCHIVE</h6>
+                              <ul class="menu">
+                                {blog_archive_link_block}
+                                <li>
+                                  <a
+                                    href="{blog_archive_url}"
+                                    title="{blog_archive_title}"
+                                    >{blog_archive_title}</a
+                                  >
+                                </li>
+                                {/blog_archive_link_block}
+                              </ul>
+                            </div>
+                            <!-- eof BOX CONTENT -->
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_bottom">
+                              <div class="box_bottom_left">
+                                <div class="box_bottom_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                          </div>
+                          <div class="box syndication">
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_top">
+                              <div class="box_top_left">
+                                <div class="box_top_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                            <!-- bof BOX CONTENT -->
+                            <!-- eof BOX CONTENT -->
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_bottom">
+                              <div class="box_bottom_left">
+                                <div class="box_bottom_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                          </div>
+                          <div class="box recentposts">
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_top">
+                              <div class="box_top_left">
+                                <div class="box_top_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                            <!-- bof BOX CONTENT -->
+                            <div class="box_content">
+                              <h6>RECENT POST</h6>
+                              <ul class="menu">
+                                {blog_recent_post_block}
+                                <li>
+                                  <a
+                                    href="{blog_recent_post_url}"
+                                    title="{blog_recent_post_title}"
+                                    >{blog_recent_post_title}</a
+                                  >
+                                </li>
+                                {/blog_recent_post_block}
+                              </ul>
+                            </div>
+                            <!-- eof BOX CONTENT -->
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_bottom">
+                              <div class="box_bottom_left">
+                                <div class="box_bottom_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                          </div>
+                          <div class="box recentposts">
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_top">
+                              <div class="box_top_left">
+                                <div class="box_top_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                            <!-- bof BOX CONTENT -->
+                            <div class="box_content">
+                              <h6>RECENT COMMENTS</h6>
+                              <ul class="menu">
+                                {blog_recent_comments_block}
+                                <li>
+                                  <a
+                                    href="{blog_recent_comments_url}"
+                                    title="{blog_recent_comments_title}"
+                                    >{blog_recent_comments_title}</a
+                                  >
+                                </li>
+                                {/blog_recent_comments_block}
+                              </ul>
+                            </div>
+                            <!-- eof BOX CONTENT -->
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_bottom">
+                              <div class="box_bottom_left">
+                                <div class="box_bottom_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                          </div>
+                          <div class="box">
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_top">
+                              <div class="box_top_left">
+                                <div class="box_top_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                            <!-- bof BOX CONTENT -->
+                            </div>
+                            <!-- eof BOX CONTENT -->
+                            <!-- bof BOX BORDERS SETTINGS -->
+                            <div class="box_bottom">
+                              <div class="box_bottom_left">
+                                <div class="box_bottom_right"></div>
+                              </div>
+                            </div>
+                            <!-- eof BOX BORDERS SETTINGS -->
+                          </div>
+                          {powered_by_tag}
+                          <!-- eof BOXES ON LEFT CONTENT -->
+                        </div>
+                        <!-- eof LEFT CONTENT -->
+                        <!-- bof RIGHT CONTENT -->
+                        <div class="content_right">
+                          <!-- bof OPEN-REALTY CONTENT TAG -->
+                          <!-- eof OPEN-REALTY CONTENT TAG -->
+                        </div>
+                        <!-- eof RIGHT CONTENT -->
+                        <div class="clear"></div>
+                      </div>
+                      <!-- eof CONTENT AREA -->
+                      <div class="clear"></div>
+                    </div>
+                    <!-- eof WEBSITE CONTENT -->
+                    <!-- bof BOTTOM BORDERS SETTINGS -->
+                    <div class="main_content_bottom">
+                      <div class="main_content_bottom_left">
+                        <div class="main_content_bottom_right"></div>
+                      </div>
+                    </div>
+                    <!-- eof BOTTOM BORDERS SETTINGS -->
+                  </div>
+                  <!-- eof MAIN CONTENT -->
+                </div>
+                <!-- eof TOTAL AREA -->
+                <!-- bof FOOTER -->
+                <div class="footer">
+                  <div class="footer_left">
+                    <div class="footer_right">
+                    </div>
+                  </div>
+                </div>
+                <!-- eof FOOTER -->
+              </div>
+              <!-- eof MAIN TOTAL -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- eof STU NICHOLLS CSS LAYOUT (http://www.cssplay.co.uk/layouts/minimum.html) -->
+    {load_js_last}
+  </body>
+</html>
