@@ -1,1 +1,1 @@
-This is a simple project setup.
+This is a simple project setup for the MLS DEV thing.
