@@ -16,14 +16,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:400,500,600&display=swap" rel="stylesheet">
 <link href="{baseurl}/node_modules/lightslider/dist/css/lightslider.min.css" rel="stylesheet" type="text/css"> {load_css_style} {load_css_quicksearch}
-<style type="text/css" media="print">
-    #oradminbar {
-        display: none;
-    }
-</style>
-{check_member} {load_css_admin_bar} {/check_member}
-
-
 <script type="text/javascript" src="{baseurl}/node_modules/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
     /* solution to undefined msie */
@@ -252,68 +244,6 @@
             <span class="reg_mark_h2">&#174;</span>- &copy;2021 - All Rights Reserved.</p>
         {mobile_full_template_link}
     </footer>
-
-
-    <!--  Persistant Admin bar. Only appears at top if user is logged in -->
-    {check_member}
-
-    <div id="oradminbar">
-        <div class="quicklinks">
-
-            <ul id="or-admin-bar">
-                {check_agent}
-                <li class="menupop"><a href="{baseurl}/admin/" title="Admin Area"><span>{lang_index_admin}</span></a> {/check_agent} {!check_agent}
-                    <li class="menupop"><a href="#" title="My Account"><span>MY ACCOUNT</span></a> {/!check_agent}
-
-                        <ul>
-                            {!check_agent}
-                            <li><a href="{url_view_favorites}" title="View Favorites">View Favorites</a></li>
-                            <li><a href="{url_view_saved_searches}" title="Saved Searches">Saved Searches</a></li>
-                            <li><a href="{url_edit_profile}" title="Edit my Account">Edit my Account</a></li>
-                            {/!check_agent} {check_agent}
-                            <li><a href="{baseurl}/admin/index.php?action=edit_user&amp;user_id={current_user_id}">{lang_admin_edit_my_account}</a></li>
-
-                            <li><a href="{baseurl}/admin/index.php?action=my_leadmanager">{lang_admin_view_my_leads}</a></li>
-                            <li><a href="{baseurl}/admin/index.php?action=edit_my_listings">{lang_admin_edit_my_listings}</a></li>
-
-                            {check_edit_all_listings}
-                            <li><a href="{baseurl}/admin/index.php?action=edit_listings">{lang_admin_edit_all_listings}</a></li>
-                            {/check_edit_all_listings} {check_edit_all_leads}
-                            <li><a href="{baseurl}/admin/index.php?action=leadmanager">{lang_admin_view_leads}</a></li>
-                            {/check_edit_all_leads} {check_edit_all_users}
-                            <li><a href="{baseurl}/admin/index.php?action=user_manager">{lang_admin_user_manager}</a></li>
-                            {/check_edit_all_users} {check_edit_site_config}
-                            <li><a href="{baseurl}/admin/index.php?action=configure">{lang_admin_site_config}</a></li>
-                            {/check_edit_site_config} {/check_agent}
-                        </ul>
-                    </li>
-
-                    {check_agent}
-                    <li class="menupop">
-                        <a href="#"><span>ADD</span></a>
-                        <ul>
-                            <li><a href="{baseurl}/admin/index.php?action=leadmanager_add_lead" title="Add Lead">{lang_admin_add_lead}</a></li>
-                            <li><a href="#" id="menu_add_listing_link" title="Add Listing">{lang_admin_add_listing}</a></li>
-                            {check_access_blog_manager}
-                            <li><a href="{baseurl}/admin/index.php?action=edit_blog">{lang_admin_blog_manager}</a></li>
-                            {/check_access_blog_manager} {check_edit_pages}
-                            <li><a href="{baseurl}/admin/index.php?action=edit_page">{lang_admin_page_editor_caption}</a></li>
-                            {/check_edit_pages}
-                        </ul>
-                    </li>
-                    {/check_agent}
-
-                    <li><a href="{url_logout}">{lang_index_logout}</a></li>
-            </ul>
-        </div>
-
-        <div style="float:right;height:18px;padding:3px;margin:0; margin-right: 5px; margin-top: 3px;">
-            Logged In: {current_user_first_name} {current_user_last_name}&nbsp;&nbsp;<span id="online_status"></span>
-        </div>
-
-    </div>
-
-    {/check_member}
 
     <!-- Quick Search popup -->
     <script type="text/javascript">
