@@ -42,6 +42,10 @@ header {
 
 /* General Layout */
 
+a {
+  text-decoration: none;
+}
+
 .main_total {
   height: 100%;
   background: #c8c8c8 url({template_url}/images/border_left.png) 0 0 repeat-y;
