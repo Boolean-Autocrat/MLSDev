@@ -43,7 +43,7 @@ header {
 .header__navbar > ul > li {
   font-weight: 400;
   font-size: 1.2rem;
-  color: #1f1f29;
+  color: #1f1f29 !important;
   transition: all 0.3s ease-in-out;
 }
 
@@ -59,7 +59,7 @@ header {
 
 .header__navbar > ul > li:hover:after {
   width: 100%;
-  background: blue;
+  background: #1f1f29;
 }
 
 /* General Layout */
