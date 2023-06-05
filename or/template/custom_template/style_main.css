@@ -17,6 +17,15 @@ body {
   align-items: center;
 }
 
+.header__navbar > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* General Layout */
 
 a:link,
