@@ -38,7 +38,8 @@ header {
 
 .header__navbar > ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 1.5rem;
   align-items: center;
   list-style: none;
 }
