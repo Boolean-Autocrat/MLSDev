@@ -22,6 +22,5 @@
         "cmd": "git push"
       }
     ]
-  },
-  "editor.codeActionsOnSave": {}
+  }
 }
