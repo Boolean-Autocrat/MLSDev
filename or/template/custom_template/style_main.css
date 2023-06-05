@@ -40,6 +40,10 @@ header {
   width: 25%;
 }
 
+.header__wordart__img {
+  max-width: 100%;
+}
+
 .header__navbar > ul {
   display: flex;
   justify-content: flex-end;
