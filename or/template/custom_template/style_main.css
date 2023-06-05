@@ -9,6 +9,18 @@ header {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.header__logo {
+  width: 25%;
+}
+
+.header__navbar {
+  width: 50%;
+}
+
+.header__menu-btn {
+  display: none;
+}
+
 .header__logo__img {
   max-width: 100%;
   border-radius: 50%;
