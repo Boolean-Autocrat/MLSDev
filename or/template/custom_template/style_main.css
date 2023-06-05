@@ -9,6 +9,11 @@ header {
   padding: 1rem;
 }
 
+.header__nav {
+  background-color: #a9a9a9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 .header__logo {
   width: 25%;
 }
