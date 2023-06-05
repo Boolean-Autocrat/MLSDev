@@ -42,57 +42,6 @@ header {
 
 /* General Layout */
 
-a:link,
-a:visited {
-  font-weight: normal;
-  text-decoration: none;
-}
-
-a:hover {
-  font-weight: normal;
-  text-decoration: underline;
-  color: #9fb6d5;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: 0;
-  padding: 0;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  text-align: left;
-}
-
-h1 {
-  line-height: 30px;
-  font-size: 20px;
-}
-
-h2 {
-  line-height: 28px;
-  font-size: 18px;
-}
-
-h3 {
-  line-height: 26px;
-  font-size: 16px;
-}
-
-h4 {
-  line-height: 24px;
-  font-size: 14px;
-}
-
-h5 {
-  line-height: 18px;
-  font-size: 12px;
-}
-
-/* MAIN DIV's ============================================================================ */
-
 .main_total {
   height: 100%;
   background: #c8c8c8 url({template_url}/images/border_left.png) 0 0 repeat-y;
