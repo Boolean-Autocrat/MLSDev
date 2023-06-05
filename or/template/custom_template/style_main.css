@@ -40,6 +40,10 @@ header {
   list-style: none;
 }
 
+.header__navbar > ul > li {
+  font-weight: 600;
+}
+
 /* General Layout */
 
 a {
