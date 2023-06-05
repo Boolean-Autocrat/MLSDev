@@ -1,0 +1,79 @@
+
+@media(min-width : 768px) {
+	.media-pane-holder  {
+	flex: 0 0 200px;
+	}
+}
+//Set Max Width For Images to be Displayed in the Media Widget
+.media_widget_thumb {
+	max-width: 110px;
+	height: auto;
+}
+
+/* CSS For all file page display area */
+#inner_image_page, #inner_vtour_page,  #inner_file_page{
+	text-align:center;
+	padding: 8px 0px;
+	margin-bottom:5px;
+}
+
+.filedrag{
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	margin: 1em 0;
+	color: #555;
+	border: 2px dashed #555;
+	border-radius: 7px;
+	cursor: copy;
+}
+
+.move_handle{
+	color:$dark;
+	margin-top:-3px;
+	margin-right:2px;
+	cursor:move;
+}
+.move_image_container{
+	width:100%;
+	text-align:center;
+}
+
+/* CSS For Image Sorting */
+.sort_list{
+	display: block;
+	margin: 5px;
+	padding: 0px;
+	padding-left:auto;
+	padding-right:auto;
+}
+.sort_list li {
+	list-style-type: none;
+	border: 1px solid #777777;
+	background: $light;
+	margin-left: 0px;
+	margin-top:3px;
+	padding: 5px 0px 5px 0px;
+}
+
+//Upload Modal
+#media_upload_container {
+	min-width: 500px;
+	padding: 10px;
+}
+
+#int_media_upload_pane, ext_media_upload_pane {
+	padding: 14px;
+}
+
+#int_media_upload_pane div, ext_media_upload_pane div {
+	padding: 4px;
+}
+
+.upload_div {
+	padding: 4px;
+	border-bottom: 1px solid #666;
+}
+#media_upload_container input[type="text"] {
+	min-width: 280px;
+}

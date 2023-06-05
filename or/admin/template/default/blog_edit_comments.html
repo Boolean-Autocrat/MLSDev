@@ -1,0 +1,55 @@
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+    <div class="row">
+      <div class="row">
+        <div class="col-auto">{blog_date_posted}</div>
+        <div class="col text-dark">{blog_title}</div>
+      </div>
+      <br />
+      {blog_article_comments_block}
+      <div class="blog_article_comments">
+        <div class="blog_article_comments_header">{lang_blog_comments}</div>
+        {next_prev} {blog_article_comment_item_block}
+        <div class="blog_article_comment_item">
+          <div class="blog_article_comment_title_row">
+            <div class="blog_article_comment_title_column">
+              {lang_blog_comment_by}
+              <span class="blog_comment_author">{blog_comment_author}</span>
+              {lang_blog_comment_on}
+              <span class="blog_comment_date"> {blog_comment_date_posted}</span>
+            </div>
+            <div class="comment_tools">
+              {blog_article_comment_delete_block}
+			  <a
+			  href="{blog_comment_delete_url}"
+			  class="btn btn-primary btn-sm"
+			  alt="{lang_blog_comment_delete}"
+			  id="new_post"
+			 >
+			 <i class="fas fa-trash"></i></span> {lang_blog_comment_delete}
+			</a>
+			  {/blog_article_comment_delete_block}
+              <span class="blog_comment_approve_span"
+                >{blog_article_comment_approve_block}
+				
+				
+				<a
+				href="{blog_comment_approve_url}"
+				class="btn btn-primary btn-sm"
+				id="new_post"
+				alt="{lang_blog_comment_approve}"
+			   >
+			   <i class="fa-solid fa-thumbs-up"></i></span> {lang_blog_comment_approve}
+			  </a>
+				{/blog_article_comment_approve_block}</span
+              >
+            </div>
+          </div>
+          <div class="blog_article_comment_text">{blog_comment_text}</div>
+        </div>
+        {/blog_article_comment_item_block}
+      </div>
+      {/blog_article_comments_block}
+    </div>
+  </div>
+</div>

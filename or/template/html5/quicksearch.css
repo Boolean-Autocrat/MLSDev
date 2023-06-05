@@ -1,0 +1,126 @@
+/* POP-OUT QUICK SEARCH
+ ============================================================================ */
+.quicksearch_wrapper {
+	float: right;
+	position: fixed;
+	top: 40px;
+	right: 0;
+	z-index: 998;
+	min-width: 500px;
+}
+
+.quicksearch {
+	margin-top: 12px;
+	list-style: none;
+	padding: 4px 0px;
+	width: 300px;
+}
+
+.quicksearch_form_data .searchpage_field_wrapper {
+	display: inline-block;
+}
+
+.quicksearch_wrapper_collapse {
+	width: 16px;
+	position: fixed;
+	top: 40px;
+	right: 0;
+	z-index: 998;
+	color: transparent;
+	background: transparent;
+}
+
+.quicksearch_wrapper #quicksearch_form_div {
+	border: 1px solid #888;
+	padding: 10px;
+	background: #eeeeee; /* Old browsers */
+	background: -moz-linear-gradient(top, #eeeeee 0%, #dedede 100%);
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee),
+		color-stop(100%, #dedede) ); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #eeeeee 0%, #dedede 100%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #eeeeee 0%, #dedede 100%);
+	/* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #eeeeee 0%, #dedede 100%);
+	/* IE10+ */
+	background: linear-gradient(top, #eeeeee 0%, #dedede 100%); /* W3C */
+	filter: progid : DXImageTransform.Microsoft.gradient (   startColorstr =
+		'#eeeeee', endColorstr = '#dedede', GradientType = 0 ); /* IE6-9 */
+	-moz-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border-color: #AAA;
+	border-style: solid;
+}
+
+#quicksearch_form_div h3 {
+	font-size: 1.4em;
+	font-weight: 700;
+	color: #000;
+	text-shadow: 1px 2px 1px #bbb;
+	filter: dropshadow(color = #bbb, offx = 1, offy = 2);
+	padding-bottom: 10px;
+}
+
+#quicksearch_form_div label {
+	font-size: .9em;
+	font-weight: 600;
+	text-align: left;
+}
+
+#quicksearch_form_div input[type=text],#quicksearch_form_div select,#quicksearch_form_div checkbox
+	{
+	background-color: #FFFFCC;
+	color: #666;
+	border-width: 1px;
+	text-shadow: 0 1px 0 #eee;
+	font-weight: 600;
+	border-color: #ccc;
+	text-align: none;
+}
+
+#quicksearch_form_div select {
+	width: 100px;
+}
+
+#quicksearch_form_div input[type=button] {
+	margin: 10px 0px;
+}
+
+.quicksearch_wrapper_collapse #quicksearch_form_div {
+	visibility: hidden;
+}
+
+#quicksearch_form_div #search_page_form {
+	text-align: left;
+}
+
+.menu_collapse {
+	float: right;
+	cursor: pointer;
+	width: 16px;
+	border-top: 1px;
+	border-right: 2px;
+	border-bottom: 2px;
+	border-left: 1px;
+	-moz-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border-color: #888;
+	border-style: solid;
+}
+
+.menu_collapse:hover {
+	background: #AAA;
+	color: #000;
+	text-align: center;
+}
+
+#quicksearch_form_div UL {
+	line-height: 1em;
+	margin: 0;
+	padding: 0;
+}

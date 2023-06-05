@@ -1,0 +1,34 @@
+
+<!-- bof "search_result_default.html" -->
+{next_prev}
+<table class="search_result_header">
+{search_result_header}
+<tr>
+	<th class="title">{header_title}</th>
+	<th>{header_1}</th>
+	<th>{header_2}</th>
+	<th>{header_3}</th>
+	<th>{header_4}</th>
+	{header_5_block}<th>{header_5}</th>{/header_5_block}
+</tr>
+{/search_result_header}
+{search_result_dataset}
+<tr class="result_row_{row_num_even_odd}">
+<td class="title">
+<p><a href="{link_to_listing}" title="{listing_title}">{listing_title}</a></p>
+<p><a href="{link_to_listing}" title="{listing_title}"><img src="{raw_image_thumb_1}" alt="" /></a></p>
+{delete_from_favorite}
+</td>
+	<td>{field_1}</td>
+	<td>{field_2}</td>
+	<td>{field_3}</td>
+	<td>{field_4}</td>
+	{field_5_block}<td>{field_5}</td>{/field_5_block}
+</tr>
+<tr class="result_row_{row_num_even_odd}">
+	<td class="textarea" colspan="6">{textarea_1}</td>
+</tr>
+{/search_result_dataset}
+</table>
+{next_prev_bottom}
+<!-- eof "search_result_default.html" -->

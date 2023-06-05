@@ -1,0 +1,9 @@
+# SEARCH ENGINE FRIENDLY URLS FOR Open-Realty
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/template/.*$
+RewriteRule . index.php [L]
+</IfModule>

@@ -1,0 +1,120 @@
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+    <ul class="nav nav-pills nav-fill p-1 mb-4" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1 active"
+          data-bs-toggle="tab"
+          data-bs-target="#stats"
+          id="stats_tab"
+          role="tab"
+          aria-controls="stats"
+          aria-selected="true"
+        >
+          {lang_stats_main}
+        </a>
+	  </li>
+	  
+        {check_edit_site_config}
+		<li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1"
+          data-bs-toggle="tab"
+          data-bs-target="#configure"
+          id="configure_tab"
+          role="tab"
+          aria-controls="configure"
+        >
+          {lang_stats_configure}
+        </a>
+	</li>
+        {/check_edit_site_config}
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div
+        class="tab-pane fade show active"
+        id="stats"
+        role="tabpanel"
+        aria-labelledby="stats_tab"
+      >
+        <h2>Coming Soon</h2>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="configure"
+        role="tabpanel"
+        aria-labelledby="configure_tab"
+      >
+        <form id="site_config_tracking" method="post" action="">
+			<input type="hidden" name="token" value="{csrf_token}" />
+			<h3 class="mt-4">{lang_site_config_heading_notification_settings}</h3>
+  			<hr />
+			<div class="row align-items-end mb-2">
+				<div class="col-12 col-md-4">
+				  <div class="input-group input-group-static">
+					<label for="controlpanel_enable_tracking" class="ms-0">{lang_enable_tracking}</label>
+					<select
+					  name="controlpanel_enable_tracking"
+					  class="form-control"
+					  id="controlpanel_enable_tracking"
+					>
+					  {enable_tracking_block}
+					  <option value="{value}" {selected}>{text}</option>
+					  {/enable_tracking_block}
+					</select>
+				  </div>
+				</div>
+			</div>
+			<div class="row align-items-end mb-2">
+				<div class="col-12 col-md-4">
+					<div class="input-group input-group-static">
+					<label for="controlpanel_enable_tracking_crawlers" class="ms-0">{lang_enable_tracking_crawlers}</label>
+					<select
+						name="controlpanel_enable_tracking_crawlers"
+						class="form-control"
+						id="controlpanel_enable_tracking_crawlers"
+					>
+						{enable_tracking_crawlers_block}
+						<option value="{value}" {selected}>{text}</option>
+						{/enable_tracking_crawlers_block}
+					</select>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex justify-content-end">
+				<button
+					type="submit"
+					class="btn btn-primary">{lang_save_changes}</button>
+					<a class="btn btn-danger"
+					href="index.php?action=clear_statistics_log"
+					onclick="return confirmDelete()"
+					><i class="fa-solid fa-trash"></i>
+					{lang_clear_log}</a
+				>
+			</div>
+        </form>	
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		$("#site_config_tracking").submit(function (e) {
+			e.preventDefault();
+			$.post(
+			  "ajax.php?action=update_site_config",
+			  $("#site_config_tracking").serialize(),
+			  function (data) {
+				if(data.error == "1"){
+					status_error(data.error_msg);
+				}
+				else{
+					status_msg(data.status);
+				}
+			  }
+			);
+		  });
+	});
+</script>

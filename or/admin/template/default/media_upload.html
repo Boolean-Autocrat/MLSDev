@@ -1,0 +1,146 @@
+<div id="media_upload_container">
+  <ul class="nav nav-tabs" id="mediaUploadTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link mb-0 px-0 py-1 active"
+        id="int-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#int-media-pane"
+        type="button"
+        role="tab"
+        aria-controls="int-media-pane"
+        aria-selected="true"
+      >
+        <i class="fa-solid fa-file-upload"></i> {lang_upload_file}
+      </button>
+    </li>
+    {show_ext_upload_block}
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link mb-0 px-0 py-1"
+        id="ext-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#ext-media-pane"
+        type="button"
+        role="tab"
+        aria-controls="ext-media-pane"
+        aria-selected="false"
+      >
+        <i class="fa-solid fa-link"></i>
+        {lang_link_external_photo}
+      </button>
+    </li>
+    {/show_ext_upload_block}
+  </ul>
+  <div class="tab-content" id="mediaUploadTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="int-media-pane"
+      role="tabpanel"
+      aria-labelledby="int-tab"
+    >
+      <form
+        enctype="multipart/form-data"
+        id="media_upload_form"
+        action="ajax.php?action=ajax_upload_media"
+        method="post"
+      >
+        <input type="hidden" name="token" value="{csrf_token}" />
+        <input type="hidden" name="edit" value="{edit_id}" />
+        <input type="hidden" name="media_type" value="{media_type}" />
+        {media_upload_block}
+        <div class="upload_div">
+          <strong>{lang_upload_send_this_file}: </strong
+          ><input name="userfile[]" type="file" />
+        </div>
+        {/media_upload_block}
+
+        <div style="text-align: center; margin-top: 10px">
+          <input
+            style="text-align: center; margin-top: 10px"
+            type="submit"
+            value="{upload_lang_text}"
+          />
+        </div>
+      </form>
+    </div>
+    {show_ext_upload_block}
+    <div
+      class="tab-pane fade"
+      id="ext-media-pane"
+      role="tabpanel"
+      aria-labelledby="ext-tab"
+    >
+      <form
+        id="media_ext_upload_form"
+        action="ajax.php?action=ajax_upload_media"
+        method="post"
+      >
+        <input type="hidden" name="edit" value="{edit_id}" />
+        <input type="hidden" name="media_type" value="{media_type}" />
+        <input type="hidden" name="token" value="{csrf_token}" />
+        {media_ext_link_block}
+        <div class="input-group input-group-static mb-2">
+          <label>{lang_link_to_this_file}</label>
+          <input name="extlink[]" type="url" class="form-control" />
+        </div>
+        {/media_ext_link_block}
+
+        <div style="text-align: center; margin-top: 10px">
+          <input type="submit" value="{upload_lang_text}" />
+        </div>
+      </form>
+    </div>
+    {/show_ext_upload_block}
+  </div>
+</div>
+
+<script
+  type="text/javascript"
+  src="{baseurl}/node_modules/jquery-form/dist/jquery.form.min.js"
+></script>
+<script type="text/javascript">
+  $("#media_upload_form").submit(function (e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+    var form = $("#media_upload_form")[0];
+    var data = new FormData(form);
+    $.ajax({
+      type: "POST",
+      enctype: "multipart/form-data",
+      url: "ajax.php?action=ajax_upload_media",
+      data: data,
+      processData: false,
+      contentType: false,
+      cache: false,
+      timeout: 600000,
+      success: function (data) {
+        closeModal();
+        if ("{media_type}" == "listingsimages") {
+          $("#listing_image_pane").load(
+            "{baseurl}/admin/ajax.php?action=ajax_display_listing_images&listing_id={edit_id}"
+          );
+        }
+        status_msg(data);
+      },
+      error: function (e) {
+        status_msg(e);
+      },
+    });
+  });
+  $("#media_ext_upload_form").submit(function (e) {
+    e.preventDefault();
+    $.post(
+      "ajax.php?action=ajax_upload_media",
+      $("#media_ext_upload_form").serialize(),
+      function (data) {
+        closeModal();
+        if ("{media_type}" == "listingsimages") {
+          $("#listing_image_pane").load(
+            "{baseurl}/admin/ajax.php?action=ajax_display_listing_images&listing_id={edit_id}"
+          );
+        }
+        status_msg(data);
+      }
+    );
+  });
+</script>

@@ -1,0 +1,72 @@
+{vtour_header_block}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Virtual Tour</title>
+{load_meta_description}
+{load_meta_keywords}
+<meta http-equiv="Content-Type" content="text/html;charset={charset}" />
+<meta name="robots" content="index,follow" />
+<meta name="Generator" content="Open-Realty" />
+<link rel="shortcut icon" href="{template_url}/images/favicon.ico" />
+{load_css_style_vtour}
+<script
+      type="text/javascript"
+      src="{baseurl}/node_modules/jquery/dist/jquery.min.js"
+    ></script>
+{load_ORjs}
+</head>
+<body {onload}>
+{/vtour_header_block}
+<script src="{baseurl}/node_modules/pannellum/build/pannellum.js"></script>
+<link
+	rel="stylesheet"
+	href="{baseurl}/node_modules/pannellum/build/pannellum.css"
+/>
+<!-- bof "vtour_classic.html" -->
+<div id="panorama-container" style="text-align: center;">
+
+	<div id="panorama"></div>
+	<div style="margin-top:5px;">
+		<select id="vtour_selector" name="vtour" class="required">
+			{vtour_block}
+				<option value="{url}" {selected} data-ortitle="{title}" data-ordescription="{description}">{title}</option>
+			{/vtour_block}
+		</select>
+		<div id="panorama-description"></div>
+	</div>
+</div>
+<!-- eof "vtour_classic.html" -->
+{vtour_footer_block}
+{load_js_last}
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#vtour_selector").on("change", function() {
+			var element = $("option:selected", this);
+			var url = this.value
+			var title = element.attr('data-ortitle');
+			var description =  element.attr('data-ordescription');
+			showPannellum(url, title, description);
+		});
+		// call the image for first time
+		$("#vtour_selector").change();
+
+		// function show pannellum
+		function showPannellum(image, title, description){
+			$('#panorama').html('');
+			pannellum.viewer('panorama', {
+				"type": "equirectangular",
+				"panorama": image,
+				"autoLoad": true,
+				"autoRotate": -2,
+				"title": title
+			});
+			$("#panorama-description").text(description)
+		}
+	});
+  </script>
+</body>
+</html>
+{/vtour_footer_block}

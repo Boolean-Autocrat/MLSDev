@@ -1,0 +1,570 @@
+<form id="site_config_general" method="post" action="">
+  <input type="hidden" name="token" value="{csrf_token}" />
+  <h3 class="mt-4">{lang_site_config_heading_general_info}</h3>
+  <hr />
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_company_name">{lang_company_name}</label>
+        <input
+          type="text"
+          name="controlpanel_company_name"
+          id="controlpanel_company_name"
+          value="{controlpanel_company_name}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-xs">{lang_company_name_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_company_location"
+          >{lang_company_location}</label
+        >
+        <input
+          type="text"
+          name="controlpanel_company_location"
+          id="controlpanel_company_location"
+          value="{controlpanel_company_location}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_company_location_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_company_logo">{lang_company_logo}</label>
+        <input
+          type="text"
+          name="controlpanel_company_logo"
+          id="controlpanel_company_logo"
+          value="{controlpanel_company_logo}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_company_logo_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_automatic_update_check" class="ms-0"
+          >{lang_automatic_update_check}</label
+        >
+        <select
+          name="controlpanel_automatic_update_check"
+          class="form-control"
+          id="controlpanel_automatic_update_check"
+        >
+          {automatic_update_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/automatic_update_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_automatic_update_check_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_timezone" class="ms-0">{lang_timezone}</label>
+        <select
+          name="controlpanel_timezone"
+          class="form-control"
+          id="controlpanel_timezone"
+        >
+          {timezone_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/timezone_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_timezone_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_charset" class="ms-0">{lang_charset}</label>
+        <select
+          name="controlpanel_charset"
+          class="form-control"
+          id="controlpanel_charset"
+        >
+          {charset_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/charset_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_charset_desc}</div>
+  </div>
+
+  <h3 class="mt-4">{lang_site_config_heading_mail_settings}</h3>
+  <hr />
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_phpmailer" class="ms-0"
+          >{lang_mailsystem}</label
+        >
+        <select
+          name="controlpanel_phpmailer"
+          class="form-control"
+          id="controlpanel_phpmailer"
+        >
+          {phpmailer_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/phpmailer_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_mailsystem_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2 phpmailsettings">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_mailserver">{lang_mailserver}</label>
+        <input
+          type="text"
+          name="controlpanel_mailserver"
+          id="controlpanel_mailserver"
+          value="{controlpanel_mailserver}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_mailserver_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2 phpmailsettings">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_mailport">{lang_smtpport}</label>
+        <input
+          type="text"
+          name="controlpanel_mailport"
+          id="controlpanel_mailport"
+          value="{controlpanel_mailport}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_smtpport_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2 phpmailsettings">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_mailuser">{lang_mailuser}</label>
+        <input
+          type="text"
+          name="controlpanel_mailuser"
+          id="controlpanel_mailuser"
+          value="{controlpanel_mailuser}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_mailuser_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2 phpmailsettings">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_mailpass">{lang_mailpass}</label>
+        <input
+          type="password"
+          name="controlpanel_mailpass"
+          autocomplete="off"
+          spellcheck="false"
+          id="controlpanel_mailpass"
+          value="{controlpanel_mailpass}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_mailpass_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2 phpmailsettings">
+    <div class="col-12">
+      <button
+        type="button"
+        class="btn btn-sm btn-primary"
+        id="test_conn"
+        name="test_conn"
+      >
+        {lang_test_connection}
+      </button>
+      <span id="test_result"></span>
+    </div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_admin_name">{lang_admin_name}</label>
+        <input
+          type="text"
+          name="controlpanel_admin_name"
+          id="controlpanel_admin_name"
+          value="{controlpanel_admin_name}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_admin_name_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_admin_email">{lang_admin_email}</label>
+        <input
+          type="email"
+          name="controlpanel_admin_email"
+          id="controlpanel_admin_email"
+          value="{controlpanel_admin_email}"
+          class="form-control"
+          required
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_admin_email_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_site_email">{lang_site_email}</label>
+        <input
+          type="email"
+          name="controlpanel_site_email"
+          id="controlpanel_site_email"
+          value="{controlpanel_site_email}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_site_email_desc}</div>
+  </div>
+  <h3 class="mt-4">{lang_site_config_heading_server_paths}</h3>
+  <hr />
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="baseurl">{lang_base_url}</label>
+        <input
+          type="text"
+          readonly
+          id="baseurl"
+          value="{baseurl}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_base_url_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="basepath">{lang_base_path}</label>
+        <input
+          type="text"
+          readonly
+          id="basepath"
+          value="{basepath}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_base_path_desc}</div>
+  </div>
+  <h3 class="mt-4">{lang_site_config_heading_wysiwyg_settings}</h3>
+  <hr />
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_wysiwyg_show_edit" class="ms-0"
+          >{lang_wysiwyg_show_edit}</label
+        >
+        <select
+          name="controlpanel_wysiwyg_show_edit"
+          class="form-control"
+          id="controlpanel_wysiwyg_show_edit"
+        >
+          {wysiwyg_show_edit_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/wysiwyg_show_edit_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_wysiwyg_show_edit_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_mbstring_enabled" class="ms-0"
+          >{lang_controlpanel_mbstring_enabled}</label
+        >
+        <select
+          name="controlpanel_mbstring_enabled"
+          class="form-control"
+          id="controlpanel_mbstring_enabled"
+        >
+          {mbstring_enabled_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/mbstring_enabled_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_mbstring_enabled_desc}</div>
+  </div>
+  <h3 class="mt-4">{lang_site_config_heading_html_settings}</h3>
+  <hr />
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_add_linefeeds" class="ms-0"
+          >{lang_add_linefeeds}</label
+        >
+        <select
+          name="controlpanel_add_linefeeds"
+          class="form-control"
+          id="controlpanel_add_linefeeds"
+        >
+          {add_linefeeds_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/add_linefeeds_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_add_linefeeds_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_strip_html" class="ms-0"
+          >{lang_strip_html}</label
+        >
+        <select
+          name="controlpanel_strip_html"
+          class="form-control"
+          id="controlpanel_strip_html"
+        >
+          {strip_html_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/strip_html_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_strip_html_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_allowed_html_tags"
+          >{lang_allowed_html_tags}</label
+        >
+        <input
+          type="text"
+          name="controlpanel_allowed_html_tags"
+          id="controlpanel_allowed_html_tags"
+          value="{controlpanel_allowed_html_tags}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_allowed_html_tags_desc}</div>
+  </div>
+  <h3 class="mt-4">{lang_site_config_security_settings}</h3>
+  <hr />
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_allow_template_change" class="ms-0"
+          >{lang_allow_template_change}</label
+        >
+        <select
+          name="controlpanel_allow_template_change"
+          class="form-control"
+          id="controlpanel_allow_template_change"
+        >
+          {allow_template_change_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/allow_template_change_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_allow_template_change_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_allow_language_change" class="ms-0"
+          >{lang_allow_language_change}</label
+        >
+        <select
+          name="controlpanel_allow_language_change"
+          class="form-control"
+          id="controlpanel_allow_language_change"
+        >
+          {allow_language_change_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/allow_language_change_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_allow_language_change_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label for="controlpanel_captcha_system" class="ms-0"
+          >{lang_captcha_system}</label
+        >
+        <select
+          name="controlpanel_captcha_system"
+          class="form-control"
+          id="controlpanel_captcha_system"
+        >
+          {captcha_system_block}
+          <option value="{value}" {selected}>{text}</option>
+          {/captcha_system_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_captcha_system_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2 captchasettings">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_recaptcha_sitekey">{lang_site_key}</label>
+        <input
+          type="text"
+          name="controlpanel_recaptcha_sitekey"
+          id="controlpanel_recaptcha_sitekey"
+          value="{controlpanel_recaptcha_sitekey}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_site_key_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2 captchasettings">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_recaptcha_secretkey">{lang_secret_key}</label>
+        <input
+          type="text"
+          name="controlpanel_recaptcha_secretkey"
+          id="controlpanel_recaptcha_secretkey"
+          value="{controlpanel_recaptcha_secretkey}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_secret_key_desc}</div>
+  </div>
+
+  <h3 class="mt-4">{lang_site_config_google_authentication}</h3>
+  <hr />
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_google_client_id">{lang_google_client_id}</label>
+        <input
+          type="text"
+          name="controlpanel_google_client_id"
+          id="controlpanel_google_client_id"
+          value="{controlpanel_google_client_id}"
+          class="form-control"
+          spellcheck="false"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_google_client_id_desc}</div>
+  </div> 
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_google_client_secret">{lang_google_client_secret}</label>
+        <input
+          type="password"
+          spellcheck="false"
+          name="controlpanel_google_client_secret"
+          id="controlpanel_google_client_secret"
+          value="{controlpanel_google_client_secret}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_google_client_secret_desc}</div>
+  </div>
+
+
+  <input
+    type="submit"
+    class="btn btn-primary float-end"
+    value="{lang_save_changes}"
+  />
+</form>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#site_config_general").submit(function (e) {
+      e.preventDefault();
+      $.post(
+        "ajax.php?action=update_site_config",
+        $("#site_config_general").serialize(),
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          } else {
+            status_msg(data.status);
+          }
+        },
+        "json"
+      );
+    });
+    $("#controlpanel_phpmailer").change(function () {
+      if ($("#controlpanel_phpmailer").val() == "0") {
+        $(".phpmailsettings").hide();
+      } else {
+        $(".phpmailsettings").show();
+      }
+    });
+    //Call Change to hide fields if the default setting is phpMail
+    $("#controlpanel_phpmailer").change();
+
+    $("#controlpanel_captcha_system").change(function () {
+      if ($("#controlpanel_captcha_system").val() == "securimage") {
+        $(".captchasettings").hide();
+      } else {
+        $(".captchasettings").show();
+      }
+    });
+    //Call Change to hide fields if the default setting is securimage
+    $("#controlpanel_captcha_system").change();
+
+    $("#test_conn").click(function () {
+      $("#test_result")
+        .empty()
+        .html(
+          '<img src="{template_url}/images/progress_indicator.gif" height="20">'
+        );
+
+      $.post("ajax.php?action=smtp_test", {
+        controlpanel_mailserver: $("input[name=controlpanel_mailserver]").val(),
+        controlpanel_mailport: $("input[name=controlpanel_mailport]").val(),
+        controlpanel_mailuser: $("input[name=controlpanel_mailuser]").val(),
+        controlpanel_mailpass: $("input[name=controlpanel_mailpass]").val(),
+      }).done(function (data) {
+        $("#test_result")
+          .empty()
+          .html(" <strong> " + data + " </strong>");
+      });
+      return false;
+    });
+  });
+</script>

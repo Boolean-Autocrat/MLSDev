@@ -1,0 +1,654 @@
+<div>
+  <form id="site_config_social" method="post" action="">
+    <input type="hidden" name="token" value="{csrf_token}" />
+    <h3 class="mt-4">{lang_site_config_heading_notification_settings}</h3>
+    <hr />
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label for="controlpanel_email_notification_of_new_users" class="ms-0"
+            >{lang_email_notification_of_new_users}</label
+          >
+          <select
+            name="controlpanel_email_notification_of_new_users"
+            class="form-control"
+            id="controlpanel_email_notification_of_new_users"
+          >
+            {email_notification_of_new_users_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/email_notification_of_new_users_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">{lang_email_notification_of_new_users_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label
+            for="controlpanel_email_notification_of_new_listings"
+            class="ms-0"
+            >{lang_email_notification_of_new_listings}</label
+          >
+          <select
+            name="controlpanel_email_notification_of_new_listings"
+            class="form-control"
+            id="controlpanel_email_notification_of_new_listings"
+          >
+            {email_notification_of_new_listings_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/email_notification_of_new_listings_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">
+        {lang_email_notification_of_new_listings_desc}
+      </div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label
+            for="controlpanel_email_users_notification_of_new_listings"
+            class="ms-0"
+            >{lang_email_users_notification_of_new_listings}</label
+          >
+          <select
+            name="controlpanel_email_users_notification_of_new_listings"
+            class="form-control"
+            id="controlpanel_email_users_notification_of_new_listings"
+          >
+            {email_users_notification_of_new_listings_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/email_users_notification_of_new_listings_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">
+        {lang_email_users_notification_of_new_listings_desc}
+      </div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label for="controlpanel_email_information_to_new_users" class="ms-0"
+            >{lang_email_registration_information_to_new_users}</label
+          >
+          <select
+            name="controlpanel_email_information_to_new_users"
+            class="form-control"
+            id="controlpanel_email_information_to_new_users"
+          >
+            {email_information_to_new_users_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/email_information_to_new_users_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">{lang_email_information_to_new_users_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label for="controlpanel_disable_referrer_check" class="ms-0"
+            >{lang_disable_referrer_check}</label
+          >
+          <select
+            name="controlpanel_disable_referrer_check"
+            class="form-control"
+            id="controlpanel_disable_referrer_check"
+          >
+            {disable_referrer_check_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/disable_referrer_check_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">{lang_disable_referrer_check_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label for="controlpanel_include_senders_ip" class="ms-0"
+            >{lang_include_senders_ip}</label
+          >
+          <select
+            name="controlpanel_include_senders_ip"
+            class="form-control"
+            id="controlpanel_include_senders_ip"
+          >
+            {include_senders_ip_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/include_senders_ip_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">{lang_include_senders_ip_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label for="controlpanel_floor_agent" class="ms-0"
+            >{lang_floor_agent}</label
+          >
+          <select
+            name="controlpanel_floor_agent[]"
+            class="form-control"
+            id="controlpanel_floor_agent"
+          >
+            {floor_agent_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/floor_agent_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">{lang_floor_agent_desc}</div>
+    </div>
+
+    <h3 class="mt-4">{lang_rss_config}</h3>
+    <hr />
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_title_featured"
+            >{lang_rss_title_featured}</label
+          >
+          <input
+            type="text"
+            required
+            name="controlpanel_rss_title_featured"
+            id="controlpanel_rss_title_featured"
+            value="{controlpanel_rss_title_featured}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_title_featured_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_desc_featured"
+            >{lang_rss_desc_featured}</label
+          >
+          <textarea
+            rows="5"
+            required
+            name="controlpanel_rss_desc_featured"
+            id="controlpanel_rss_desc_featured"
+            class="form-control"
+          >
+{controlpanel_rss_desc_featured}</textarea
+          >
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_desc_featured_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_listingdesc_featured"
+            >{lang_rss_listingdesc_featured}</label
+          >
+          <textarea
+            rows="5"
+            required
+            name="controlpanel_rss_listingdesc_featured"
+            id="controlpanel_rss_listingdesc_featured"
+            class="form-control"
+          >
+{controlpanel_rss_listingdesc_featured}</textarea
+          >
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_listingdesc_featured_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_limit_featured"
+            >{lang_rss_limit_featured}</label
+          >
+          <input
+            type="number"
+            min="0"
+            required
+            name="controlpanel_rss_limit_featured"
+            id="controlpanel_rss_limit_featured"
+            value="{controlpanel_rss_limit_featured}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_limit_featured_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_title_lastmodified"
+            >{lang_rss_title_lastmodified}</label
+          >
+          <input
+            type="text"
+            required
+            name="controlpanel_rss_title_lastmodified"
+            id="controlpanel_rss_title_lastmodified"
+            value="{controlpanel_rss_title_lastmodified}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_title_lastmodified_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_desc_lastmodified"
+            >{lang_rss_desc_lastmodified}</label
+          >
+          <textarea
+            rows="5"
+            required
+            name="controlpanel_rss_desc_lastmodified"
+            id="controlpanel_rss_desc_lastmodified"
+            class="form-control"
+          >
+{controlpanel_rss_desc_lastmodified}</textarea
+          >
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_desc_lastmodified_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_listingdesc_lastmodified"
+            >{lang_rss_listingdesc_lastmodified}</label
+          >
+          <textarea
+            rows="5"
+            required
+            name="controlpanel_rss_listingdesc_lastmodified"
+            id="controlpanel_rss_listingdesc_lastmodified"
+            class="form-control"
+          >
+{controlpanel_rss_listingdesc_lastmodified}</textarea
+          >
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_listingdesc_lastmodified_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_limit_lastmodified"
+            >{lang_rss_limit_lastmodified}</label
+          >
+          <input
+            type="number"
+            min="0"
+            required
+            name="controlpanel_rss_limit_lastmodified"
+            id="controlpanel_rss_limit_lastmodified"
+            value="{controlpanel_rss_limit_lastmodified}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_limit_lastmodified_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_title_latestlisting"
+            >{lang_rss_title_latestlisting}</label
+          >
+          <input
+            type="text"
+            required
+            name="controlpanel_rss_title_latestlisting"
+            id="controlpanel_rss_title_latestlisting"
+            value="{controlpanel_rss_title_latestlisting}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_title_latestlisting_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_desc_latestlisting"
+            >{lang_rss_desc_latestlisting}</label
+          >
+          <textarea
+            rows="5"
+            required
+            name="controlpanel_rss_desc_latestlisting"
+            id="controlpanel_rss_desc_latestlisting"
+            class="form-control"
+          >
+{controlpanel_rss_desc_latestlisting}</textarea
+          >
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_desc_latestlisting_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_listingdesc_latestlisting"
+            >{lang_rss_listingdesc_latestlisting}</label
+          >
+          <textarea
+            rows="5"
+            required
+            name="controlpanel_rss_listingdesc_latestlisting"
+            id="controlpanel_rss_listingdesc_latestlisting"
+            class="form-control"
+          >
+{controlpanel_rss_listingdesc_latestlisting}</textarea
+          >
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_listingdesc_latestlisting_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_limit_latestlisting"
+            >{lang_rss_limit_latestlisting}</label
+          >
+          <input
+            type="number"
+            min="0"
+            required
+            name="controlpanel_rss_limit_latestlisting"
+            id="controlpanel_rss_limit_latestlisting"
+            value="{controlpanel_rss_limit_latestlisting}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_limit_latestlisting_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_title_blogposts"
+            >{lang_rss_title_blogpost}</label
+          >
+          <input
+            type="text"
+            required
+            name="controlpanel_rss_title_blogposts"
+            id="controlpanel_rss_title_blogposts"
+            value="{controlpanel_rss_title_blogposts}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_title_blogpost_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_desc_blogposts"
+            >{lang_rss_desc_blogpost}</label
+          >
+          <textarea
+            rows="5"
+            required
+            name="controlpanel_rss_desc_blogposts"
+            id="controlpanel_rss_desc_blogposts"
+            class="form-control"
+          >
+{controlpanel_rss_desc_blogposts}</textarea
+          >
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_desc_blogpost_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_title_blogcomments"
+            >{lang_rss_title_blogcomments}</label
+          >
+          <input
+            type="text"
+            required
+            name="controlpanel_rss_title_blogcomments"
+            id="controlpanel_rss_title_blogcomments"
+            value="{controlpanel_rss_title_blogcomments}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_title_blogcomments_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_rss_desc_blogcomments"
+            >{lang_rss_desc_blogcomments}</label
+          >
+          <textarea
+            rows="5"
+            required
+            name="controlpanel_rss_desc_blogcomments"
+            id="controlpanel_rss_desc_blogcomments"
+            class="form-control"
+          >
+{controlpanel_rss_desc_blogcomments}</textarea
+          >
+        </div>
+      </div>
+      <div class="col text-sm">{lang_rss_desc_blogcomments_desc}</div>
+    </div>
+
+    <h3 class="mt-4">{lang_social_config}</h3>
+    <hr />
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_twitter_consumer_key"
+            >{lang_twitter_consumer_key}</label
+          >
+          <input
+            type="text"
+            name="controlpanel_twitter_consumer_key"
+            id="controlpanel_twitter_consumer_key"
+            value="{controlpanel_twitter_consumer_key}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_twitter_consumer_key_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static mb-2">
+          <label for="controlpanel_twitter_consumer_secret"
+            >{lang_twitter_consumer_secret}</label
+          >
+          <input
+            type="text"
+            name="controlpanel_twitter_consumer_secret"
+            id="controlpanel_twitter_consumer_secret"
+            value="{controlpanel_twitter_consumer_secret}"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col text-sm">{lang_twitter_consumer_secret_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12">
+        <div class="input-group input-group-static mb-2"></div>
+        <label for="controlpanel_twitter_consumer_secret"
+          >{lang_twitter_callback_url}</label
+        >
+        <input
+          type="text"
+          readonly="id"
+          ="controlpanel_twitter_consumer_secret"
+          value="{baseurl}/admin/index.php?action=twitterback"
+          class="form-control"
+        />
+      </div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12" id="twitter_link_container">{twitter_auth}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label for="controlpanel_twitter_new_listings" class="ms-0"
+            >{lang_social_twitter_new_listing}</label
+          >
+          <select
+            name="controlpanel_twitter_new_listings[]"
+            class="form-control"
+            id="controlpanel_twitter_new_listings"
+          >
+            {twitter_new_listings_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/twitter_new_listings_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">{lang_social_twitter_new_listing_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label for="controlpanel_twitter_update_listings" class="ms-0"
+            >{lang_social_twitter_update_listing}</label
+          >
+          <select
+            name="controlpanel_twitter_update_listings[]"
+            class="form-control"
+            id="controlpanel_twitter_update_listings"
+          >
+            {twitter_update_listings_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/twitter_update_listings_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">{lang_social_twitter_update_listing_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label for="controlpanel_twitter_new_blog" class="ms-0"
+            >{lang_social_twitter_new_blog}</label
+          >
+          <select
+            name="controlpanel_twitter_new_blog[]"
+            class="form-control"
+            id="controlpanel_twitter_new_blog"
+          >
+            {twitter_new_blog_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/twitter_new_blog_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">{lang_social_twitter_new_blog_desc}</div>
+    </div>
+
+    <div class="row align-items-end mb-2">
+      <div class="col-12 col-md-4">
+        <div class="input-group input-group-static">
+          <label for="controlpanel_twitter_listing_photo" class="ms-0"
+            >{lang_twitter_include_listing_photo}</label
+          >
+          <select
+            name="controlpanel_twitter_listing_photo[]"
+            class="form-control"
+            id="controlpanel_twitter_listing_photo"
+          >
+            {twitter_new_listing_photo_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/twitter_new_listing_photo_block}
+          </select>
+        </div>
+      </div>
+      <div class="col text-sm">{lang_twitter_include_listing_desc}</div>
+    </div>
+
+    <input
+      type="submit"
+      class="btn btn-primary float-end"
+      value="{lang_save_changes}"
+    />
+  </form>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#site_config_social").submit(function (e) {
+      e.preventDefault();
+      $.post(
+        "ajax.php?action=update_site_config",
+        $("#site_config_social").serialize(),
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          } else {
+            status_msg(data.status);
+          }
+        },
+        "json"
+      );
+    });
+    $("#disconnect_twitter").click(function (e) {
+      e.preventDefault();
+      $.post(
+        "ajax.php?action=twitter_disconnect",
+        {},
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          } else {
+            status_msg(data.status);
+            $("#twitter_link_container").html(data.url);
+          }
+        },
+        "json"
+      );
+    });
+  });
+</script>

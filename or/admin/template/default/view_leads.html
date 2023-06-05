@@ -1,0 +1,423 @@
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+    <div class="row">
+      <nav
+       aria-label="{lang_lead_navigation}"
+       class="col-auto"
+      >
+        <ul class="pagination ">
+          <li class="page-item">
+            <a f
+             class="page-link"
+             href="{leadmanager_pg_first_action}"
+            >
+              <i class="fa-solid fa-step-backward"></i>
+            </a>
+          </li>
+          <li class="page-item">
+            <a
+             class="page-link"
+             href="{leadmanager_pg_prev_action}"
+            >
+              <i class="fa-solid fa-angle-left"></i>
+            </a>
+          </li>
+          <li class="page-item">
+            <a
+             class="page-link"
+             href="{leadmanager_pg_next_action}"
+            >
+              <i class="fa-solid fa-angle-right"></i>
+            </a>
+          </li>
+          <li class="page-item">
+            <a
+             class="page-link"
+             href="{leadmanager_pg_last_action}"
+            >
+              <i class="fa-solid fa-step-forward"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="col">
+        <a
+         href="{baseurl}/admin/index.php?action=leadmanager_feedback_edit&feedback_id={feedback_id}"
+         class="btn btn-primary
+          <i class="
+         fas
+         fa-pencil-alt"
+        ></i> {lang_edit_lead}
+        </a>
+      </div>
+      <div class="col">
+        <div class="input-group input-group-static">
+          <label
+           for="priority"
+           class="ms-0"
+          >{lang_leadmanager_priority}</label>
+          <select
+           name="priority"
+           class="form-control"
+           id="priority"
+          >
+            {leadmanager_priority_block}
+            <option
+             value="{value}"
+             {selected}
+            >{text}</option>
+            {/leadmanager_priority_block}
+          </select>
+        </div>
+      </div>
+      <div class="col align-self-end">
+        <form id="change_status" action="index.php?action=leadmanager_viewfeedback" method="post">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="status_checkbox" {leadmanager_status_block}checked{/leadmanager_status_block}>
+          <label class="custom-control-label" for="status_checkbox">{lang_leadmanager_status_active}</label>
+        </div>
+        </form>
+      </div>
+      <div class="col">
+        <div class="input-group input-group-static">
+          <label
+           for="field_name"
+           class="ms-0"
+          >{lang_leadmanager_agent}</label>
+          <select
+           name="field_name"
+           class="form-control"
+           id="field_name"
+          >
+            {leadmanager_agent_block}
+            <option
+             value="{value}"
+             {selected}
+            >{text}</option>
+            {/leadmanager_agent_block}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-auto">
+        <div><strong>{lang_user_manager_first_name}:</strong> {member_first_name}</div>
+        <div><strong>{lang_user_manager_last_name}:</strong> {member_last_name}</div>
+        <div><strong>{lang_user_manager_email_address}:</strong> {member_email}</div>
+        {member_display_info}
+      </div>
+      <div class="col">
+        <div class="row justify-content-center my-2">
+          <div
+           id="headline"
+           class="col-auto"
+          >
+            {headline}
+          </div>
+        </div>
+        <div class="row">
+          <div
+           id="top_left"
+           class="col-6  my-2"
+          >
+            {top_left}
+          </div>
+          <div
+           id="top_right"
+           class="col-6  my-2"
+          >
+            {top_right}
+          </div>
+        </div>
+        <div class="row justify-content-center my-2">
+          <div
+           id="center"
+           class="col-auto"
+          >
+            {center}
+          </div>
+        </div>
+        <div class="row">
+          <div
+           id="feature1"
+           class="col-6  my-2"
+          >
+            {feature1}
+          </div>
+          <div
+           id="feature2"
+           class="col-6  my-2"
+          >
+            {feature2}
+          </div>
+        </div>
+        <div class="row">
+          <div
+           id="bottom_left"
+           class="col-6  my-2"
+          >
+            {bottom_left}
+          </div>
+          <div
+           id="bottom_right"
+           class="col-6  my-2"
+          >
+            {bottom_right}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col">
+          <a
+           href="{edit_listing_link}"
+           title=""
+           target="_blank"
+          >
+            <h3>{listing_title}</h3><br />
+            <img src="{raw_image_thumb_1}" class="img-thumbnail" />
+          </a>
+
+        
+
+        <form
+          id="change_notes"
+          class="change_notes"
+          action="index.php?action=leadmanager_viewfeedback"
+          method="post"
+        >
+          <input
+            type="hidden"
+            id="feedback_id"
+            name="feedback_id"
+            value="{feedback_id}"
+          />
+          <div class="input-group input-group-static my-2">
+            <label for="staff_notes" class="ms-0">{lang_staff_notes}</label>
+            <textarea class="form-control" rows="5" cols="10" id="staff_notes" name="staff_notes" placeholder="Write some notes about this lead."></textarea>
+          </div>
+{notes}</textarea>
+        </form>
+
+        <a
+          href="#"
+          id="save_note"
+          class="btn btn-primary"
+        >{lang_leadmanager_save_note} 
+        <i class="fa-solid fa-save"></i></a>
+
+      </div>
+
+      <div class="col">
+          <div id="calendar"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script
+ type="text/javascript"
+ src="{baseurl}/node_modules/moment/min/moment.min.js"
+></script>
+<script
+ type="text/javascript"
+ src="{baseurl}/node_modules/fullcalendar/dist/fullcalendar.js"
+></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+
+    var orig_user_arr = $("select[name=user]");
+    var orig_user_id = orig_user_arr.val();
+    var prior_month = '{creation_month}' - 1;
+
+    var d = '{creation_day}';
+    var y = '{creation_year}';
+    var m = prior_month;
+
+    var leaddate = $.fullCalendar.moment("{calendar_creation_date}");
+
+    $("#calendar").fullCalendar({
+      defaultDate: leaddate,
+      editable: false,
+      weekMode: "liquid",
+      header: {
+        left: "title",
+        center: "",
+        right: "month,basicDay"
+      },
+
+      events: [{
+        id: 1,
+        title: "Contact",
+        start: new Date(y, m, d, '{creation_hour}', '{creation_minute}'),
+        url: "mailto:{user_email}?subject=RE:{url_listing_title}",
+        allDay: false
+      }]
+    });
+
+    $("select#user").change(function () {
+      confirmAgentChange()
+    });
+
+    $("#status").change(function () {
+      confirmStatus()
+    });
+
+    $("#save_note").click(function () {
+      save_note();
+    });
+    $("#priority").change(function () {
+      var loadUrl = "ajax.php?action=ajax_change_lead_priority";
+      var staff_notes = $("textarea[name=staff_notes]");
+
+      $.post(loadUrl, { priority: $("#priority").val(), feedback_id: '{feedback_id}' },
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          }
+          else {
+            status_msg("Priority {lang_generic_saved_text}");
+          }
+        }, "json");
+
+      return;
+    });
+    function save_note() {
+      var origtext = $("#legend_text").text();
+
+      $("#legend_text").text("Saving...");
+      $("#legend_text").css("color", "blue");
+
+      var loadUrl = "ajax.php?action=ajax_change_lead_notes";
+      var staff_notes = $("textarea[name=staff_notes]");
+
+      $.post(loadUrl, { notes: staff_notes.val(), feedback_id: '{feedback_id}' },
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          }
+          else {
+            status_msg("Notes {lang_generic_saved_text}");
+          }
+        },
+        "json");
+
+      return;
+    }
+
+    function confirmAgentChange() {
+      $("#assigned_to").text("Changing... ");
+      $("#assigned_to").css("color", "blue");
+
+      var loadUrl = "ajax.php?action=ajax_change_lead_agent";
+      var user_id = $("select[name=user]");
+
+      var agree = confirm("Are you sure you want to re-assign this Lead?");
+
+      if (agree) {
+        $.post(loadUrl, { user: user_id.val(), feedback_id: '{feedback_id}' },
+          function (data) {
+            if (data.error == "1") {
+              status_error(data.error_msg);
+              $("#assigned_to").text("Assigned To:");
+              $("#assigned_to").css("color", "black");
+            }
+            else {
+              status_msg("{lang_lead_reassigned}");
+              $("#assigned_to").text("Assigned To:");
+              $("#assigned_to").css("color", "black");
+            }
+          }, "json");
+        orig_user_id = user_id.val();
+        return;
+      }
+      else {
+        $("#assigned_to").text("Assigned To:");
+        $("#assigned_to").css("color", "black");
+        $("#user").val(orig_user_id);
+        return;
+      }
+    }
+    function confirmStatus() {
+      var loadUrl = "ajax.php?action=ajax_change_lead_status";
+      var current_status = $("checkbox[name=active]");
+
+      if ($("#status").is(":checked")) {
+        $("#active_status").text("Changing...");
+
+        var agree = confirm("Change the status to ACTIVE?");
+        if (agree) {
+          $.post(loadUrl, { status: "1", feedback_id: "{feedback_id}" },
+            function (data) {
+              if (data.error == "1") {
+                status_error(data.error_msg);
+              }
+              else {
+                status_msg("{lang_leadmanager_status_active}");
+                $("#active_status").text("{lang_leadmanager_status_active}");
+                $("#active_status").css("color", "blue");
+
+                $("a[href*=\'active=\']").each(function () {
+                  var href = $(this).attr("href");
+                  if ($(this).attr("href").match(/=[0-9]+&active/)) {
+                    $(this).attr("href", href.replace(/active=0/, "active=1"));
+                  }
+                });
+              }
+            }, "json");
+          orig_status = current_status.val();
+          return false;
+        }
+        else {
+          $("#status").attr("checked", false);
+          $("#active_status").text("{lang_leadmanager_status_inactive}");
+          $("#active_status").css("color", "red");
+        }
+      }
+      else {
+        $("#active_status").text("Changing...");
+        $("#active_status").css("color", "red");
+
+        var agree = confirm("Change the status to INACTIVE?");
+        if (agree) {
+          $.post(loadUrl, { change_status: "change_status", status: "0", feedback_id: '{feedback_id}' },
+            function (data) {
+              if (data.error == "1") {
+                status_error(data.error_msg);
+              }
+              else {
+                status_msg("{lang_leadmanager_status_inactive}");
+                $("#active_status").text("{lang_leadmanager_status_inactive}");
+                $("#active_status").css("color", "red");
+
+
+                $("a[href*=\'&active=\']").each(function () {
+                  var href = $(this).attr("href");
+                  if ($(this).attr("href").match(/=[0-9]+&active/)) {
+                    $(this).attr("href", href.replace(/active=1/, "active=0"));
+                  }
+                });
+              }
+            }, "json");
+          return false;
+        }
+        else {
+          $("#status").attr("checked", true);
+          $("#active_status").text("{lang_leadmanager_status_active}");
+          $("#active_status").css("color", "blue");
+        }
+      }
+    }
+
+  });
+</script>
+
+<link
+ href="{baseurl}/node_modules/fullcalendar/dist/fullcalendar.min.css"
+ rel="stylesheet"
+ type="text/css"
+/>

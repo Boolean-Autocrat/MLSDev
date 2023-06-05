@@ -1,0 +1,192 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#mini-tabs").uitabs();
+	});
+</script>
+
+<!-- bof "listing_detail_tabbed.html" -->
+{next_prev}
+
+<div class="clear space_5"></div>
+
+<div id="mini-tabs">
+	<ul> 
+		<li><a href="#details" id="tab_detals" class="w1">Details</a></li> 
+		<li><a href="#images" id="tab_templates" class="w2">Images</a></li> 
+		<li><a href="#slideshow" id="tab_seo" class="w1">Slideshow</a></li> 
+		<li><a href="#agent_info" id="tab_seo_links" class="w1">Agent Info</a></li> 
+		{vtour_tab_block}
+			<li><a href="#vtours" id="tab_uploads" class="w3">Virtual Tour</a></li>
+		{/vtour_tab_block}
+	</ul> 
+	
+	<div id="details" >
+	
+		<div id="listing_detail_tabbed_header">
+			<h3>{listing_title}</h3>
+			{show_listed_by_admin_block}
+				<h4>{lang_listed_by} <a href="{listing_agent_link}">{listing_agent_first_name} {listing_agent_last_name}</a></h4>
+			{/show_listed_by_admin_block}
+			<h4>{headline}</h4>
+		</div>
+		<div id="listing_detail_tabbed_fieldslinks">
+			<div class="float_left_half">
+				{top_left}
+			</div>
+			<div>
+				{top_right}
+			</div>
+			<div class="clear">
+				{center}
+			</div>
+			<div class="float_left_half">
+				<div class="features_ticked">
+					{feature1}
+				</div>
+			</div>
+			<div>
+				<div class="features_ticked">
+					{feature2}
+				</div>
+			</div>
+			<div class="clear">&nbsp;</div>
+{hide_printer_friendly}
+			<div class="float_left_half">
+				<p class="bold">{lang_tools}</p>
+				<p>{contact_agent_link}</p>
+				<p>{link_calc}</p>
+{check_member}
+				<p>{link_add_favorites}</p>
+{/check_member}
+				<p>{link_printer_friendly}</p>
+				<p>{link_email_friend}</p>
+			</div>
+			<div>
+				<p class="bold">{lang_neighborhood_links}</p>
+				<p>{link_map}</p>
+				<p>{link_yahoo_neighborhood}</p>
+			</div>
+			<div class="clear">&nbsp;</div>
+{/hide_printer_friendly}
+			<div class="float_left_half">
+				{bottom_left}
+			</div>
+			<div>
+				{bottom_right}
+			</div>
+{hide_printer_friendly}
+			<div class="clear">
+				<hr />
+				{lang_this_listing_has_been_viewed} <strong>{hitcount}</strong> {lang_times}.
+			</div>
+		</div>
+	</div>
+	<!-- Eof "tabPage1" -->
+	
+	<!-- Bof "tabPage2" -->
+	<div id="images" >
+		
+		<div id="listing_detail_tabbed_header">
+			<h3>{listing_title}</h3>
+			{show_listed_by_admin_block}
+			<h4>{lang_listed_by} <a href="{listing_agent_link}">{listing_agent_first_name} {listing_agent_last_name}</a></h4>
+			{/show_listed_by_admin_block}
+			<h4>{headline}</h4>
+		</div>
+		<div class="clear">&nbsp;</div>
+		<div id="listing_detail_tabbed_fieldslinks">
+			<div id="listing_detail_tabbed_mainimage">
+				<p>{main_image_java}</p>
+				<p id="tabbed_thumbs">{listing_images_java}</p>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<!-- Eof "tabPage2" -->
+	
+	<!-- Bof "tabPage3" -->
+	<div id="slideshow" >
+		<div id="listing_detail_tabbed_header">
+			<h3>{listing_title}</h3>
+			{show_listed_by_admin_block}
+			<h4>{lang_listed_by} <a href="{listing_agent_link}">{listing_agent_first_name} {listing_agent_last_name}</a></h4>
+			{/show_listed_by_admin_block}
+			<h4>{headline}</h4>
+		</div>
+		<div class="clear">&nbsp;</div>
+		<div id="listing_detail_tabbed_fieldslinks">
+			
+				<!-- begin slideshow output  -->
+				<!-- wrapper element for the large image --> 
+				<div id="image_wrap"> 
+				 
+					<!-- Initially the image is a simple 1x1 pixel transparent GIF --> 
+					<img src="{baseurl}/images/blank.gif" alt="" />
+				 
+				</div> 
+				 
+				 
+				<!-- HTML structures --> 
+				 
+				 
+				<!-- "previous page" action --> 
+				
+					<a class="prev browse left"></a> 
+					 
+					<!-- root element for scrollable --> 
+					<div class="scrollable">   
+					   
+					   <!-- root element for the items --> 
+					   <div class="items"> 
+					   
+					     {slideshow_thumbnail_group_block}
+					      <div> 
+					     	{slideshow_thumbnail_block} 
+						      <img src="{slideshow_thumbnail}" width="{slideshow_width}" height="{slideshow_height}" alt="{slideshow_caption}" title="{slideshow_title}" />
+					      	{/slideshow_thumbnail_block}
+					      </div> 
+					      {/slideshow_thumbnail_group_block}
+					      
+					   </div> 
+					   
+					</div> 
+					 
+					<!-- "next page" action --> 
+					<a class="next browse right"></a>
+				 
+				<div class="clear">&nbsp;</div>
+				<!-- end slideshow output  -->
+				
+				<div class="vtour_button">{vtour_button}</div>
+
+		</div>
+	</div>
+	<!-- Eof "tabPage3" -->
+	<!-- Bof "tabPage4" -->
+	<div id="agent_info" >
+		<div id="listing_detail_tabbed_header">
+			<h3>{listing_title}</h3>
+{/hide_printer_friendly}
+			{show_listed_by_admin_block}
+			<h4>{lang_listed_by} <a href="{listing_agent_link}">{listing_agent_first_name} {listing_agent_last_name}</a></h4>
+			{/show_listed_by_admin_block}
+			<h4>{headline}</h4>
+		</div>
+		<div class="clear">
+			{listing_agent_field_phone_block}<p>{listing_agent_field_phone}</p>{/listing_agent_field_phone_block}
+			{listing_agent_field_mobile_block}<p>{listing_agent_field_mobile}</p>{/listing_agent_field_mobile_block}
+			{listing_agent_field_fax_block}<p>{listing_agent_field_fax}</p>{/listing_agent_field_fax_block}
+			{listing_agent_field_homepage_block}<p>{listing_agent_field_homepage}</p>{/listing_agent_field_homepage_block}
+			{listing_agent_field_info_block}<p>{listing_agent_field_info}</p>{/listing_agent_field_info_block}
+		</div>
+	</div>
+	<!-- Eof "tabPage4" -->
+	{vtour_tab_block}
+	<!-- Bof "tabPage5" -->
+	<div id="vtours" >
+		{show_vtour}
+	</div>
+	<!-- Eof "tabPage5" -->
+	{/vtour_tab_block}
+</div>
+<!-- bof "listing_detail_tabbed.html" -->

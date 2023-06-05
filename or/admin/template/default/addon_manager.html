@@ -1,0 +1,287 @@
+<link
+  rel="stylesheet"
+  href="{baseurl}/node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css"
+/>
+<script
+  type="text/javascript"
+  src="{baseurl}/node_modules/datatables.net/js/jquery.dataTables.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="{baseurl}/node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"
+></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(".display").on("click", "a[rel=external]", function () {
+      let url = $(this)[0].href;
+      agree = confirmDelete("{lang_external_site_warning}");
+      if (!agree) {
+        event.preventDefault();
+      }
+    });
+    //Load Installed Addon Table
+    $("#insaddons").dataTable({
+      sPaginationType: "full_numbers",
+      bAutoWidth: false,
+    });
+    var store_shown = false;
+    $("#addon-store_tab").click(function () {
+      console.log("Store Click Registered");
+      if (store_shown == false) {
+        console.log("Store store_shown false");
+        store_shown = true;
+        storeTable = $("#store-addons").dataTable({
+          pagingType: "full_numbers",
+          processing: true,
+          autoWidth: false,
+          ajax: "{baseurl}/admin/ajax.php?action=ajax_show_store_addons",
+          columns: [
+            { data: "title" },
+            { data: "author" },
+            { data: "homepage", visible: false },
+            { data: "docs", visible: false },
+            { data: "folder", visible: false },
+            { data: "version" },
+            { data: "download_url", visible: false },
+            { data: "stability" },
+            { data: "min_compatibility", visible: false },
+            { data: "max_compatibility", visible: false },
+            {
+              render: function (data, type, row) {
+                console.log(row);
+                return (
+                  `<a href="` +
+                  row["homepage"] +
+                  `" rel="external noopener noreferrer" target="_blank" title="{lang_addon_view_listing}">
+									<i class="fa-solid fa-info-circle"><\/i>
+								<\/a>
+								<a href="` +
+                  row["docs"] +
+                  `" rel="external noopener noreferrer" target="_blank"  title="{lang_addon_view_docs}">
+									<i class="fa-solid fa-book"><\/i>
+								<\/a> 
+								<a href="{baseurl}/admin/index.php?action=addon_manager&amp;install=` +
+                  row["folder"] +
+                  `" title="{lang_addon_install}">
+									<i class="fa-solid fa-file-download"><\/i>
+								<\/a>`
+                );
+              },
+            },
+          ],
+        });
+      }
+    });
+  });
+</script>
+
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+    <!-- define tabs -->
+    <div class="nav-wrapper position-relative end-0">
+      <ul class="nav nav-pills nav-fill p-1" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link mb-0 px-0 py-1 active"
+            id="installed_tab"
+            data-bs-toggle="tab"
+            role="tab"
+            data-bs-target="#installed_pane"
+            aria-controls="installed_pane"
+            aria-selected="true"
+            >{lang_addon_manager_tab_installed}</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link mb-0 px-0 py-1"
+            data-bs-toggle="tab"
+            role="tab"
+            id="addon-store_tab"
+            data-bs-target="#addon-store_pane"
+            aria-controls="addon-store_pane"
+            aria-selected="false"
+            >{lang_addon_manager_store}</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link mb-0 px-0 py-1"
+            data-bs-toggle="tab"
+            role="tab"
+            id="manual_tab"
+            data-bs-target="#manual_pane"
+            aria-controls="manual_pane"
+            aria-selected="false"
+            >{lang_addon_manager_tab_install}</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- container for tab panes -->
+    <div class="tab-content">
+      <div
+        role="tabpanel"
+        id="installed_pane"
+        class="tab-pane show active"
+        aria-labelledby="installed_tab"
+      >
+        <div class="table-responsive">
+          <table class="table table-striped" id="insaddons">
+            <thead>
+              <tr>
+                <th>{lang_addon_name}</th>
+                <th>{lang_addon_version}</th>
+                <th>{lang_addon_status}</th>
+                <th>{lang_addon_actions}</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>{lang_addon_title}</th>
+                <th>{lang_addon_author}</th>
+                <th>{lang_addon_version}</th>
+                <th>{lang_addon_actions}</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              {addon_installed_block}
+              <tr>
+                <td>{addon_name}</td>
+                <td>{addon_version}</td>
+                <td class="addon_manager_list_data">
+                  <span class="addon_status_{status_code}">{status_msg}</span>
+                </td>
+
+                <td class="addon_manager_list_data">
+                  {action_update_block}
+                  <a
+                    href="{baseurl}/admin/index.php?action=addon_manager&amp;check_update={addon_name}"
+                    title="{lang_addon_check_for_updates}"
+                  >
+                    <i class="fa-solid fa-file-download"></i>
+                  </a>
+                  {/action_update_block}
+
+                  <div style="width: 16px; display: inline-block">
+                    {action_help_block}
+                    <a
+                      href="{baseurl}/admin/index.php?action=addon_manager&amp;view_help={addon_name}&amp;popup=yes"
+                      rel="external noopener noreferrer"
+                      target="_blank"
+                      title="{lang_addon_view_docs}"
+                    >
+                      <i class="fa-solid fa-book"></i>
+                    </a>
+                    {/action_help_block}
+                  </div>
+
+                  {action_uninstall_block}
+                  <a
+                    href="{baseurl}/admin/index.php?action=addon_manager&amp;uninstall={addon_name}"
+                    onclick="return confirmDelete('{lang_delete_addon}')"
+                    title="{lang_addon_uninstall}"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </a>
+                  {/action_uninstall_block}
+                </td>
+              </tr>
+              {/addon_installed_block}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div
+        role="tabpanel"
+        id="addon-store_pane"
+        class="tab-pane"
+        aria-labelledby="addon-store_tab"
+      >
+        <div class="table-responsive">
+          <table cellspacing="1" class="table table-striped" id="store-addons">
+            <thead>
+              <tr>
+                <th>{lang_addon_title}</th>
+                <th>{lang_addon_author}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>{lang_addon_version}</th>
+                <th></th>
+                <th>Stability</th>
+                <th></th>
+                <th></th>
+                <th>{lang_addon_actions}</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>{lang_addon_title}</th>
+                <th>{lang_addon_author}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>{lang_addon_version}</th>
+                <th></th>
+                <th>Stability</th>
+                <th></th>
+                <th></th>
+                <th>{lang_addon_actions}</th>
+              </tr>
+            </tfoot>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!--//Pane 5-->
+      <div
+        role="tabpanel"
+        id="manual_pane"
+        class="tab-pane"
+        aria-labelledby="manual_tab"
+      >
+        <div class="table-responsive">
+          <table cellspacing="1" class="table table-striped" id="commaddons">
+            <thead>
+              <tr>
+                <td class="tableHeader">{lang_addon_manager_tab_install}</td>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <td class="tableHeader">
+                  {lang_addon_manager_install_warning}
+                </td>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr>
+                <td style="text-align: center">
+                  <form
+                    enctype="multipart/form-data"
+                    action="index.php?action=addon_manager"
+                    method="post"
+                  >
+                    <input type="hidden" name="token" value="{csrf_token}" />
+                    <strong>{lang_upload_send_this_file}: </strong
+                    ><input name="userfile" type="file" required /><br />
+                    <br />
+                    {lang_addon_upgrade_file}
+                    <input type="checkbox" name="upgrade" value="yes" />
+                    <input type="submit" value="{lang_addon_send_file}" />
+                    <input type="hidden" name="action" value="man_install" />
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- end tabs -->
+  </div>
+</div>
