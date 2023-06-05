@@ -6,12 +6,6 @@ body {
   background: #ffffff url({template_url}/images/body_backg.png) repeat;
 }
 
-.site_width {
-  min-width: 770px;
-  margin: 0 auto;
-  height: 100%;
-}
-
 * html .site_minwidth {
   padding-left: 770px;
 }
@@ -47,11 +41,9 @@ body {
   margin: 10px;
 }
 
-.logo {
-  width: 300px;
-  height: 100px;
-  text-align: left;
-  background: url({template_url}/images/logo.png) 20px 20px no-repeat;
+.header__logo__img {
+  max-width: 100%;
+  border-radius: 50%;
 }
 
 /* General Layout */
