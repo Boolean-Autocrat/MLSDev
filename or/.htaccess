@@ -11,9 +11,6 @@ RewriteCond %{REQUEST_URI} !^/cgi-bin/.*$
 RewriteCond %{REQUEST_URI} !^/include/.*$
 RewriteCond %{REQUEST_URI} !^/template/.*$
 
-# Redirect URLs with .html extension to extensionless URLs
-RewriteRule ^(.+)\.html$ /$1 [R=301,L]
-
 RewriteRule ^ index.php [L]
 </IfModule>
 #Turn on GZIP Compression in Apache
