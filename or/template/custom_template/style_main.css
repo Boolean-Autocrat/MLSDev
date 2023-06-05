@@ -14,11 +14,11 @@ header {
 }
 
 .header__logo {
-  width: 25%;
+  width: 15%;
 }
 
 .header__navbar {
-  width: 50%;
+  width: 60%;
 }
 
 .header__menu-btn {
@@ -40,7 +40,7 @@ header {
   width: 25%;
 }
 
-.header__wordart__img {
+.header__wordart > img {
   max-width: 100%;
 }
 
