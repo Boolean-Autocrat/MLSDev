@@ -47,9 +47,19 @@ header {
   transition: all 0.3s ease-in-out;
 }
 
-.header__navbar > ul > li:hover {
-  color: #000000;
-  border-bottom: 2px solid #000000;
+.header__navbar > ul > li:after {
+  content: "";
+  display: block;
+  margin: auto;
+  height: 3px;
+  width: 0px;
+  background: transparent;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+.header__navbar > ul > li:hover:after {
+  width: 100%;
+  background: blue;
 }
 
 /* General Layout */
