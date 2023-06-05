@@ -72,7 +72,7 @@ header {
 
 .header__navbar > ul > li:hover:after {
   width: 100%;
-  background: #fff;
+  background: #000;
 }
 
 /* General Layout */
