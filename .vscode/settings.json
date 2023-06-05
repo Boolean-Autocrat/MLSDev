@@ -1,0 +1,26 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\\\mlsdev4-development\\\\",
+        "isAsync": false,
+        "cmd": "cd ${fileDirname}"
+      },
+      {
+        "match": "\\\\mlsdev4-development\\\\",
+        "isAsync": false,
+        "cmd": "git add -A"
+      },
+      {
+        "match": "\\\\mlsdev4-development\\\\",
+        "isAsync": false,
+        "cmd": "git commit -a -m \"vscode autosave\""
+      },
+      {
+        "match": "\\\\mlsdev4-development\\\\",
+        "isAsync": false,
+        "cmd": "git push"
+      }
+    ]
+  }
+}
