@@ -1,204 +1,149 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
+
+<head>
     <title>{site_title}</title>
     {load_meta_description_short} {load_meta_keywords}
     <meta http-equiv="content-type" content="text/html;charset={charset}" />
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <meta name="robots" content="{meta_index},{meta_follow}" />
-    {meta_canonical_block}
-    <link rel="canonical" href="{canonical_link}" />
-    {/meta_canonical_block}
+    <meta name="robots" content="{meta_index},{meta_follow}" /> {meta_canonical_block}
+    <link rel="canonical" href="{canonical_link}" /> {/meta_canonical_block}
     <meta name="Generator" content="Open-Realty" />
     <link rel="shortcut icon" href="{template_url}/images/favicon.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    {load_css_style_default} {load_css_style_main}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> {load_css_style_default} {load_css_style_main}
     <!--[if lte IE 6]>{load_css_style_ie6}<![endif]-->
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="{company_name} - {lang_rss_lastmodified_link_title}"
-      href="{rss_lastmodified}"
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="{company_name} - {lang_rss_featured_link_title}"
-      href="{rss_featured}"
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="{company_name} - {lang_rss_blog_post_link_title}"
-      href="{rss_blog_posts}"
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="{company_name} - {lang_rss_blog_comments_link_title}"
-      href="{rss_blog_comments}"
-    />
+    <link rel="alternate" type="application/rss+xml" title="{company_name} - {lang_rss_lastmodified_link_title}" href="{rss_lastmodified}" />
+    <link rel="alternate" type="application/rss+xml" title="{company_name} - {lang_rss_featured_link_title}" href="{rss_featured}" />
+    <link rel="alternate" type="application/rss+xml" title="{company_name} - {lang_rss_blog_post_link_title}" href="{rss_blog_posts}" />
+    <link rel="alternate" type="application/rss+xml" title="{company_name} - {lang_rss_blog_comments_link_title}" href="{rss_blog_comments}" />
 
-    <link
-      href="{baseurl}/node_modules/lightslider/dist/css/lightslider.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script
-      type="text/javascript"
-      src="{baseurl}/node_modules/jquery/dist/jquery.min.js"
-    ></script>
+    <link href="{baseurl}/node_modules/lightslider/dist/css/lightslider.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{baseurl}/node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">
-      /* solution to undefined msie */
-      jQuery.browser = {};
-      (function () {
-        jQuery.browser.msie = false;
-        jQuery.browser.version = 0;
-        if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
-          jQuery.browser.msie = true;
-          jQuery.browser.version = RegExp.$1;
-        }
-      })();
-      /* solution to undefined msie */
+        /* solution to undefined msie */
+        jQuery.browser = {};
+        (function() {
+            jQuery.browser.msie = false;
+            jQuery.browser.version = 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                jQuery.browser.msie = true;
+                jQuery.browser.version = RegExp.$1;
+            }
+        })();
+        /* solution to undefined msie */
     </script>
-    <script
-      type="text/javascript"
-      src="{baseurl}/node_modules/lightslider/dist/js/lightslider.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{baseurl}/node_modules/jquery-migrate/dist/jquery-migrate.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{baseurl}/node_modules/jquery-ui/jquery-ui.min.js"
-    ></script>
+    <script type="text/javascript" src="{baseurl}/node_modules/lightslider/dist/js/lightslider.min.js"></script>
+    <script type="text/javascript" src="{baseurl}/node_modules/jquery-migrate/dist/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="{baseurl}/node_modules/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript">
-      $.fn.uitabs = $.fn.tabs;
+        $.fn.uitabs = $.fn.tabs;
     </script>
-    <script
-      type="text/javascript"
-      src="{baseurl}/include/class/jquery/jquery_plugins/jquery.betterserialize.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{baseurl}/node_modules/jquery-colorbox/jquery.colorbox-min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{base_url}/node_modules/superfish/dist/js/superfish.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{base_url}/node_modules/@audithsoftworks/jquery.uniform/dist/js/jquery.uniform.standalone.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{base_url}/node_modules/jquery-equalheights/jquery.equalheights.min.js"
-    ></script>
+    <script type="text/javascript" src="{baseurl}/include/class/jquery/jquery_plugins/jquery.betterserialize.js"></script>
+    <script type="text/javascript" src="{baseurl}/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+    <script type="text/javascript" src="{base_url}/node_modules/superfish/dist/js/superfish.min.js"></script>
+    <script type="text/javascript" src="{base_url}/node_modules/@audithsoftworks/jquery.uniform/dist/js/jquery.uniform.standalone.js"></script>
+    <script type="text/javascript" src="{base_url}/node_modules/jquery-equalheights/jquery.equalheights.min.js"></script>
     <script type="text/javascript">
-      jQuery.validator.messages.required = "{lang_field_is_required}";
-      jQuery.validator.defaults.errorClass = "redtext";
-      /* Eable the Validator Plugins Debug Feature
+        jQuery.validator.messages.required = "{lang_field_is_required}";
+        jQuery.validator.defaults.errorClass = "redtext";
+        /* Eable the Validator Plugins Debug Feature
      jQuery.validator.defaults.debug = true;
     */
-      jQuery.validator.defaults.meta = "validate";
-      jQuery.validator.addMethod(
-        "ordate",
-        function (value, element, datefmt) {
-          if (value == "") {
-            return true;
-          }
-          if (datefmt == 1) {
-            return value.match(
-              /^(01|02|03|04|05|06|07|08|09|10|11|12)\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/\d\d\d\d$/
-            );
-          }
-          if (datefmt == 2) {
-            return value.match(
-              /^\d\d\d\d\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)$/
-            );
-          }
-          if (datefmt == 3) {
-            return value.match(
-              /^(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)\/\d\d\d\d$/
-            );
-          }
-        },
-        "{lang_enter_date_in_format} "
-      );
+        jQuery.validator.defaults.meta = "validate";
+        jQuery.validator.addMethod(
+            "ordate",
+            function(value, element, datefmt) {
+                if (value == "") {
+                    return true;
+                }
+                if (datefmt == 1) {
+                    return value.match(
+                        /^(01|02|03|04|05|06|07|08|09|10|11|12)\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/\d\d\d\d$/
+                    );
+                }
+                if (datefmt == 2) {
+                    return value.match(
+                        /^\d\d\d\d\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)$/
+                    );
+                }
+                if (datefmt == 3) {
+                    return value.match(
+                        /^(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)\/\d\d\d\d$/
+                    );
+                }
+            },
+            "{lang_enter_date_in_format} "
+        );
     </script>
 
     {load_ORjs}
-  </head>
-  <body>
-      <!-- bof HEADER -->
-                  <div class="header container">
-                    <div class="header_left">
-                      <div class="header_left_content">
-                        <div class="logo">&nbsp;</div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- eof HEADER -->
-                  <!-- bof TOPBAR-->
-                  <div class="topbar">
-                    <div class="topbar_left">
-                      <div class="topbar_right">
-                        <!-- bof HORIZONTAL MENU -->
-                        <div class="main_horiz_menu">
-                          <ul>
-                            <li><a href="{url_index}">HOME&nbsp;&nbsp;<i class="fa-solid fa-house"></i></a></li>
-                            <li><a href="{page_link_2}">FOR SALE&nbsp;&nbsp;<i class="fa-solid fa-tag"></i></a></li>
-                            <li><a href="{page_link_3}">OUR SERVICES</a></li>
-                            <li><a href="{page_link_4}">OUR TEAM</a></li>
-                            <li><a href="{page_link_5}">TESTIMONIALS</a></li>
-                            <li><a href="{page_link_6}">CONTACT US</a></li>
-                          </ul>
-                        </div>
-                        <!-- eof HORIZONTAL MENU -->
-                      </div>
-                    </div>
-                  </div>
-                  <!-- eof TOPBAR-->
-                  <!-- bof MAIN CONTENT -->
-                  <div class="main_content">
-                    <!-- bof TOP BORDERS SETTINGS -->
-                    <div class="main_content_top">
-                      <div class="main_content_top_left">
-                        <div class="main_content_top_right"></div>
-                      </div>
-                    </div>
-                    <!-- eof TOP BORDERS SETTINGS -->
-                    <!-- bof WEBSITE CONTENT -->
-                    <div class="website_content">
-                      <!-- bof CONTENT AREA -->
-                      <div class="content_area">
-                        <!-- bof LEFT CONTENT -->
-                        <div class="content_left">
-                          <!-- bof BOXES ON LEFT CONTENT-->
-                          <div class="box menu_vertical">
-                            <!-- bof BOX BORDERS SETTINGS -->
-                            <div class="box_top">
-                              <div class="box_top_left">
+</head>
+
+<body>
+    <!-- bof HEADER -->
+    <div class="header container">
+        <div class="header_left">
+            <div class="header_left_content">
+                <div class="logo">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <!-- eof HEADER -->
+    <!-- bof TOPBAR-->
+    <div class="topbar">
+        <div class="topbar_left">
+            <div class="topbar_right">
+                <!-- bof HORIZONTAL MENU -->
+                <div class="main_horiz_menu">
+                    <ul>
+                        <li><a href="{url_index}">HOME&nbsp;&nbsp;<i class="fa-solid fa-house"></i></a></li>
+                        <li><a href="{page_link_2}">FOR SALE&nbsp;&nbsp;<i class="fa-solid fa-tag"></i></a></li>
+                        <li><a href="{page_link_3}">OUR SERVICES</a></li>
+                        <li><a href="{page_link_4}">OUR TEAM</a></li>
+                        <li><a href="{page_link_5}">TESTIMONIALS</a></li>
+                        <li><a href="{page_link_6}">CONTACT US</a></li>
+                    </ul>
+                </div>
+                <!-- eof HORIZONTAL MENU -->
+            </div>
+        </div>
+    </div>
+    <!-- eof TOPBAR-->
+    <!-- bof MAIN CONTENT -->
+    <div class="main_content">
+        <!-- bof TOP BORDERS SETTINGS -->
+        <div class="main_content_top">
+            <div class="main_content_top_left">
+                <div class="main_content_top_right"></div>
+            </div>
+        </div>
+        <!-- eof TOP BORDERS SETTINGS -->
+        <!-- bof WEBSITE CONTENT -->
+        <div class="website_content">
+            <!-- bof CONTENT AREA -->
+            <div class="content_area">
+                <!-- bof LEFT CONTENT -->
+                <div class="content_left">
+                    <!-- bof BOXES ON LEFT CONTENT-->
+                    <div class="box menu_vertical">
+                        <!-- bof BOX BORDERS SETTINGS -->
+                        <div class="box_top">
+                            <div class="box_top_left">
                                 <div class="box_top_right"></div>
-                              </div>
                             </div>
-                            <!-- eof BOX BORDERS SETTINGS -->
-                            <!-- bof BOX CONTENT -->
-                            <div class="box_content">
-                              <h6>MENU</h6>
-                              <ul class="menu">
+                        </div>
+                        <!-- eof BOX BORDERS SETTINGS -->
+                        <!-- bof BOX CONTENT -->
+                        <div class="box_content">
+                            <h6>MENU</h6>
+                            <ul class="menu">
                                 <li>
-                                  <a
-                                    href="{url_search_results}"
-                                    title="View All Listings"
-                                    >View All Listings</a
+                                    <a href="{url_search_results}" title="View All Listings">View All Listings</a
                                   >
                                 </li>
                                 <li>
                                   <a href="{url_search}" title="Search Listings"
-                                    >Search Listings</a
+                                    >Search Listings in Space</a
                                   >
                                 </li>
                                 <li>
