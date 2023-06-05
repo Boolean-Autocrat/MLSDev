@@ -1,0 +1,987 @@
+['<div>
+	<form
+	 id="site_config_listings"
+	 method="post"
+	 action=""
+	>
+	<input type="hidden" name="token" value="{csrf_token}" />
+		<h3 class="mt-4">{lang_site_config_heading_number_formatting}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_number_format_style"
+					 class="ms-0"
+					>{lang_number_format_style}</label>
+					<select
+					 name="controlpanel_number_format_style"
+					 class="form-control"
+					 id="controlpanel_number_format_style"
+					>
+						{number_format_style_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/number_format_style_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_number_format_style_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_number_decimals_number_fields">{lang_number_decimals_number_fields}</label>
+					<input
+					 type="number"
+					 required
+					 min="0"
+					 max="2"
+					 step="1"
+					 name="controlpanel_number_decimals_number_fields"
+					 id="controlpanel_number_decimals_number_fields"
+					 value="{controlpanel_number_decimals_number_fields}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_number_decimals_number_fields_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_number_decimals_price_fields">{lang_number_decimals_price_fields}</label>
+					<input
+					 type="number"
+					 required
+					 min="0"
+					 max="2"
+					 step="1"
+					 name="controlpanel_number_decimals_price_fields"
+					 id="controlpanel_number_decimals_price_fields"
+					 value="{controlpanel_number_decimals_price_fields}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_number_decimals_price_fields_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_force_decimals"
+					 class="ms-0"
+					>{lang_force_decimals}</label>
+					<select
+					 name="controlpanel_force_decimals"
+					 class="form-control"
+					 id="controlpanel_force_decimals"
+					>
+						{force_decimals_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/force_decimals_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_force_decimals_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_money_format"
+					 class="ms-0"
+					>{lang_money_format}</label>
+					<select
+					 name="controlpanel_money_format"
+					 class="form-control"
+					 id="controlpanel_money_format"
+					>
+						{money_format_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/money_format_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_money_format_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_money_sign">{lang_money_sign}</label>
+					<input
+					 type="text"
+					 required
+					 name="controlpanel_money_sign"
+					 id="controlpanel_money_sign"
+					 value="{controlpanel_money_sign}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_money_sign_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_date_format"
+					 class="ms-0"
+					>{lang_date_format}</label>
+					<select
+					 name="controlpanel_date_format"
+					 class="form-control"
+					 id="controlpanel_date_format"
+					>
+						{date_format_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/date_format_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_date_format_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_zero_price"
+					 class="ms-0"
+					>{lang_zero_price_text}</label>
+					<select
+					 name="controlpanel_zero_price"
+					 class="form-control"
+					 id="controlpanel_zero_price"
+					>
+						{zero_price_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/zero_price_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_zero_price_text_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_price_field"
+					 class="ms-0"
+					>{lang_site_config_price_field}</label>
+					<select
+					 name="controlpanel_price_field"
+					 class="form-control"
+					 id="controlpanel_price_field"
+					>
+						{price_field_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/price_field_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_price_field_desc}</div>
+		</div>
+
+		<h3 class="mt-4">{lang_site_config_heading_listing_settings}</h3>
+		<hr />
+
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_num_featured_listings">{lang_num_featured_listings}</label>
+					<input
+					 type="number"
+					 min="0"
+					 required
+					 name="controlpanel_num_featured_listings"
+					 id="controlpanel_num_featured_listings"
+					 value="{controlpanel_num_featured_listings}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_num_featured_listings_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_num_latest_listings">{lang_num_latest_listings}</label>
+					<input
+					 type="number"
+					 min="0"
+					 required
+					 name="controlpanel_num_latest_listings"
+					 id="controlpanel_num_latest_listings"
+					 value="{controlpanel_num_latest_listings}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_num_latest_listings_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_num_popular_listings">{lang_num_popular_listings}</label>
+					<input
+					 type="number"
+					 min="0"
+					 required
+					 name="controlpanel_num_popular_listings"
+					 id="controlpanel_num_popular_listings"
+					 value="{controlpanel_num_popular_listings}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_num_popular_listings_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_num_random_listings">{lang_num_random_listings}</label>
+					<input
+					 type="number"
+					 min="0"
+					 required
+					 name="controlpanel_num_random_listings"
+					 id="controlpanel_num_random_listings"
+					 value="{controlpanel_num_random_listings}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_num_random_listings_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_use_expiration"
+					 class="ms-0"
+					>{lang_use_expiration}</label>
+					<select
+					 name="controlpanel_use_expiration"
+					 class="form-control"
+					 id="controlpanel_use_expiration"
+					>
+						{use_expiration_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/use_expiration_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_use_expiration_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_days_until_listings_expire">{lang_days_until_listings_expire}</label>
+					<input
+					 type="number"
+					 min="1"
+					 required
+					 name="controlpanel_days_until_listings_expire"
+					 id="controlpanel_days_until_listings_expire"
+					 value="{controlpanel_days_until_listings_expire}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_days_until_listings_expire_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_moderate_listings"
+					 class="ms-0"
+					>{lang_moderate_listings}</label>
+					<select
+					 name="controlpanel_moderate_listings"
+					 class="form-control"
+					 id="controlpanel_moderate_listings"
+					>
+						{moderate_listings_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/moderate_listings_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_moderate_listings_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_export_listings"
+					 class="ms-0"
+					>{lang_export_listings}</label>
+					<select
+					 name="controlpanel_export_listings"
+					 class="form-control"
+					 id="controlpanel_export_listings"
+					>
+						{export_listings_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/export_listings_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_export_listings_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_show_listedby_admin"
+					 class="ms-0"
+					>{lang_show_listedby_admin}</label>
+					<select
+					 name="controlpanel_show_listedby_admin"
+					 class="form-control"
+					 id="controlpanel_show_listedby_admin"
+					>
+						{show_listedby_admin_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/show_listedby_admin_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_show_listedby_admin_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_show_next_prev_listing_page"
+					 class="ms-0"
+					>{lang_show_next_prev_listing_page}</label>
+					<select
+					 name="controlpanel_show_next_prev_listing_page"
+					 class="form-control"
+					 id="controlpanel_show_next_prev_listing_page"
+					>
+						{show_next_prev_listing_page_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/show_next_prev_listing_page_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_show_next_prev_listing_page_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_show_notes_field"
+					 class="ms-0"
+					>{lang_show_notes_field}</label>
+					<select
+					 name="controlpanel_show_notes_field"
+					 class="form-control"
+					 id="controlpanel_show_notes_field"
+					>
+						{show_notes_field_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/show_notes_field_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_show_notes_field_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_feature_list_separator">{lang_feature_list_separator}</label>
+					<input
+					 type="text"
+					 required
+					 name="controlpanel_feature_list_separator"
+					 id="controlpanel_feature_list_separator"
+					 value="{controlpanel_feature_list_separator}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_feature_list_separator_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_admin_listing_per_page">{lang_admin_listing_per_page}</label>
+					<input
+					 type="number"
+					 min="1"
+					 required
+					 name="controlpanel_admin_listing_per_page"
+					 id="controlpanel_admin_listing_per_page"
+					 value="{controlpanel_admin_listing_per_page}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_admin_listing_per_page_desc}</div>
+		</div>
+
+		<h3 class="mt-4">{lang_site_config_heading_search_options}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_search_step_max">{lang_search_step_max}</label>
+					<input
+					 type="number"
+					 min="0"
+					 required
+					 name="controlpanel_search_step_max"
+					 id="controlpanel_search_step_max"
+					 value="{controlpanel_search_step_max}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_search_step_max_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_listings_per_page">{lang_listings_per_page}</label>
+					<input
+					 type="number"
+					 min="1"
+					 required
+					 name="controlpanel_listings_per_page"
+					 id="controlpanel_listings_per_page"
+					 value="{controlpanel_listings_per_page}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_listings_per_page_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_search_sortby"
+					 class="ms-0"
+					>{lang_configured_search_sortby}</label>
+					<select
+					 name="controlpanel_search_sortby"
+					 class="form-control"
+					 id="controlpanel_search_sortby"
+					>
+						{search_sortby_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/search_sortby_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_configured_search_sortby_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_search_sorttype"
+					 class="ms-0"
+					>{lang_configured_search_sorttype}</label>
+					<select
+					 name="controlpanel_search_sorttype"
+					 class="form-control"
+					 id="controlpanel_search_sorttype"
+					>
+						{search_sorttype_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/search_sorttype_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_configured_search_sorttype_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_special_search_sortby"
+					 class="ms-0"
+					>{lang_configured_special_search_sortby}</label>
+					<select
+					 name="controlpanel_special_search_sortby"
+					 class="form-control"
+					 id="controlpanel_special_search_sortby"
+					>
+						{special_search_sortby_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/special_search_sortby_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_configured_special_search_sortby_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_special_search_sorttype"
+					 class="ms-0"
+					>{lang_configured_special_search_sorttype}</label>
+					<select
+					 name="controlpanel_special_search_sorttype"
+					 class="form-control"
+					 id="controlpanel_special_search_sorttype"
+					>
+						{special_search_sorttype_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/special_search_sorttype_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_configured_special_search_sorttype_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_configured_show_count"
+					 class="ms-0"
+					>{lang_configured_show_count}</label>
+					<select
+					 name="controlpanel_configured_show_count"
+					 class="form-control"
+					 id="controlpanel_configured_show_count"
+					>
+						{configured_show_count_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/configured_show_count_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_configured_show_count_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_max_search_results">{lang_max_search_results}</label>
+					<input
+					 type="number"
+					 min="0"
+					 required
+					 name="controlpanel_max_search_results"
+					 id="controlpanel_max_search_results"
+					 value="{controlpanel_max_search_results}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_max_search_results_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_search_list_separator">{lang_search_list_separator}</label>
+					<input
+					 type="text""
+					required
+					name="controlpanel_search_list_separator"
+					 id="controlpanel_search_list_separator"
+					 value="{controlpanel_search_list_separator}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_search_list_separator_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_textarea_short_chars">{lang_textarea_short_chars}</label>
+					<input
+					 type="number"
+					 min="1"
+					 required
+					 name="controlpanel_textarea_short_chars"
+					 id="controlpanel_textarea_short_chars"
+					 value="{controlpanel_textarea_short_chars}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_textarea_short_chars_desc}</div>
+		</div>
+
+		<h3 class="mt-4">{lang_site_config_heading_map_settings}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_type"
+					 class="ms-0"
+					>{lang_site_config_map_type}</label>
+					<select
+					 name="controlpanel_map_type"
+					 class="form-control"
+					 id="controlpanel_map_type"
+					>
+						{map_type_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_type_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_map_type_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_address"
+					 class="ms-0"
+					>{lang_site_config_map_address}</label>
+					<select
+					 name="controlpanel_map_address"
+					 class="form-control"
+					 id="controlpanel_map_address"
+					>
+						{map_address_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_address_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_map_address_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_address2"
+					 class="ms-0"
+					>{lang_site_config_map_address2}</label>
+					<select
+					 name="controlpanel_map_address2"
+					 class="form-control"
+					 id="controlpanel_map_address2"
+					>
+						{map_address2_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_address2_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_map_address2_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_address3"
+					 class="ms-0"
+					>{lang_site_config_map_address3}</label>
+					<select
+					 name="controlpanel_map_address3"
+					 class="form-control"
+					 id="controlpanel_map_address3"
+					>
+						{map_address3_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_address3_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_map_address3_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_address4"
+					 class="ms-0"
+					>{lang_site_config_map_address4}</label>
+					<select
+					 name="controlpanel_map_address4"
+					 class="form-control"
+					 id="controlpanel_map_address4"
+					>
+						{map_address4_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_address4_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_map_address4_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_city"
+					 class="ms-0"
+					>{lang_site_config_map_city}</label>
+					<select
+					 name="controlpanel_map_city"
+					 class="form-control"
+					 id="controlpanel_map_city"
+					>
+						{map_city_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_city_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_map_city_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_state"
+					 class="ms-0"
+					>{lang_site_config_map_state}</label>
+					<select
+					 name="controlpanel_map_state"
+					 class="form-control"
+					 id="controlpanel_map_state"
+					>
+						{map_state_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_state_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_map_state_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_zip"
+					 class="ms-0"
+					>{lang_site_config_map_zip}</label>
+					<select
+					 name="controlpanel_map_zip"
+					 class="form-control"
+					 id="controlpanel_map_zip"
+					>
+						{map_zip_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_zip_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_map_zip_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_country"
+					 class="ms-0"
+					>{lang_site_config_map_country}</label>
+					<select
+					 name="controlpanel_map_country"
+					 class="form-control"
+					 id="controlpanel_map_country"
+					>
+						{map_country_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_country_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_map_country_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_latitude"
+					 class="ms-0"
+					>{lang_lat}</label>
+					<select
+					 name="controlpanel_map_latitude"
+					 class="form-control"
+					 id="controlpanel_map_latitude"
+					>
+						{map_latitude_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_latitude_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_lat_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_map_longitude"
+					 class="ms-0"
+					>{lang_long}</label>
+					<select
+					 name="controlpanel_map_longitude"
+					 class="form-control"
+					 id="controlpanel_map_longitude"
+					>
+						{map_longitude_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/map_longitude_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_long_desc}</div>
+		</div>
+
+
+		<input
+		 type="submit"
+		 class="btn btn-primary float-end"
+		 value="{lang_save_changes}"
+		/>
+	</form>
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#site_config_listings").submit(function (e) {
+			e.preventDefault();
+			$.post("ajax.php?action=update_site_config", $("#site_config_listings").serialize(), function (data) {
+				if (data.error == "1") {
+					status_error(data.error_msg);
+				} else {
+					status_msg(data.status);
+				}
+			}, "json");
+		});
+	});
+</script>

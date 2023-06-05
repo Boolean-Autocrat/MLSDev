@@ -1,0 +1,190 @@
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+    <div class="alert alert-warning" role="alert">{view_warnings}</div>
+
+    <ul class="nav nav-pills nav-fill p-1" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1 active"
+          data-bs-toggle="tabajax"
+          data-bs-target="#configure_general"
+          id="configure_general_tab"
+          href="{baseurl}/admin/ajax.php?action=configure_general"
+          role="tab"
+          aria-controls="configure_general"
+          aria-selected="true"
+        >
+          {lang_site_config_tab_general}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1"
+          data-bs-toggle="tabajax"
+          data-bs-target="#configure_templates"
+          id="configure_templates_tab"
+          href="{baseurl}/admin/ajax.php?action=configure_templates"
+          role="tab"
+          aria-controls="configure_templates"
+          aria-selected="false"
+        >
+          {lang_site_config_tab_template}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1"
+          data-bs-toggle="tabajax"
+          data-bs-target="#configure_seo"
+          id="configure_seo_tab"
+          href="{baseurl}/admin/ajax.php?action=configure_seo"
+          role="tab"
+          aria-controls="configure_seo"
+          aria-selected="false"
+        >
+          {lang_site_config_tab_seo}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1"
+          data-bs-toggle="tabajax"
+          data-bs-target="#configure_seo_links"
+          id="configure_seo_links_tab"
+          href="{baseurl}/admin/ajax.php?action=configure_seo_links"
+          role="tab"
+          aria-controls="configure_seo_links"
+          aria-selected="false"
+        >
+          {lang_site_config_tab_seo_links}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1"
+          data-bs-toggle="tabajax"
+          data-bs-target="#configure_uploads"
+          id="configure_uploads_tab"
+          href="{baseurl}/admin/ajax.php?action=configure_uploads"
+          role="tab"
+          aria-controls="configure_uploads"
+          aria-selected="false"
+        >
+          {lang_site_config_tab_uploads}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1"
+          data-bs-toggle="tabajax"
+          data-bs-target="#configure_listings"
+          id="configure_listings_tab"
+          href="{baseurl}/admin/ajax.php?action=configure_listings"
+          role="tab"
+          aria-controls="configure_listings"
+          aria-selected="false"
+        >
+          {lang_site_config_tab_listings}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1"
+          data-bs-toggle="tabajax"
+          data-bs-target="#configure_users"
+          id="configure_users_tab"
+          href="{baseurl}/admin/ajax.php?action=configure_users"
+          role="tab"
+          aria-controls="configure_users"
+          aria-selected="false"
+        >
+          {lang_site_config_tab_users}
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link mb-0 px-0 py-1"
+          data-bs-toggle="tabajax"
+          data-bs-target="#configure_social"
+          id="configure_social_tab"
+          href="{baseurl}/admin/ajax.php?action=configure_social"
+          role="tab"
+          aria-controls="configure_social"
+          aria-selected="false"
+        >
+          {lang_site_config_social}
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content" id="mediaUploadTabContent">
+      <div
+        class="tab-pane fade show active"
+        id="configure_general"
+        role="tabpanel"
+        aria-labelledby="configure_general_tab"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="configure_templates"
+        role="tabpanel"
+        aria-labelledby="configure_templates_tab"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="configure_seo"
+        role="tabpanel"
+        aria-labelledby="configure_seo_tab"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="configure_seo_links"
+        role="tabpanel"
+        aria-labelledby="configure_seo_links_tab"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="configure_uploads"
+        role="tabpanel"
+        aria-labelledby="configure_uploads_tab"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="configure_listings"
+        role="tabpanel"
+        aria-labelledby="configure_listings_tab"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="configure_users"
+        role="tabpanel"
+        aria-labelledby="configure_users_tab"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="configure_social"
+        role="tabpanel"
+        aria-labelledby="configure_social_tab"
+      ></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    //Enable ajax based tags
+    $('[data-bs-toggle="tabajax"]').click(function (e) {
+      e.preventDefault();
+      var $this = $(this),
+        loadurl = $this.attr("href"),
+        targ = $this.attr("data-bs-target");
+      if ($(targ).html() == "") {
+        $.get(loadurl, function (data) {
+          $(targ).html(data);
+        });
+      }
+      $this.tab("show");
+    });
+    //Load Initial Tab
+    $("#configure_general_tab").click();
+  });
+</script>

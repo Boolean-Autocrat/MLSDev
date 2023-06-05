@@ -1,0 +1,153 @@
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+    <div class="row justify-content-between">
+      <div class="col-auto">
+        <a
+          href="{baseurl}/admin/index.php?action=edit_page"
+          title="{lang_page_all}"
+          >{lang_page_all}</a
+        >
+        <span class="page_edit_index_status_list_count"
+          >({page_edit_status_all_count})</span
+        >
+        |
+        <a
+          href="{baseurl}/admin/index.php?action=edit_page&amp;status=Published"
+          title="{lang_page_published}"
+          >{lang_page_published}</a
+        >
+        <span class="page_edit_index_status_list_count"
+          >({page_edit_status_published_count})</span
+        >
+        |
+        <a
+          href="{baseurl}/admin/index.php?action=edit_page&amp;status=Draft"
+          title="{lang_page_draft}"
+          >{lang_page_draft}</a
+        >
+        <span class="page_edit_index_status_list_count"
+          >({page_edit_status_draft_count})</span
+        >
+        <a
+          href="{baseurl}/admin/index.php?action=edit_page&amp;status=Review"
+          title="{lang_blog_view_review}"
+          >{lang_page_review}</a
+        >
+        <span class="page_edit_index_status_list_count"
+          >({page_edit_status_review_count})</span
+        >
+      </div>
+      <div class="col-auto">
+        <form id="add_page_form" class="add_page_form" action="#" method="post">
+          <input type="hidden" name="token" value="{csrf_token}" />
+          <span id="response_text"></span>
+          <input
+            id="post_title"
+            type="text"
+            name="title"
+            value=""
+            class="required"
+          />
+          <button class="btn btn-primary btn-sm" id="new_post">
+            <i class="fa-solid fa-plus"></i>{lang_page_add_post}
+          </button>
+        </form>
+      </div>
+      <div class="col-auto">{next_prev}</div>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-items-center mb-0">
+        <thead>
+          <tr>
+            <th
+              class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+            >
+              {lang_page_post}
+            </th>
+            <th
+              class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+            >
+              {lang_page_keywords}
+            </th>
+            <th
+              class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+            >
+              {lang_page_date}
+            </th>
+            <th
+              class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+            >
+              {lang_page_publication_status}
+            </th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th
+              class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+            >
+              {lang_page_post}
+            </th>
+            <th
+              class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+            >
+              {lang_page_keywords}
+            </th>
+            <th
+              class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+            >
+              {lang_page_date}
+            </th>
+            <th
+              class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+            >
+              {lang_page_publication_status}
+            </th>
+          </tr>
+        </tfoot>
+        <tbody>
+          {page_edit_item_block}
+          <tr>
+            <td>
+              {page_edit_item_id}
+              <a
+                href="{baseurl}/admin/index.php?action=edit_page_post&amp;id={page_edit_item_id}"
+                title="{lang_edit} {page_edit_item_title}"
+                ><i class="fa-solid fa-edit"></i>
+                {page_edit_item_title}
+              </a>
+            </td>
+            <td>{page_edit_item_keywords}</td>
+            <td class="align-middle text-center">{page_edit_item_date}</td>
+            <td class="align-middle text-center">
+              <span class="badge badge-sm badge-{page_edit_item_published}"
+                >{page_edit_item_published}</span
+              >
+            </td>
+          </tr>
+          {/page_edit_item_block}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#add_page_form").submit(function (e) {
+      e.preventDefault();
+      $.post(
+        "ajax.php?action=ajax_create_page_post",
+        $("#add_page_form").serialize(),
+        function (data) {
+          if (data.error == "1") {
+            alert(data.error_msg);
+          } else {
+            document.location.href =
+              "index.php?action=edit_page_post&id=" + data.id;
+          }
+        },
+        "json"
+      );
+    });
+  });
+</script>

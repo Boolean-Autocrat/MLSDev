@@ -1,0 +1,59 @@
+<!-- bof "view_user_default.html" -->
+<div class="view_user">
+	<div class="view_user_name">
+		Agent: {user_first_name} {user_last_name}<span class="user_listings_link">{user_listings_link}</span>
+		<div class="clear"></div>
+	</div>
+	
+	<div>
+		<div class="view_user_left">
+			<div class="view_user_images">
+				{user_images_thumbnails}
+				<img src="{user_qr_code_link}" class="user_qr_code" />
+			</div>
+		</div>		
+		<div class="view_user_info">
+			<div style="display: inline-block; width: 100%;">
+				<div>{user_display_info}</div>
+				<div class="space_10"></div>
+		
+				<div class="user_contact_link">{user_contact_link}</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+	</div>
+	
+	
+	<div class="space_20"></div>
+	
+	<div class="view_user_listings">
+	
+		<!--  $limit="0" = unlimited -->
+		{listings_custom_search_result_block $limit="0" $args="user_ID={user_id}"}
+  			<div class="my_horiz_feat">
+   				<h4>My Listings</h4>
+   				
+    			{custom_search_has_results_block}
+   				<div class="feat_list">           
+    				<a href="{link_to_listing}" title="">
+     					<img src="{raw_image_thumb_1}" alt="{listing_title}" title=""/>
+					</a>
+					<div class="feat_text">
+						{listing_field_Asking_Price_value}
+     					<br />
+     					{listing_field_City_value}, {listing_field_State_value}
+     					<br />
+     					{listing_field_num_of_Bedrooms_value} Beds / {listing_field_num_of_Full_Baths_value} Baths
+    				</div>
+				</div>  
+				{/custom_search_has_results_block}
+				  
+			</div>
+		{/listings_custom_search_result_block} 
+	
+	</div>
+	
+	<div class="view_user_hitcount">{user_hit_count}</div>
+</div>
+<!-- eof "view_user_default.html" -->

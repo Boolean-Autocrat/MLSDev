@@ -1,0 +1,74 @@
+<!-- bof "listing_next_prev.html" -->
+<div class="next_prev_listing">
+
+	<div class="count">
+		{lang_there_are_currently} {count} {lang_that_match_search}
+		
+		<span class="listing_xy">{lang_next_prev_listing} {cur_num} {lang_next_prev_of} {count}</span>
+	</div>
+	<div style="display: inline-block; margin: 0;  padding: 0; vertical-align: top; text-align: right; width: 54%">
+		<ul>
+			{first_listing_block}
+			 <li>
+			 	<a href="#" class="first_n" title="{lang_first}">
+			 		<div class="first_n_blk"></div>
+			 		<div class="first_n_blk_arrow"></div>
+			 	</a>
+			 </li>
+			 <li>
+			 	<a href="#" class="previous_n" title="{lang_previous}">
+			 		<div class="previous_n_blk_arrow"></div>
+			 	</a>
+			 </li>
+			{/first_listing_block}
+
+			{!first_listing_block}
+			<li>
+				<a href="{first_url}" class="first" title="{lang_first}">
+					<div class="first_blk"></div>
+					<div class="first_blk_arrow"></div>
+	 			</a>
+		 	</li>
+			<li>
+				<a href="{previous_url}" class="previous" title="{lang_previous}">
+	 				<div class="previous_blk_arrow"></div>
+	 			</a>
+		 	</li>
+			{/!first_listing_block}
+
+			<li><a href="index.php?action=searchresults{refine_search_args}" class="listing_np_button" title="{lang_return_to_search}" >{lang_return_to_search}</a></li>
+			<li><a href="index.php?action=save_search{save_search_args}" class="listing_np_button" title="{lang_save_this_search}">{lang_save_this_search}</a></li>
+
+			{last_listing_block}
+			<li>
+				<a href="#" class="next_n" title="{lang_next}">
+					<div class="next_n_blk_arrow"></div>
+		 		</a>
+		 	</li>
+			<li>
+				<a href="#" class="last_n" title="{lang_last}">
+					<div class="last_n_blk_arrow"></div>
+		 			<div class="last_n_blk"></div>
+		 		</a>
+		 	</li>
+			{/last_listing_block}
+
+			{!last_listing_block}
+			<li>
+				<a href="{next_url}" class="next" title="{lang_next}">
+					<div class="next_blk_arrow"></div>
+		 		</a>
+		 	</li>
+			<li>
+				<a href="{last_url}" class="last" title="{lang_last}">
+					<div class="last_blk_arrow"></div>
+ 					<div class="last_blk"></div>
+	 			</a>
+		 	</li>
+			{/!last_listing_block}
+		</ul>
+	</div>
+	<div class="clear"></div>
+	
+</div>
+<!-- eof "listing_next_prev.html" -->

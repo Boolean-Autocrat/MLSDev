@@ -1,0 +1,74 @@
+/*
+ LOGO SETTINGS: see style_logo.css
+ VTOUR SETTINGS: see style_vtour.css
+ ============================================================================ */
+/* FOR YOU TO CHOOSE (FIXED WIDTH OR VARIABLE WIDTH)
+ ============================================================================ */
+
+/* CSS GLOBALS (you really should not modify!) ============================================================================ */
+body{
+margin:0;
+padding:0;
+font:10pt Arial, Verdana, Helvetica, sans-serif;
+color:#000000;
+background-color:#F5F3EF;
+color:#968765;
+}
+a {
+	color: #8C9664;
+}
+a:visited {
+	color: #966473;
+}
+header, footer {
+
+	text-align:center;
+}
+header nav ul{
+list-style: none;
+margin:0;
+padding:0;
+}
+header li{
+color:#4f4f4f;
+border-width:1px;
+border-style: solid;
+border-color:#838b83;
+-moz-border-radius:6px;
+-khtml-border-radius:6px;
+-webkit-border-radius:6px;
+border-radius:6px;
+margin:2px;
+padding:3px 6px;
+cursor:pointer;
+/* Opera */
+background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjpyZ2JhKDI1NSwyNTUsMjU1LDEpOyIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOnJnYmEoMTcyLDE4MSwyMDAsMSk7IiAvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjZ3JhZGllbnQpIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIiAvPjwvc3ZnPg==);
+
+/* Firefox */
+background: -moz-linear-gradient( top, rgba(255,255,255,1), rgba(172,181,200,1) );
+
+/* Chrome & Safari */
+background: -webkit-gradient( linear, left top, left bottom, color-stop( 0, rgba(255,255,255,1) ), color-stop( 1, rgba(172,181,200,1) ) );
+
+/* IE5.5 - IE7 */
+filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#FFFFFFFF,EndColorStr=#FFACB5C8);
+
+/* IE8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#FFFFFFFF,EndColorStr=#FFACB5C8)";
+}
+.browse_tool_table {
+/* Opera */
+background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjpyZ2JhKDI1NSwyNTUsMjU1LDEpOyIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOnJnYmEoODUsMTQ2LDE1MywxKTsiIC8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNncmFkaWVudCkiIGhlaWdodD0iMTAwJSIgd2lkdGg9IjEwMCUiIC8+PC9zdmc+);
+
+/* Firefox */
+background: -moz-linear-gradient( top, rgba(255,255,255,1), rgba(85,146,153,1) );
+
+/* Chrome & Safari */
+background: -webkit-gradient( linear, left top, left bottom, color-stop( 0, rgba(255,255,255,1) ), color-stop( 1, rgba(85,146,153,1) ) );
+
+/* IE5.5 - IE7 */
+filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#FFFFFFFF,EndColorStr=#FF559299);
+
+/* IE8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#FFFFFFFF,EndColorStr=#FF559299)";
+}

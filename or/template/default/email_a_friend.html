@@ -1,0 +1,201 @@
+{invalid_csrf_token_block}
+<div style="text-align: center" class="redtext">{lang_invalid_csrf_token}</div>
+{/invalid_csrf_token_block} {!check_member}
+<div class="contact_signup_text">
+  In order to use the "Email Listing to a Friend" feature of our website, you
+  need to be a registered site member. Please create a new account which will
+  provide us with that information. You can also use this account to save
+  favorite listings and get notifications when new listings meet your
+  requirements.
+</div>
+<br />
+{login_failed_block}
+<div class="redtext">
+  Your login failed. Please try again or create a new account.
+</div>
+{/login_failed_block} {user_email_activation_block}
+<div class="redtext">
+  This site requires that you activate your new account via email to confirm the
+  email address you provided is valid. Once you click the link provided in your
+  email you can login and complete your inquiry.
+</div>
+{/user_email_activation_block} {user_moderation_block}
+<div class="redtext">
+  This site has member moderation turned on. You will recieve an email as soon
+  as the site administrators activates your account, at which time you can login
+  and complete your inquiry.
+</div>
+{/user_moderation_block} {misc_signup_error_block}
+<div class="redtext">{misc_signup_error_msg}</div>
+{/misc_signup_error_block} {user_captcha_failed_block}
+<div class="redtext">
+  Captcha Error - Please reenter the captcha information.
+</div>
+{/user_captcha_failed_block}
+<div>
+  <div class="section_link_container">
+    <div id="signup_section_link" class="or_std_button">Create an account</div>
+    <div id="login_section_link" class="or_std_button">
+      Already a member? Log in
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div id="signup_section">
+    <form id="usersignup" action="#" method="POST">
+      <input type="hidden" name="token" value="{csrf_token}" />
+      <fieldset>
+        <div class="field_caption">
+          {lang_user_name} <span class="redtext">*</span>
+        </div>
+        <div class="field_element">
+          <input
+            type="text"
+            name="edit_user_name"
+            value="{edit_user_name}"
+            class="required"
+            spellcheck="false"
+          />
+        </div>
+        <div class="clear"></div>
+
+        <div class="field_caption">
+          {lang_user_password} <span class="redtext">*</span>
+        </div>
+        <div class="field_element">
+          <input type="password" spellcheck="false" class="required" name="edit_user_pass" />
+        </div>
+        <div class="clear"></div>
+
+        <div class="field_caption">
+          {lang_user_password} ({lang_again})<span class="redtext">*</span>
+        </div>
+        <div class="field_element">
+          <input type="password" spellcheck="false" class="required" name="edit_user_pass2" />
+        </div>
+        <div class="clear"></div>
+
+        <div class="field_caption">
+          {lang_user_manager_first_name}<span class="redtext">*</span>
+        </div>
+        <div class="field_element">
+          <input
+            type="text"
+            class="required"
+            value="{user_first_name}"
+            name="user_first_name"
+          />
+        </div>
+        <div class="clear"></div>
+
+        <div class="field_caption">
+          {lang_user_manager_last_name}<span class="redtext">*</span>
+        </div>
+        <div class="field_element">
+          <input
+            type="text"
+            name="user_last_name"
+            value="{user_last_name}"
+            class="required"
+          />
+        </div>
+        <div class="clear"></div>
+
+        <div class="field_caption">
+          {lang_user_email}<span class="redtext">*</span
+          ><br />{email_not_displayed}
+        </div>
+        <div class="field_element">
+          <input
+            type="text"
+            name="user_email"
+            value="{user_email}"
+            class="{curley_open}validate:{curley_open}required:true,email:true{curley_close}{curley_close}"
+          />
+        </div>
+        <div class="clear"></div>
+
+        {captcha_display}
+
+        <input class="or_std_button" type="submit" value="Next ->" />
+      </fieldset>
+    </form>
+  </div>
+
+  <div id="login_section">
+    <form id="usersignup" action="#" method="POST">
+      <input type="hidden" name="token" value="{csrf_token}" />
+      <fieldset>
+        <div class="field_caption">{lang_admin_login_name}</div>
+        <div class="field_element">
+          <input type="text" name="user_name" spellcheck="false" maxlength="30" />
+        </div>
+        <div class="clear"></div>
+        <div class="field_caption">{lang_admin_password}</div>
+        <div class="field_element">
+          <input type="password" spellcheck="false" name="user_pass" maxlength="30" />
+        </div>
+        <div class="clear"></div>
+        <div class="field_caption">{lang_remember_me}</div>
+        <div class="field_element">
+          <input type="checkbox" name="remember" />
+        </div>
+        <div class="clear"></div>
+        <input class="or_std_button" type="submit" value="Login ->" />
+      </fieldset>
+    </form>
+  </div>
+</div>
+{/!check_member} {check_member}
+{default_subject_block}{lang_email_in_reference_to_listing}
+{listing_id}{/default_subject_block}
+{default_message_block}{lang_email_listing_default_message}
+{fulllink_to_listing}{/default_message_block}
+<form
+  name="contact_friend"
+  method="post"
+  action="index.php?action=contact_friend&amp;popup=yes&amp;listing_id={listing_id}"
+>
+  <input type="hidden" name="listing_id" value="{listing_id}" />
+  <input type="hidden" name="token" value="{csrf_token}" />
+  <table border="0" cellspacing="2" cellpadding="4">
+    <tr>
+      <td colspan="2" style="vertical-align: top" class="TitleColor">
+        <label for="email">{lang_email_friend_email}&nbsp;&nbsp;&nbsp;</label>
+        <input
+          id="email"
+          name="friend_email"
+          value="{friend_email}"
+          type="text"
+          size="50"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="vertical-align: top" class="TitleColor">
+        <label for="subject">{lang_email_your_subject}</label>
+        <input
+          id="subject"
+          name="subject"
+          value="{subject}"
+          type="text"
+          size="50"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="vertical-align: top" class="TitleColor">
+        <label for="message">{lang_email_your_message}</label><br /><br />
+        <textarea id="message" name="message" rows="5" cols="50">
+{message}</textarea
+        >
+      </td>
+    </tr>
+    {captcha_display}
+    <tr>
+      <td colspan="2">
+        <input type="submit" name="Submit" value="{lang_email_send}" />
+      </td>
+    </tr>
+  </table>
+</form>
+{/check_member}

@@ -1,0 +1,10 @@
+// Overwrite pagination button styles for datatables to make text fit
+.dataTables_paginate .page-link {
+    border-radius: 0px !important;
+    width: auto !important;
+    padding: 10px;
+}
+.dataTables_filter{
+    @extend .input-group;
+    @extend .input-group-outline;
+}

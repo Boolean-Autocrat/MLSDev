@@ -1,0 +1,1124 @@
+<div>
+	<form
+	 id="site_config_users"
+	 method="post"
+	 action=""
+	>
+	<input type="hidden" name="token" value="{csrf_token}" />
+
+		<h3 class="mt-4">{lang_site_config_heading_signup_settings}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_use_signup_image_verification"
+					 class="ms-0"
+					>{lang_signup_image_verification}</label>
+					<select
+					 name="controlpanel_use_signup_image_verification"
+					 class="form-control"
+					 id="controlpanel_use_signup_image_verification"
+					>
+						{use_signup_image_verification_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/use_signup_image_verification_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_signup_image_verification_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_require_email_verification"
+					 class="ms-0"
+					>{lang_signup_email_verification}</label>
+					<select
+					 name="controlpanel_require_email_verification"
+					 class="form-control"
+					 id="controlpanel_require_email_verification"
+					>
+						{require_email_verification_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/require_email_verification_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_signup_email_verification_desc}</div>
+		</div>
+
+
+		<h3 class="mt-4">{lang_site_config_heading_member_settings}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_moderate_members"
+					 class="ms-0"
+					>{lang_moderate_members}</label>
+					<select
+					 name="controlpanel_moderate_members"
+					 class="form-control"
+					 id="controlpanel_moderate_members"
+					>
+						{moderate_members_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/moderate_members_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_moderate_members_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_allow_member_signup"
+					 class="ms-0"
+					>{lang_allow_member_signup}</label>
+					<select
+					 name="controlpanel_allow_member_signup"
+					 class="form-control"
+					 id="controlpanel_allow_member_signup"
+					>
+						{allow_member_signup_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/allow_member_signup_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_allow_member_signup_desc}</div>
+		</div>
+
+
+		<h3 class="mt-4">{lang_site_config_heading_agent_permissions}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_moderate_agents"
+					 class="ms-0"
+					>{lang_moderate_agents}</label>
+					<select
+					 name="controlpanel_moderate_agents"
+					 class="form-control"
+					 id="controlpanel_moderate_agents"
+					>
+						{moderate_agents_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/moderate_agents_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_moderate_agents_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_allow_agent_signup"
+					 class="ms-0"
+					>{lang_allow_agent_signup}</label>
+					<select
+					 name="controlpanel_allow_agent_signup"
+					 class="form-control"
+					 id="controlpanel_allow_agent_signup"
+					>
+						{allow_agent_signup_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/allow_agent_signup_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_allow_agent_signup_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_active"
+					 class="ms-0"
+					>{lang_agent_default_active}</label>
+					<select
+					 name="controlpanel_agent_default_active"
+					 class="form-control"
+					 id="controlpanel_agent_default_active"
+					>
+						{agent_default_active_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_active_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_active_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_admin"
+					 class="ms-0"
+					>{lang_agent_default_admin}</label>
+					<select
+					 name="controlpanel_agent_default_admin"
+					 class="form-control"
+					 id="controlpanel_agent_default_admin"
+					>
+						{agent_default_admin_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_admin_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_admin_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_edit_all_users"
+					 class="ms-0"
+					>{lang_agent_default_edit_all_users}</label>
+					<select
+					 name="controlpanel_agent_default_edit_all_users"
+					 class="form-control"
+					 id="controlpanel_agent_default_edit_all_users"
+					>
+						{agent_default_edit_all_users_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_edit_all_users_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_edit_all_users_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_edit_all_listings"
+					 class="ms-0"
+					>{lang_agent_default_edit_all_listings}</label>
+					<select
+					 name="controlpanel_agent_default_edit_all_listings"
+					 class="form-control"
+					 id="controlpanel_agent_default_edit_all_listings"
+					>
+						{allow_member_signup_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/allow_member_signup_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_edit_all_listings_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_allow_member_signup"
+					 class="ms-0"
+					>{lang_allow_member_signup}</label>
+					<select
+					 name="controlpanel_allow_member_signup"
+					 class="form-control"
+					 id="controlpanel_allow_member_signup"
+					>
+						{agent_default_edit_all_listings_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_edit_all_listings_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_allow_member_signup_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_feature"
+					 class="ms-0"
+					>{lang_agent_default_feature}</label>
+					<select
+					 name="controlpanel_agent_default_feature"
+					 class="form-control"
+					 id="controlpanel_agent_default_feature"
+					>
+						{agent_default_feature_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_feature_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_feature_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_moderate"
+					 class="ms-0"
+					>{lang_agent_default_moderate}</label>
+					<select
+					 name="controlpanel_agent_default_moderate"
+					 class="form-control"
+					 id="controlpanel_agent_default_moderate"
+					>
+						{agent_default_moderate_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_moderate_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_moderate_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_logview"
+					 class="ms-0"
+					>{lang_agent_default_logview}</label>
+					<select
+					 name="controlpanel_agent_default_logview"
+					 class="form-control"
+					 id="controlpanel_agent_default_logview"
+					>
+						{agent_default_logview_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_logview_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_logview_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_edit_site_config"
+					 class="ms-0"
+					>{lang_agent_default_edit_site_config}</label>
+					<select
+					 name="controlpanel_agent_default_edit_site_config"
+					 class="form-control"
+					 id="controlpanel_agent_default_edit_site_config"
+					>
+						{agent_default_edit_site_config_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_edit_site_config_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_edit_site_config_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_edit_member_template"
+					 class="ms-0"
+					>{lang_agent_default_edit_member_template}</label>
+					<select
+					 name="controlpanel_agent_default_edit_member_template"
+					 class="form-control"
+					 id="controlpanel_agent_default_edit_member_template"
+					>
+						{agent_default_edit_member_template_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_edit_member_template_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_edit_member_template_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_edit_agent_template"
+					 class="ms-0"
+					>{lang_agent_default_edit_agent_template}</label>
+					<select
+					 name="controlpanel_agent_default_edit_agent_template"
+					 class="form-control"
+					 id="controlpanel_agent_default_edit_agent_template"
+					>
+						{agent_default_edit_agent_template_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_edit_agent_template_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_edit_agent_template_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_edit_listing_template"
+					 class="ms-0"
+					>{lang_agent_default_edit_listing_template}</label>
+					<select
+					 name="controlpanel_agent_default_edit_listing_template"
+					 class="form-control"
+					 id="controlpanel_agent_default_edit_listing_template"
+					>
+						{agent_default_edit_listing_template_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_edit_listing_template_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_edit_listing_template_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_can_export_listings"
+					 class="ms-0"
+					>{lang_agent_default_canExportListings}</label>
+					<select
+					 name="controlpanel_agent_default_can_export_listings"
+					 class="form-control"
+					 id="controlpanel_agent_default_can_export_listings"
+					>
+						{agent_default_can_export_listings_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_can_export_listings_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_canExportListings_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_canchangeexpirations"
+					 class="ms-0"
+					>{lang_agent_default_canchangeexpirations}</label>
+					<select
+					 name="controlpanel_agent_default_canchangeexpirations"
+					 class="form-control"
+					 id="controlpanel_agent_default_canchangeexpirations"
+					>
+						{agent_default_canchangeexpirations_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_canchangeexpirations_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_canchangeexpirations_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_editpages"
+					 class="ms-0"
+					>{lang_agent_default_editpages}</label>
+					<select
+					 name="controlpanel_agent_default_editpages"
+					 class="form-control"
+					 id="controlpanel_agent_default_editpages"
+					>
+						{agent_default_editpages_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_editpages_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_editpages_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_havevtours"
+					 class="ms-0"
+					>{lang_agent_default_havevtours}</label>
+					<select
+					 name="controlpanel_agent_default_havevtours"
+					 class="form-control"
+					 id="controlpanel_agent_default_havevtours"
+					>
+						{agent_default_havevtours_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_havevtours_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_havevtours_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_havefiles"
+					 class="ms-0"
+					>{lang_agent_default_havefiles}</label>
+					<select
+					 name="controlpanel_agent_default_havefiles"
+					 class="form-control"
+					 id="controlpanel_agent_default_havefiles"
+					>
+						{agent_default_havefiles_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_havefiles_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_havefiles_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_canManageAddons"
+					 class="ms-0"
+					>{lang_agent_default_canManageAddons}</label>
+					<select
+					 name="controlpanel_agent_default_canManageAddons"
+					 class="form-control"
+					 id="controlpanel_agent_default_canManageAddons"
+					>
+						{agent_default_canManageAddons_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_canManageAddons_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_canManageAddons_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_blogUserType"
+					 class="ms-0"
+					>{lang_agent_default_blogUserType}</label>
+					<select
+					 name="controlpanel_agent_default_blogUserType"
+					 class="form-control"
+					 id="controlpanel_agent_default_blogUserType"
+					>
+						{agent_default_blogUserType_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_blogUserType_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_blogUserType_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_edit_all_leads"
+					 class="ms-0"
+					>{lang_agent_default_edit_all_leads}</label>
+					<select
+					 name="controlpanel_agent_default_edit_all_leads"
+					 class="form-control"
+					 id="controlpanel_agent_default_edit_all_leads"
+					>
+						{agent_default_edit_all_leads_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_edit_all_leads_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_edit_all_leads_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_agent_default_edit_lead_template"
+					 class="ms-0"
+					>{lang_agent_default_edit_lead_template}</label>
+					<select
+					 name="controlpanel_agent_default_edit_lead_template"
+					 class="form-control"
+					 id="controlpanel_agent_default_edit_lead_template"
+					>
+						{agent_default_edit_lead_template_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/agent_default_edit_lead_template_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_edit_lead_template_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_agent_default_num_listings">{lang_agent_default_num_listings}</label>
+					<input
+					 type="number"
+					 min="-1"
+					 required
+					 name="controlpanel_agent_default_num_listings"
+					 id="controlpanel_agent_default_num_listings"
+					 value="{controlpanel_agent_default_num_listings}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_num_listings_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label
+					 for="controlpanel_agent_default_num_featuredlistings">{lang_agent_default_num_featuredlistings}</label>
+					<input
+					 type="number"
+					 min="-1"
+					 required
+					 name="controlpanel_agent_default_num_featuredlistings"
+					 id="controlpanel_agent_default_num_featuredlistings"
+					 value="{controlpanel_agent_default_num_featuredlistings}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_agent_default_num_featuredlistings_desc}</div>
+		</div>
+
+
+		<h3 class="mt-4">{lang_site_config_heading_agent_settings}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_users_per_page">{lang_users_per_page}</label>
+					<input
+					 type="number"
+					 min="0"
+					 required
+					 name="controlpanel_users_per_page"
+					 id="controlpanel_users_per_page"
+					 value="{controlpanel_users_per_page}"
+					 class="form-control"
+					/>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_users_per_page_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_show_admin_on_agent_list"
+					 class="ms-0"
+					>{lang_admin_show_admin_on_agent_list}</label>
+					<select
+					 name="controlpanel_show_admin_on_agent_list"
+					 class="form-control"
+					 id="controlpanel_show_admin_on_agent_list"
+					>
+						{show_admin_on_agent_list_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/show_admin_on_agent_list_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_admin_show_admin_on_agent_list_desc}</div>
+		</div>
+
+		<h3 class="mt-4">{lang_site_config_vcard_settings}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_phone"
+					 class="ms-0"
+					>{lang_site_config_vcard_phone}</label>
+					<select
+					 name="controlpanel_vcard_phone"
+					 class="form-control"
+					 id="controlpanel_vcard_phone"
+					>
+						{vcard_phone_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_phone_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_phone_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_fax"
+					 class="ms-0"
+					>{lang_site_config_vcard_fax}</label>
+					<select
+					 name="controlpanel_vcard_fax"
+					 class="form-control"
+					 id="controlpanel_vcard_fax"
+					>
+						{vcard_fax_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_fax_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_fax_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_mobile"
+					 class="ms-0"
+					>{lang_site_config_vcard_mobile}</label>
+					<select
+					 name="controlpanel_vcard_mobile"
+					 class="form-control"
+					 id="controlpanel_vcard_mobile"
+					>
+						{vcard_mobile_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_mobile_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_mobile_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_address"
+					 class="ms-0"
+					>{lang_site_config_vcard_address}</label>
+					<select
+					 name="controlpanel_vcard_address"
+					 class="form-control"
+					 id="controlpanel_vcard_address"
+					>
+						{vcard_address_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_address_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_address_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_city"
+					 class="ms-0"
+					>{lang_site_config_vcard_city}</label>
+					<select
+					 name="controlpanel_vcard_city"
+					 class="form-control"
+					 id="controlpanel_vcard_city"
+					>
+						{vcard_city_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_city_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_city_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_state"
+					 class="ms-0"
+					>{lang_site_config_vcard_state}</label>
+					<select
+					 name="controlpanel_vcard_state"
+					 class="form-control"
+					 id="controlpanel_vcard_state"
+					>
+						{vcard_state_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_state_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_state_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_zip"
+					 class="ms-0"
+					>{lang_site_config_vcard_zip}</label>
+					<select
+					 name="controlpanel_vcard_zip"
+					 class="form-control"
+					 id="controlpanel_vcard_zip"
+					>
+						{vcard_zip_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_zip_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_zip_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_country"
+					 class="ms-0"
+					>{lang_site_config_vcard_country}</label>
+					<select
+					 name="controlpanel_vcard_country"
+					 class="form-control"
+					 id="controlpanel_vcard_country"
+					>
+						{vcard_country_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_country_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_country_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_notes"
+					 class="ms-0"
+					>{lang_site_config_vcard_notes}</label>
+					<select
+					 name="controlpanel_vcard_notes"
+					 class="form-control"
+					 id="controlpanel_vcard_notes"
+					>
+						{vcard_notes_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_notes_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_notes_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="controlpanel_vcard_url"
+					 class="ms-0"
+					>{lang_site_config_vcard_url}</label>
+					<select
+					 name="controlpanel_vcard_url"
+					 class="form-control"
+					 id="controlpanel_vcard_url"
+					>
+						{vcard_url_block}
+						<option
+						 value="{value}"
+						 {selected}
+						>{text}</option>
+						{/vcard_url_block}
+					</select>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_site_config_vcard_url_desc}</div>
+		</div>
+
+		<h3 class="mt-4">{lang_banned_config}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_banned_domains_signup">{lang_banned_domains_signup}</label>
+					<textarea
+					 name="controlpanel_banned_domains_signup"
+					 id="controlpanel_banned_domains_signup"
+					 rows=""
+					 5"
+					 class="form-control"
+					>{controlpanel_banned_domains_signup}</textarea>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_banned_domains_signup_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_banned_ips_signup">{lang_banned_ips_signup}</label>
+					<textarea
+					 name="controlpanel_banned_ips_signup"
+					 id="controlpanel_banned_ips_signup"
+					 rows=""
+					 5"
+					 class="form-control"
+					>{controlpanel_banned_ips_signup}</textarea>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_banned_ips_signup_desc}</div>
+		</div>
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static mb-2">
+					<label for="controlpanel_banned_ips_site">{lang_banned_ips_site}</label>
+					<textarea
+					 name="controlpanel_banned_ips_site"
+					 id="controlpanel_banned_ips_site"
+					 rows=""
+					 5"
+					 class="form-control"
+					>{controlpanel_banned_ips_site}</textarea>
+				</div>
+			</div>
+			<div class="col text-sm">{lang_banned_ips_site_desc}</div>
+		</div>
+
+		<h3 class="mt-4">{lang_export_user_email_addresses}</h3>
+		<hr />
+
+		<div class="row align-items-end mb-2">
+			<div class="col-12 col-md-4">
+				<div class="input-group input-group-static">
+					<label
+					 for="email_export_type"
+					 class="ms-0"
+					>{lang_user_type_to_export}</label>
+					<select
+					 class="form-control"
+					 id="email_export_type"
+					>
+						<option value="all">{lang_all}</option>
+						<option value="admins">{lang_user_manager_admins}</option>
+						<option value="agents">{lang_user_manager_agents}</option>
+						<option value="members">{lang_user_manager_members}</option>
+					</select>
+
+				</div>
+			</div>
+			<div class="col text-sm">{lang_user_type_to_export_desc}</div>
+		</div>
+		<div class="row align-items-end mb-2 phpmailsettings">
+			<div class="col-12">
+				<button
+				 type="button"
+				 class="btn btn-primary"
+				 id="export_emails"
+				 name="export_emails"
+				><i class="fas fa-file-download"></i> {lang_download_file}</button>
+			</div>
+		</div>
+
+
+		<input
+		 type="submit"
+		 class="btn btn-primary float-end"
+		 value="{lang_save_changes}"
+		/>
+
+
+	</form>
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#site_config_users").submit(function (e) {
+			e.preventDefault();
+			$.post("ajax.php?action=update_site_config", $("#site_config_users").serialize(), function (data) {
+				if (data.error == "1") {
+					status_error(data.error_msg);
+				} else {
+					status_msg(data.status);
+				}
+			}, "json");
+		});
+
+		$("#export_emails").click(function (e) {
+			e.preventDefault();
+			$("#export_result").empty().html('<img src="{template_url}/images/progress_indicator.gif" height="20">');
+			var usertype = $("#email_export_type").val();
+			var typename = $("email_export_type").find('option:selected').text();
+			jQuery.download('ajax.php?action=ajax_export_emails', 'email_export_type', usertype);
+			$("#export_result").empty().html(' <strong> ' + typename + ' emails exported</strong>');
+			return false;
+		});
+
+		jQuery.download = function (url, key, data) {
+			// Build a form
+			var form = $('<form></form>').attr('action', url).attr('method', 'post').attr('target', '_blank');
+			// Add the one key/value
+			form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', data));
+			//send request
+			form.appendTo('body').submit().remove();
+		};
+	});
+</script>

@@ -1,0 +1,187 @@
+{subject_block}Thank you for contacting {agent_first_name} {agent_last_name}{/subject_block}
+
+	<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Thank you for Contacting Us</title>
+		<style type="text/css">
+			.field_caption {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body style="font-family: Arial, Helvetica, sans-serif;">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+   			<tr>
+        		<td bgcolor="#d8e7ea" style="background-color: #d8e7ea;">
+            		<table width="620" align="center" style="padding-top: 5px; ">
+            			<tr>
+            				<td valign="top" >
+            					<h2 style="text-shadow: 1px 1px 1px #ffffff;">{company_name}</h2>
+            				</td>
+            			</tr>
+            		</table>
+
+		            <!--intro-->
+		            <table width="620" border="0" align="center" cellpadding="0" cellspacing="0">
+        		        <tr>
+                		    <td valign="middle" width="11" height="25"></td>
+                    		<td valign="middle" height="25">
+		                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        		                    <tr>
+                		                <td width="65%" valign="top">
+                        		            <div style=" font-size: 14px; margin-right: 10px; padding: 0; color: #0d2d42; text-shadow: 1px 1px 1px #fff;">
+
+                        		            	{listing_contact_block}
+                        		            		<!--  Display if contact triggered from a listing page -->
+													<p>
+														Thank you for contacting me regarding the listing below.
+													</p>
+													<p>
+														I will get back to you as soon as possible with the information you requested about this property.
+														My contact information is provided here should you have any more questions in the meantime.
+													</p>
+												{/listing_contact_block}
+
+												{agent_contact_block}
+													<!--  Display if contact triggered from Agent page -->
+													Thank you for contacting me. I will get back to you as soon as possible with the information you requested.
+													My contact information is provided here should you have any more questions in the meantime.
+												{/agent_contact_block}
+
+												<p>
+													Regards,
+													<br>
+													{agent_first_name} {agent_last_name}
+												</p>
+  		                              		</div>
+ 		                               </td>
+ 		                               <td width="35%" valign="top">
+ 		                                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      		  <tr>
+                                       		     <td style="font-size: 11px; margin-left: 10px;">
+                                       		     	<div style="float: right;">
+                                       		     		<div style="">
+															{agent_image_thumb_1}
+														</div>
+														<p>
+															<strong>Email:</strong> <a href="mailto:{agent_email}">{agent_email}</a>
+															<br>
+															{agent_field_phone}
+															<br>
+															{agent_field_mobile}
+															<br>
+															{agent_field_fax}
+															<br>
+															{agent_field_homepage}
+														</p>
+													</div>
+                      		                      </td>
+                           		             </tr>
+                                 		  </table>
+                      		          </td>
+                    		        </tr>
+              		          </table>
+              		      </td>
+            		    </tr>
+					</table>
+           		 	<!--/intro-->
+
+          			{listing_contact_block}
+					<!--content section-->
+					<!--  Display if contact triggered from a listing page -->
+					<table width="620" border="0" align="center" cellpadding="0" cellspacing="0">
+      		          	<tr>
+      		          		<td height="10"></td>
+      		          	</tr>
+      		          	<tr>
+      		              	<td height="82" width="11" valign="middle">
+       		             		<img style="margin: 0; padding: 0; display: block;" src="{template_url}/images/side-corner.png" width="11" height="83">
+      		              	</td>
+   	  		 	            <td height="82" bgcolor="#FFFFFF" valign="middle">
+								<table width="594" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+                                		<td style="background-image: url({template_url}/images/bar-end.png); background-repeat: no-repeat; background-position: right;" valign="middle" height="37" bgcolor="#666666">
+	                                    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    	                                    	<tr>
+        	                                    	<td style="background-color:#666666;" bgcolor="#666666" width="25" height="37"></td>
+            	                                	<td height="37">
+                	                                	<h2 style="font-size: 18px;  margin: 0; padding: 0; text-shadow: 1px 1px 1px #000;">
+                    	                            		<a href="{fulllink_to_listing}" style="color: #E1E1E1;" title="">{listing_title}</a>
+                        	                        	</h2>
+                            	               		</td>
+                                	        	</tr>
+                                    		</table>
+	                                	</td>
+    	                       		</tr>
+        	                	</table>
+            	        	</td>
+                		</tr>
+	                	<tr>
+    	                	<td valign="top"></td>
+        	            	<td bgcolor="#FFFFFF" valign="top">
+            	            	<table width="560" border="0" align="center" cellpadding="0" cellspacing="0">
+                	           		<tr>
+                    	            	<td valign="top">
+                        	            	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            	           		<tr>
+	                            	                <td valign="top" width="158" style="font-size: 14px;">
+
+														<a href="{fulllink_to_listing}" title="">
+	                                        	           	<img src="{raw_image_full_1}" style="border: 1px solid #666; padding: 2px;"  width="100" />
+                                	            	        <br />
+															{listing_title}
+														</a>
+
+	             										<p style="color: #333333; margin: 0; padding: 0; ">
+
+	             										</p>
+
+        	                                    	</td>
+            	                                	<td width="402" valign="top" style="font-size: 14px; color: #333333;">
+
+                	                                	{display_all_lead_fields}
+
+	                                            	</td>
+    	                                    	</tr>
+        	                            	</table>
+                	                    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    	                    	<tr>
+                        	                    	<td height="25">
+                            	                		<p style="text-align: right; font-size: 11px; color: #666; margin: 0; padding: 0; ">
+
+														</p>
+													</td>
+                                        		</tr>
+                                    		</table>
+	                                	</td>
+    	                        	</tr>
+        	                	</table>
+            	        	</td>
+                		</tr>
+	            	</table>
+    	        	<!--/content section-->
+       				{/listing_contact_block}
+
+        	   		<!--footer-->
+            		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	                	<tr>
+    	                	<td height="25" width="100%">
+        	            		<p style="font-size: 10px; color: #666; margin: 0; padding: 10px;  text-align: center;">
+            	        			&copy; 2019 {company_name}
+                	    			<br />
+                    				<a href="{baseurl}">{baseurl}</a>
+                    			</p>
+	                    	</td>
+    	            	</tr>
+        	    	</table>
+            		<!--/footer-->
+
+				</td>
+    		</tr>
+		</table>
+
+	</body>
+</html>

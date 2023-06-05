@@ -1,0 +1,46 @@
+{login_error_msg_block}
+<div class="redtext">{login_error_msg}</div>
+{/login_error_msg_block}
+<div class="admin_challenge_phrase">{lang_visitor_alert_phrase}</div>
+<div class="login_area_div">
+  <div class="login_form_div">
+    <form action="#" method="post">
+      <input type="hidden" name="token" value="{csrf_token}" />
+      <input type="hidden" name="referer" value="{HTTP_REFERER}" />
+      <div class="field_caption">{lang_admin_login_name}</div>
+      <div class="field_element">
+        <input type="text" name="user_name" autocomplete="username" spellcheck="false" maxlength="30" />
+      </div>
+      <div class="clear"></div>
+      <div class="field_caption">{lang_admin_password}</div>
+      <div class="field_element">
+        <input type="password"  autocomplete="current-password" spellcheck="false" name="user_pass" maxlength="30" />
+      </div>
+      <div class="clear"></div>
+      <div class="field_caption">
+        <span class="remember_me">{lang_remember_me}</span>
+      </div>
+      <div class="field_element"><input type="checkbox" name="remember" /></div>
+      <div class="clear"></div>
+      <div class="field_element">
+        <input class="or_std_button" type="submit" value="{lang_login}" />
+        {google_auth_block}<a class="or_std_button" href="{google_auth_url}">{lang_google_login}</a>{/google_auth_block}
+      </div>
+
+      <div class="clear"></div>
+    </form>
+  </div>
+  <div class="lost_pass_div">
+    <form action="index.php?action=send_forgot" method="post">
+      <input type="hidden" name="token" value="{csrf_token}" />
+      <div class="enter_your_email_address_for_pass">
+        {lang_enter_your_email_address_for_pass}
+      </div>
+      <div class="password_form_div">
+        <input type="text" name="email" />
+        <input class="or_std_button" type="submit" value="{lang_lookup}" />
+      </div>
+    </form>
+  </div>
+  <div class="clear"></div>
+</div>
