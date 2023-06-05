@@ -10,7 +10,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/cgi-bin/.*$
 RewriteCond %{REQUEST_URI} !^/include/.*$
 RewriteCond %{REQUEST_URI} !^/template/.*$
-RewriteRule . index.php [L]
+
+# Rewrite URLs without HTML extension
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+RewriteRule ^ index.php [L]
 </IfModule>
 #Turn on GZIP Compression in Apache
 <IfModule mod_deflate.c>
