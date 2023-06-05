@@ -1,0 +1,17 @@
+
+<!-- bof "featured_listing_horizontal.html" -->
+<div class="clear"></div>
+<div class="featured_listings_horizontal">
+	{lang_latest_listings}
+	<hr />
+	{featured_listing_block_row repeat="3"}
+	{featured_listing_block}
+	<div class="featured_listings_block">
+		<a href="{featured_url}" title="" class="thumb">{featured_img_block}<img src="{featured_thumb_src}" height="{featured_thumb_height}" width="{featured_thumb_width}" alt="{lang_click_to_learn_more}" class="featured_listings_horizontal_thumb" />{/featured_img_block}</a><br />
+		<a href="{featured_url}" title="" class="title">{listing_title}</a>
+	</div>
+	{/featured_listing_block}
+	{/featured_listing_block_row}
+</div>
+<div class="clear"></div>
+<!-- eof "featured_listing_horizontal.html" -->

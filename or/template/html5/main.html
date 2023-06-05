@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>{site_title}</title>
+{load_meta_description_short}
+{load_meta_keywords}
+<meta http-equiv="content-type" content="text/html;charset={charset}" />
+<meta name="robots" content="{meta_index},{meta_follow}" />
+{meta_canonical_block}<link rel="canonical" href="{canonical_link}" />{/meta_canonical_block}
+<meta name="Generator" content="Open-Realty" />
+<link rel="shortcut icon" href="{template_url}/images/favicon.ico" />
+<link rel="alternate" type="application/rss+xml" title="{company_name} - {lang_rss_lastmodified_link_title}" href="{rss_lastmodified}" />
+<link rel="alternate" type="application/rss+xml" title="{company_name} - {lang_rss_featured_link_title}" href="{rss_featured}" />
+<link rel="alternate" type="application/rss+xml" title="{company_name} - {lang_rss_blog_post_link_title}" href="{rss_blog_posts}" />
+<link rel="alternate" type="application/rss+xml" title="{company_name} - {lang_rss_blog_comments_link_title}" href="{rss_blog_comments}" />
+{load_css_style_default}
+<link href="https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
+<link href="{baseurl}/node_modules/lightslider/dist/css/lightslider.min.css" rel="stylesheet" type="text/css" >
+{load_css_style}
+{load_css_quicksearch}
+<style type="text/css" media="print">#oradminbar { display:none; }</style>
+{check_member}
+	{load_css_admin_bar}
+{/check_member}
+
+
+<script type="text/javascript" src="{baseurl}/node_modules/jquery/dist/jquery.min.js"></script>		
+<script type="text/javascript">
+	/* solution to undefined msie */
+	jQuery.browser = {};
+	(function () {
+		jQuery.browser.msie = false;
+		jQuery.browser.version = 0;
+		if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+			jQuery.browser.msie = true;
+			jQuery.browser.version = RegExp.$1;
+		}
+	})();
+	/* solution to undefined msie */    
+</script>
+<script type="text/javascript" src="{baseurl}/node_modules/lightslider/dist/js/lightslider.min.js"></script>
+<script type="text/javascript" src="{baseurl}/node_modules/jquery-migrate/dist/jquery-migrate.min.js"></script>		
+<script type="text/javascript" src="{baseurl}/node_modules/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$.fn.uitabs = $.fn.tabs;
+	
+</script>
+<script type="text/javascript" src="{baseurl}/include/class/jquery/jquery_plugins/jquery.betterserialize.js"></script>
+<script type="text/javascript" src="{baseurl}/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="{base_url}/node_modules/superfish/dist/js/superfish.min.js"></script>
+<script type="text/javascript" src="{base_url}/node_modules/@audithsoftworks/jquery.uniform/dist/js/jquery.uniform.standalone.js"></script>
+<script type="text/javascript" src="{base_url}/node_modules/jquery-equalheights/jquery.equalheights.min.js"></script>
+<script type="text/javascript">
+jQuery.validator.messages.required = "{lang_field_is_required}";
+jQuery.validator.defaults.errorClass = "redtext";
+/* Eable the Validator Plugins Debug Feature
+ jQuery.validator.defaults.debug = true;
+*/
+jQuery.validator.defaults.meta = "validate";
+jQuery.validator.addMethod(
+				"ordate",function(value, element, datefmt) {
+					if(value==""){
+						return true;
+					}
+					if(datefmt == 1) {
+						return value.match(/^(01|02|03|04|05|06|07|08|09|10|11|12)\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/\d\d\d\d$/);
+					}
+					if(datefmt == 2) {
+						return value.match(/^\d\d\d\d\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)$/);
+					}
+					if(datefmt == 3) {
+						return value.match(/^(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)\/\d\d\d\d$/);
+					}
+
+				},"{lang_enter_date_in_format} "
+			);
+</script>
+
+
+{load_ORjs}
+
+<script type="text/javascript">
+{check_member}
+	function HidePleaseWait(){ 
+		$.colorbox.close();
+	}
+
+	function ShowPleaseWait(){
+		$.colorbox({
+			onLoad: function(){
+				$("#colorbox").attr("class", "PleaseWaitColorBox");
+			},
+			title:"",
+			width: "190px",
+			height:"145px",
+			html:'<div><img src="{template_url}/images/progress_indicator.gif" /> Please Wait...</div>',
+			inline:false,
+			transition:"none",
+			close:"",
+			overlayClose: false,
+			opacity: 0.30,
+			onClosed: function(){
+				$("#colorbox").attr("class", "");
+			}
+		});
+	}
+
+	function show_add_listing(){
+		$.colorbox({
+			overlayClose: false,
+			open: true,
+			inline:false,
+			close:" ",
+			title: "Add a Listing",
+			width: "50%",
+			transition:"none",
+			opacity:0.40,
+			scrolling: false,
+			href:"{baseurl}/admin/ajax.php?action=ajax_display_add_listing"
+		});
+	}
+{/check_member}
+	
+$(document).ready(function() { 
+
+	/* vertical  menu */
+	$("ul#or_menu_1").superfish({ 
+		animation: {
+			height:'show'
+		},   
+		delay:     600 
+	});
+
+	/* horizontal menu */
+	$('ul#or_menu_2').superfish({
+		/* options go here */
+		});
+		
+
+	/* show persistent top menu to logged in users */
+	{check_member}
+		$('ul#or-admin-bar').superfish({
+   		 	autoArrows:   false,
+			speed: 'fast'
+  	  	});
+
+		$("#menu_add_listing_link").click(function() {
+			show_add_listing();
+			return false;
+		});
+	{/check_member}
+
+	/* persistent collapsing quick search */
+	$(".menu_collapse").click(function(){
+
+        var linktype = $(".menu_collapse").attr("id");
+
+        if (linktype =="show")
+        {
+          $(".menu_collapse").attr("id", "hide");
+          $(".menu_collapse").attr("src", "{template_url}/images/icon_right_arrows_16.png");
+          $(".menu_collapse").attr("alt", "Collapse Menu");
+          $(".menu_collapse").attr("title", "Collapse Menu");
+          $(".quicksearch").show();
+          $(".quicksearch_wrapper_collapse").attr("class","quicksearch_wrapper");
+        }
+        if (linktype =="hide")
+        {
+          $(".menu_collapse").attr("id", "show");
+          $(".menu_collapse").attr("src", "{template_url}/images/quicksearch.png");
+          $(".menu_collapse").attr("alt", "Expand Menu");
+          $(".menu_collapse").attr("title", "Expand Menu");
+          $(".quicksearch_wrapper").attr("class","quicksearch_wrapper_collapse");
+          $(".quicksearch").hide();
+        }
+        return false;
+      });
+
+	/* removes template disclaimer on hover */
+	$("#disclaimerbar").hover(
+		function () {
+			$("#disclaimerbar").hide();
+		}
+	);
+
+}); 
+
+</script>
+
+
+
+</head>
+
+<body>
+	<div id="main_wrapper">
+		<header>
+   			<h1>{company_name}</h1> 
+   			<h2>{company_location}</h2> 
+ 
+   			<nav id="top_nav">
+    		{render_menu_2}
+   			</nav>
+   			<div class="clear"></div> 
+			
+		</header> 
+
+
+		<div class="space_5"></div>
+<!--  Left navigation -->
+
+<nav id="menu_nav"> 
+	<div id="menu_nav_inner"> 
+		{render_menu_1}
+	</div>
+	<div class="clear"></div> 	
+</nav>
+
+
+
+
+<!-- main page content -->
+<article>
+	<div id="article_inner">
+		{content}
+	</div>
+</article>
+
+
+<!--  Footer  --> 
+<footer>
+	<p>&copy; {company_name} 2015 - | <a href="{page_link_4}">Legal Notice and Disclaimer</a> <br />
+	Powered by <a href="http://open-realty.org" title="Open-Realty&reg;" rel="noopener noreferrer" target="_blank" target="_blank">Open-Realty</a><span class="reg_mark_h2">&#174;</span>- &copy;2021 - All Rights Reserved.</p>
+	{mobile_full_template_link}
+</footer>
+
+
+<!--  Persistant Admin bar. Only appears at top if user is logged in -->
+{check_member}
+
+<div id="oradminbar">
+	<div class="quicklinks">
+	
+		<ul id="or-admin-bar">
+			{check_agent}
+				<li class="menupop"><a href="{baseurl}/admin/" title="Admin Area"><span>{lang_index_admin}</span></a>
+			{/check_agent}
+			
+			{!check_agent}
+				<li class="menupop"><a href="#" title="My Account"><span>MY ACCOUNT</span></a>
+			{/!check_agent}
+			
+				<ul>
+					{!check_agent}
+					<li><a href="{url_view_favorites}" title="View Favorites">View Favorites</a></li>
+					<li><a href="{url_view_saved_searches}" title="Saved Searches">Saved Searches</a></li>
+					<li><a href="{url_edit_profile}" title="Edit my Account">Edit my Account</a></li>
+					{/!check_agent}
+					
+					{check_agent}
+					<li><a href="{baseurl}/admin/index.php?action=edit_user&amp;user_id={current_user_id}">{lang_admin_edit_my_account}</a></li>											
+					
+					<li><a href="{baseurl}/admin/index.php?action=my_leadmanager">{lang_admin_view_my_leads}</a></li>
+					<li><a href="{baseurl}/admin/index.php?action=edit_my_listings">{lang_admin_edit_my_listings}</a></li>
+
+					{check_edit_all_listings}
+					<li><a href="{baseurl}/admin/index.php?action=edit_listings">{lang_admin_edit_all_listings}</a></li>
+					{/check_edit_all_listings}
+
+					{check_edit_all_leads}
+					<li><a href="{baseurl}/admin/index.php?action=leadmanager">{lang_admin_view_leads}</a></li>
+					{/check_edit_all_leads}
+					
+					{check_edit_all_users}
+					<li><a href="{baseurl}/admin/index.php?action=user_manager">{lang_admin_user_manager}</a></li>
+					{/check_edit_all_users}
+					
+					{check_edit_site_config}
+					<li><a href="{baseurl}/admin/index.php?action=configure">{lang_admin_site_config}</a></li>											
+					{/check_edit_site_config}
+					
+					{/check_agent}	
+				</ul>
+			</li>													
+			
+			{check_agent}
+			<li class="menupop">
+				<a href="#"><span>ADD</span></a>
+				<ul>
+					<li><a href="{baseurl}/admin/index.php?action=leadmanager_add_lead" title="Add Lead">{lang_admin_add_lead}</a></li>
+					<li><a href="#" id="menu_add_listing_link" title="Add Listing">{lang_admin_add_listing}</a></li>
+					{check_access_blog_manager}
+					<li><a href="{baseurl}/admin/index.php?action=edit_blog">{lang_admin_blog_manager}</a></li>											
+					{/check_access_blog_manager}
+					
+					{check_edit_pages}
+					<li><a href="{baseurl}/admin/index.php?action=edit_page">{lang_admin_page_editor_caption}</a></li>
+					{/check_edit_pages}
+				</ul>
+			</li>
+			{/check_agent}
+			
+			<li><a href="{url_logout}">{lang_index_logout}</a></li>
+		</ul>
+	</div>
+
+	<div style="float:right;height:18px;padding:3px;margin:0; margin-right: 5px; margin-top: 3px;">
+		Logged In: {current_user_first_name} {current_user_last_name}&nbsp;&nbsp;<span id="online_status"></span>
+	</div>
+	
+</div>
+
+{/check_member}
+
+<!-- Quick Search popup -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#quicksearch").uitabs();
+	});	
+</script>
+	<div class="quicksearch_wrapper_collapse">
+		<img src="{template_url}/images/quicksearch.png" class="menu_collapse" id="show" alt="Click Me!" title="Click Me!" />
+  	 	<div id="quicksearch_form_div">
+	 	
+  	 		<h3>Persistent Collapsing Quick Search</h3>
+			
+			<div id="quicksearch">
+				<!--  generate the unordered list with links that becomes our tabs -->		
+				<ul>
+					{foreach_pclass_block}
+					<li><a href="#pane_{pclass_id}">{pclass_name}</a></li>
+					{/foreach_pclass_block}
+				</ul>
+			
+  	 			<!--  Search panes div  -->
+  				{foreach_pclass_block}
+  	 			<div id="pane_{pclass_id}">
+	  	 			<div class="templated_search_form">
+						<div class="templated_search_form_data">
+							{templated_search_form_{pclass_id}}
+						</div>
+					</div>
+  	 	 		</div>
+  	 	 		{/foreach_pclass_block}
+  	 	 	</div>
+	 	 	
+  	 	 	
+  	 	 	</div>	
+  	 	 	<div class="space_10"></div>	
+  	 	 	
+		</div>
+
+
+	{load_js_last}
+	</div>
+</body>
+</html>

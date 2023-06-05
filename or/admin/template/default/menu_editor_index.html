@@ -1,0 +1,1403 @@
+<link
+  rel="stylesheet"
+  href="{baseurl}/node_modules/jstree/dist/themes/default/style.min.css"
+/>
+
+<script
+  type="text/javascript"
+  src="{baseurl}/node_modules/jstree/dist/jstree.min.js"
+></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    //Load the List of Menus on Page Load
+    $.get(
+      "ajax.php?action=ajax_get_menus",
+      function (data) {
+        if (data.error) {
+          alert("{lang_emenu_error}");
+        } else {
+          jQuery.each(data.menus, function (index, value) {
+            $("#menu_selection").append(
+              "<option value='" +
+                index +
+                "'>(" +
+                index +
+                ") " +
+                value +
+                "<\/option>"
+            );
+          });
+        }
+      },
+      "json"
+    );
+
+    $("#customizeModal").on("click", "#add_menu_save", function (event) {
+      event.preventDefault();
+      $.post(
+        "ajax.php?action=ajax_create_menu",
+        $("#customizeModal .add_menu_form").serialize(),
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          } else {
+            status_msg("{lang_emenu_added}");
+            closeModal();
+            $("#menu_selection").append(
+              "<option value='" +
+                data.menu_id +
+                "'>" +
+                data.menu_name +
+                "<\/option>"
+            );
+            $("#menu_selection").val(data.menu_id).change();
+          }
+        },
+        "json"
+      );
+    });
+
+    $("#customizeModal").on("click", "#add_item_save", function (event) {
+      event.preventDefault();
+      $.post(
+        "ajax.php?action=ajax_add_menu_item",
+        $("#customizeModal .add_item_form").serialize(),
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          } else {
+            status_msg("{lang_emenu_item_added}");
+            closeModal();
+            if (data.parent_id == 0) {
+              node = null;
+            } else {
+              node = $("#menu_editor_jstree_container").jstree(
+                "get_node",
+                "#t_" + data.parent_id
+              );
+            }
+            console.log("Parent Node");
+            $("#menu_editor_jstree_container").jstree("create_node", node, {
+              id: "t_" + data.item_id,
+              text: data.item_name,
+            });
+            $("#menu_editor_jstree_container").jstree(
+              "select_node",
+              "#i_" + data.item_id
+            );
+            $("#i_" + data.item_id)
+              .parents(".jstree-closed")
+              .each(function () {
+                $("#menu_editor_jstree_container").jstree(
+                  "open_node",
+                  this,
+                  false,
+                  true
+                );
+              });
+          }
+        },
+        "json"
+      );
+    });
+
+    $("#menu_editor_new_menu").click(function () {
+      var html = $("#add_menu_modal").html();
+      raiseModal("{lang_emenu_add_menu}", html);
+    });
+
+    $("#menu_editor_delete_menu").click(function () {
+      var menu_id = $("#menu_selection  option:selected").val();
+      var menu_name = $("#menu_selection  option:selected").text();
+      if (menu_id != "") {
+        var confirmdelete = confirm("{lang_emenu_delete_menu} " + menu_name);
+        if (confirmdelete == true) {
+          $.post(
+            "ajax.php?action=ajax_delete_menu",
+            {
+              menu_id: menu_id,
+            },
+            function (data) {
+              if (!data.error) {
+                status_msg("{lang_emenu_deleted}");
+                $("#menu_selection option[value='" + menu_id + "']").remove();
+                $("#menu_selection").val("").change();
+              }
+            },
+            "json"
+          );
+        }
+      }
+    });
+
+    //When a menu is selected get a list of the menu items.
+    $("#menu_selection").change(function () {
+      var menu_id = $(this).val();
+      var menu_name = $(this)
+        .find("option:selected")
+        .text()
+        .replace(/\(\d+\)/, "");
+      $("#menu_editor_detail_container").html("");
+      if (menu_id == "") {
+        $("#cur_menu_name").text("");
+        $.jstree.destroy();
+      } else {
+        $("#cur_menu_name").html("&#123;render_menu_" + menu_id + "&#125;");
+        $("#menu_editor_jstree_container").jstree("destroy");
+        $("#menu_editor_jstree_container")
+          .jstree({
+            core: {
+              check_callback: true,
+              data: {
+                method: "POST",
+                data: $("#menu_selection_form").serialize(),
+                url: "ajax.php?action=ajax_get_menu_items",
+                dataFilter: function (raw, type) {
+                  response = JSON.parse(raw);
+                  console.log(response);
+                  data = [];
+                  if (response.error == true) {
+                    status_error(response.error_msg);
+                  } else {
+                    data.push({
+                      id: "t_0",
+                      parent: "#",
+                      text: menu_name.trim(),
+                      type: "root",
+                      state: {
+                        opened: true,
+                      },
+                    });
+
+                    $.each(response.menu, function (parent_id, itemarray) {
+                      $.each(itemarray, function (key, subitem_array) {
+                        //Item Key to subitem ID
+                        subitem_id = subitem_array.item_id;
+                        subitem_name = subitem_array.item_name;
+                        subitem_type = subitem_array.item_type;
+                        var nodeType = "";
+                        switch (subitem_type) {
+                          case "5":
+                            nodeType = "block";
+                            break;
+                          case "4":
+                            nodeType = "divider";
+                            break;
+                        }
+
+                        var iclass = "";
+                        if (
+                          subitem_array.visible_guest != 1 &&
+                          subitem_array.visible_member != 1 &&
+                          subitem_array.visible_agent != 1 &&
+                          subitem_array.visible_admin != 1
+                        ) {
+                          iclass = "menu_item_invisible";
+                        }
+                        node = {
+                          id: "t_" + subitem_id, // required
+                          parent: "t_" + parent_id, // required
+                          text: subitem_name, // node text
+                          type: nodeType,
+                          li_attr: {
+                            class: iclass,
+                          }, // attributes for the generated LI node
+                        };
+                        data.push(node);
+                      });
+                    });
+                  }
+                  return JSON.stringify(data);
+                },
+              },
+            },
+            types: {
+              "#": {
+                valid_children: ["root"],
+              },
+              root: {
+                icon: "menu_root_icon",
+                valid_children: ["default", "divider", "block"],
+              },
+              block: {
+                valid_children: ["none"],
+                max_children: 0,
+                icon: "menu_root_block",
+              },
+              divider: {
+                valid_children: ["divider", "default", "block"],
+                icon: "menu_root_divider",
+              },
+              default: {
+                valid_children: ["divider", "default", "block"],
+                icon: "menu_root_default",
+              },
+            },
+            contextmenu: {
+              items: function (node) {
+                return {
+                  new: {
+                    label: "{lang_emenu_add_item}",
+                    action: function () {
+                      $("#add_item_menu_id").attr("value", menu_id);
+                      if (node.id == undefined) {
+                        $("#add_item_parent_id").attr("value", 0);
+                      } else {
+                        $("#add_item_parent_id").attr(
+                          "value",
+                          node.id.substring(2)
+                        );
+                      }
+
+                      var html = $("#add_item_modal").html();
+                      raiseModal("{lang_emenu_add_item}", html);
+                    },
+                  },
+                  delete: {
+                    label: "{lang_emenu_delete_item}",
+                    action: function () {
+                      if (confirm("{lang_emenu_delete_item_confirm}")) {
+                        $.post(
+                          "ajax.php?action=ajax_delete_menu_item",
+                          {
+                            item_id: function () {
+                              if (node.id == undefined) {
+                                return 0;
+                              } else {
+                                return node.id.substring(2);
+                              }
+                            },
+                          },
+                          function (data) {
+                            if (!data.error) {
+                              status_msg("{lang_emenu_item_deleted}");
+                              $("#menu_editor_jstree_container").jstree(
+                                "delete_node",
+                                node
+                              );
+                            }
+                          },
+                          "json"
+                        );
+                      }
+                    },
+                  },
+                };
+              },
+            },
+
+            plugins: ["contextmenu", "dnd", "types"],
+          })
+          .bind("select_node.jstree", function (event, data) {
+            item_obj = data.node;
+            item_id = data.selected[0].substring(2);
+            if (item_id == "") {
+              $("#menu_editor_detail_container").html("");
+            } else {
+              $.get(
+                "ajax.php?action=ajax_get_menu_item_details&item_id=" + item_id,
+                function (data) {
+                  if (data.error) {
+                    alert("{lang_emenu_error}");
+                  } else {
+                    var visible_guest = "";
+                    var visible_member = "";
+                    var visible_agent = "";
+                    var visible_admin = "";
+
+                    if (data.menu_item.visible_guest == "1") {
+                      visible_guest = " checked='checked' ";
+                    }
+                    if (data.menu_item.visible_member == "1") {
+                      visible_member = " checked='checked' ";
+                    }
+                    if (data.menu_item.visible_agent == "1") {
+                      visible_agent = " checked='checked' ";
+                    }
+                    if (data.menu_item.visible_admin == "1") {
+                      visible_admin = " checked='checked' ";
+                    }
+
+                    $("#menu_editor_detail_container").html(
+                      "<form id='item_detail_form'> \
+								<div class='input-group input-group-static mb-2'> \
+								<label for='title'>{lang_emenu_item_name}<\/label> \
+								<input type='text' name='item_name' id='item_name' value='' class='form-control' required \/> \
+							    <\/div> \
+								<div class='input-group input-group-static mb-2'> \
+								<label>{lang_emenu_viewable_by}<\/label>\
+								<\/div>\
+								<div class='form-check'> \
+								<input class='form-check-input' type='checkbox' value='1' id='visible_guest' name='visible_guest' " +
+                        visible_guest +
+                        " > \
+								<label class='custom-control-label' for='visible_guest'>{lang_emenu_viewable_guest}<\/label> \
+								<input class='form-check-input' type='checkbox' value='1' id='visible_member' name='visible_member' " +
+                        visible_member +
+                        " > \
+								<label class='custom-control-label' for='visible_member'>{lang_emenu_viewable_members}<\/label> \
+								<input class='form-check-input' type='checkbox' value='1' id='visible_agent' name='visible_agent' " +
+                        visible_agent +
+                        " > \
+								<label class='custom-control-label' for='visible_agent'>{lang_emenu_viewable_agents}<\/label> \
+								<input class='form-check-input' type='checkbox' value='1' id='visible_admin' name='visible_admin' " +
+                        visible_admin +
+                        " > \
+								<label class='custom-control-label' for='visible_admin'>{lang_emenu_viewable_admins}<\/label> \
+								<\/div> \
+								<div id='fs_menu_item_type'> \
+								<div class='input-group input-group-static mb-3'> \
+								<label for='item_type' class='ms-0'>{lang_emenu_item_type}<\/label> \
+								<select name='item_type' class='form-control' id='item_type'> \
+								<option value=''>{lang_emenu_select_item_type}<\/option> \
+								<option value='1'>{lang_emenu_type_action}<\/option> \
+								<option value='2'>{lang_emenu_type_page}<\/option> \
+								<option value='6'>{lang_emenu_type_blog}<\/option> \
+								<option value='5'>{lang_emenu_type_block_elements}<\/option> \
+								<option value='3'>{lang_emenu_type_customurl}<\/option> \
+								<option value='4'>{lang_emenu_type_divider}<\/option> \
+								<\/select> \
+							    <\/div> \
+								<\/div> \
+							<\/form>"
+                    );
+                    $("#item_name").val(data.menu_item.item_name);
+                    $("#cur_menu_item_name").text(
+                      data.menu_item.item_name + " (" + item_id + ")"
+                    );
+                    $("#item_type").val(data.menu_item.item_type);
+
+                    var item_type = data.menu_item.item_type;
+                    var item_target = data.menu_item.item_target;
+                    var item_class = data.menu_item.item_class;
+                    if (item_target == "_blank") {
+                      var target_blank_select = " selected='selected' ";
+                    } else {
+                      var target_blank_select = "";
+                    }
+                    if (item_target == "_self") {
+                      var target_self_select = " selected='selected' ";
+                    } else {
+                      var target_self_select = "";
+                    }
+                    if (item_target == "_parent") {
+                      var target_parent_select = " selected='selected' ";
+                    } else {
+                      var target_parent_select = "";
+                    }
+                    if (item_target == "_top") {
+                      var target_top_select = " selected='selected' ";
+                    } else {
+                      var target_top_select = "";
+                    }
+                    switch (item_type) {
+                      case "1":
+                        //Build a drop down of actions
+                        $("#fs_menu_item_type").append(
+                          "<div id='item_value_container'>\
+										<div class='input-group input-group-static mb-3'> \
+										<label for='item_value' class='ms-0'>{lang_emenu_internal_action}<\/label> \
+										<select name='item_value' class='form-control' id='item_value'><\/select> \
+										<\/div> \
+										<div class='input-group input-group-static mb-3'> \
+										<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+										<select name='item_target' class='form-control' id='item_target'> \
+										<option value='_self' " +
+                            target_self_select +
+                            ">_self<\/option> \
+										<option value='_blank' " +
+                            target_blank_select +
+                            ">_blank<\/option> \
+										<option value='_parent' " +
+                            target_parent_select +
+                            ">_parent<\/option> \
+										<option value='_top' " +
+                            target_top_select +
+                            ">_top<\/option> \
+										<\/select> \
+										<\/div> \
+										<div class='input-group input-group-static mb-2'> \
+										<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+										<input type='text' name='item_class' id='item_class' value='" +
+                            item_class +
+                            "' class='form-control' /> \
+										<\/div> \
+										<\/div>"
+                        );
+                        $("#item_value").append(
+                          "<option value=''>{lang_emenu_action_select}<\/option>"
+                        );
+                        if (data.menu_item.item_value == "url_view_agents") {
+                          $("#item_value").append(
+                            "<option value='url_view_agents' selected='selected'>{lang_menu_view_agents}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_view_agents'>{lang_menu_view_agents}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_search") {
+                          $("#item_value").append(
+                            "<option value='url_search' selected='selected'>{lang_menu_search_listings}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_search'>{lang_menu_search_listings}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_blog") {
+                          $("#item_value").append(
+                            "<option value='url_blog' selected='selected'>{lang_menu_blog}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_blog'>{lang_menu_blog}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_index") {
+                          $("#item_value").append(
+                            "<option value='url_index' selected='selected'>{lang_menu_home}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_index'>{lang_menu_home}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_search_results") {
+                          $("#item_value").append(
+                            "<option value='url_search_results' selected='selected'>{lang_menu_user_browse_listings}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_search_results'>{lang_menu_user_browse_listings}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_logout") {
+                          $("#item_value").append(
+                            "<option value='url_logout' selected='selected'>{lang_menu_logout}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_logout'>{lang_menu_logout}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_member_signup") {
+                          $("#item_value").append(
+                            "<option value='url_member_signup' selected='selected'>{lang_menu_member_signup}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_member_signup'>{lang_menu_member_signup}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_agent_signup") {
+                          $("#item_value").append(
+                            "<option value='url_agent_signup' selected='selected'>{lang_menu_agent_signup}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_agent_signup'>{lang_menu_agent_signup}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_member_login") {
+                          $("#item_value").append(
+                            "<option value='url_member_login' selected='selected'>{lang_menu_member_login}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_member_login'>{lang_menu_member_login}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_agent_login") {
+                          $("#item_value").append(
+                            "<option value='url_agent_login' selected='selected'>{lang_menu_agent_login}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_agent_login'>{lang_menu_agent_login}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_view_favorites") {
+                          $("#item_value").append(
+                            "<option value='url_view_favorites' selected='selected'>{lang_menu_url_view_favorites}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_view_favorites'>{lang_menu_url_view_favorites}<\/option>"
+                          );
+                        }
+                        if (
+                          data.menu_item.item_value == "url_view_calculator"
+                        ) {
+                          $("#item_value").append(
+                            "<option value='url_view_calculator' selected='selected'>{lang_menu_calculators}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_view_calculator'>{lang_menu_calculators}<\/option>"
+                          );
+                        }
+                        if (
+                          data.menu_item.item_value == "url_view_saved_searches"
+                        ) {
+                          $("#item_value").append(
+                            "<option value='url_view_saved_searches' selected='selected'>{lang_menu_saved_searches}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_view_saved_searches'>{lang_menu_saved_searches}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "url_edit_profile") {
+                          $("#item_value").append(
+                            "<option value='url_edit_profile' selected='selected'>{lang_menu_edit_profile}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='url_edit_profile'>{lang_menu_edit_profile}<\/option>"
+                          );
+                        }
+
+                        if (data.menu_item.item_value == "rss_lastmodified") {
+                          $("#item_value").append(
+                            "<option value='rss_lastmodified' selected='selected'>{lang_menu_rss_lastmodified}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='rss_lastmodified'>{lang_menu_rss_lastmodified}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "rss_latestlisting") {
+                          $("#item_value").append(
+                            "<option value='rss_latestlisting' selected='selected'>{lang_menu_rss_latestlisting}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='rss_latestlisting'>{lang_menu_rss_latestlisting}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "rss_featured") {
+                          $("#item_value").append(
+                            "<option value='rss_featured' selected='selected'>{lang_menu_rss_featured}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='rss_featured'>{lang_menu_rss_featured}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "rss_blog_posts") {
+                          $("#item_value").append(
+                            "<option value='rss_blog_posts' selected='selected'>{lang_menu_rss_blog_posts}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='rss_blog_posts'>{lang_menu_rss_blog_posts}<\/option>"
+                          );
+                        }
+                        if (data.menu_item.item_value == "rss_blog_comments") {
+                          $("#item_value").append(
+                            "<option value='rss_blog_comments' selected='selected'>{lang_menu_rss_blog_comments}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='rss_blog_comments'>{lang_menu_rss_blog_comments}<\/option>"
+                          );
+                        }
+
+                        break;
+                      case "2":
+                        //Build a drop down of wysiwyg pages
+                        jQuery.ajax({
+                          url: "ajax.php?action=ajax_get_pages",
+                          success: function (pdata) {
+                            if (pdata.error) {
+                              alert("{lang_emenu_error}");
+                            } else {
+                              $("#fs_menu_item_type").append(
+                                "<div id='item_value_container'>\
+															<div class='input-group input-group-static mb-3'> \
+															<label for='item_value' class='ms-0'>{lang_emenu_page_editor}<\/label> \
+															<select name='item_value' class='form-control' id='item_value'><\/select> \
+															<\/div> \
+															<div class='input-group input-group-static mb-3'> \
+															<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+															<select name='item_target' class='form-control' id='item_target'> \
+															<option value='_self' " +
+                                  target_self_select +
+                                  ">_self<\/option> \
+															<option value='_blank' " +
+                                  target_blank_select +
+                                  ">_blank<\/option> \
+															<option value='_parent' " +
+                                  target_parent_select +
+                                  ">_parent<\/option> \
+															<option value='_top' " +
+                                  target_top_select +
+                                  ">_top<\/option> \
+															<\/select> \
+															<\/div> \
+															<div class='input-group input-group-static mb-2'> \
+															<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+															<input type='text' name='item_class' id='item_class' value='" +
+                                  item_class +
+                                  "' class='form-control' \/> \
+															<\/div> \
+															<\/div>"
+                              );
+                              $("#item_value").append(
+                                "<option value=''>{lang_emenu_select_page}<\/option>"
+                              );
+                              jQuery.each(
+                                pdata.pages,
+                                function (page_id, page_name) {
+                                  if (page_id == data.menu_item.item_value) {
+                                    $("#item_value").append(
+                                      "<option value='" +
+                                        page_id +
+                                        "' selected='selected'>" +
+                                        page_name +
+                                        "<\/option>"
+                                    );
+                                  } else {
+                                    $("#item_value").append(
+                                      "<option value='" +
+                                        page_id +
+                                        "'>" +
+                                        page_name +
+                                        "<\/option>"
+                                    );
+                                  }
+                                }
+                              );
+                            }
+                          },
+                          async: false,
+                          dataType: "json",
+                        });
+                        break;
+                      case "6":
+                        //Build a drop down of blogs pages
+                        jQuery.ajax({
+                          url: "ajax.php?action=ajax_get_blogs",
+                          success: function (pdata) {
+                            if (pdata.error) {
+                              alert("{lang_emenu_error}");
+                            } else {
+                              $("#fs_menu_item_type").append(
+                                "<div id='item_value_container'>\
+															<div class='input-group input-group-static mb-3'> \
+															<label for='item_value' class='ms-0'>{lang_emenu_blog_article}<\/label> \
+															<select name='item_value' class='form-control' id='item_value'><\/select> \
+															<\/div> \
+															<div class='input-group input-group-static mb-3'> \
+															<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+															<select name='item_target' class='form-control' id='item_target'> \
+															<option value='_self' " +
+                                  target_self_select +
+                                  ">_self<\/option> \
+															<option value='_blank' " +
+                                  target_blank_select +
+                                  ">_blank<\/option> \
+															<option value='_parent' " +
+                                  target_parent_select +
+                                  ">_parent<\/option> \
+															<option value='_top' " +
+                                  target_top_select +
+                                  ">_top<\/option> \
+															<\/select> \
+															<\\/div> \
+															<div class='input-group input-group-static mb-2'> \
+															<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+															<input type='text' name='item_class' id='item_class' value='" +
+                                  item_class +
+                                  "' class='form-control' \/> \
+															<\/div> \
+															<\/div>"
+                              );
+                              $("#item_value").append(
+                                "<option value=''>{lang_emenu_select_page}<\/option>"
+                              );
+                              jQuery.each(
+                                pdata.blogs,
+                                function (blog_id, blog_name) {
+                                  if (blog_id == data.menu_item.item_value) {
+                                    $("#item_value").append(
+                                      "<option value='" +
+                                        blog_id +
+                                        "' selected='selected'>" +
+                                        blog_name +
+                                        "<\/option>"
+                                    );
+                                  } else {
+                                    $("#item_value").append(
+                                      "<option value='" +
+                                        blog_id +
+                                        "'>" +
+                                        blog_name +
+                                        "<\/option>"
+                                    );
+                                  }
+                                }
+                              );
+                            }
+                          },
+                          async: false,
+                          dataType: "json",
+                        });
+                        break;
+                      case "3":
+                        //Build a text box for custom url entry.
+                        $("#fs_menu_item_type").append(
+                          "<div id='item_value_container'>\
+											<div class='input-group input-group-static mb-2'> \
+											<label for='item_class'>{lang_emenu_type_customurl}<\/label> \
+											<input type='text' name='item_class' id='item_class' value='" +
+                            data.menu_item.item_value +
+                            "' class='form-control' \/> \
+											<\/div> \
+											<div class='input-group input-group-static mb-3'> \
+											<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+											<select name='item_target' class='form-control' id='item_target'> \
+											<option value='_self' " +
+                            target_self_select +
+                            ">_self<\/option> \
+											<option value='_blank' " +
+                            target_blank_select +
+                            ">_blank<\/option> \
+											<option value='_parent' " +
+                            target_parent_select +
+                            ">_parent<\/option> \
+											<option value='_top' " +
+                            target_top_select +
+                            ">_top<\/option> \
+											<\/select> \
+											<\/div> \
+											<div class='input-group input-group-static mb-2'> \
+											<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+											<input type='text' name='item_class' id='item_class' value='" +
+                            item_class +
+                            "' class='form-control' \/> \
+											<\/div> \
+											<\/div>"
+                        );
+                        $("#item_value").focus();
+
+                        break;
+                      case "4":
+                        //Do nothing this is just a divider
+                        $("#fs_menu_item_type").append(
+                          "<div id='item_value_container'>\
+										<input type='hidden' name='item_value' id='item_value' value='' \/>\
+										<input type='hidden' name='item_target' id='item_target' value='_self' /><br \/>\
+										<input type='hidden' name='item_class' id='item_class' value='' \/> \
+										<\/div>"
+                        );
+                        break;
+                      case "5":
+                        //Build a drop down of Block Items
+                        $("#fs_menu_item_type").append(
+                          "<div id='item_value_container'>\
+											<div class='input-group input-group-static mb-3'> \
+											<label for='item_value' class='ms-0'>{lang_emenu_block_element}<\/label> \
+											<select name='item_value' class='form-control' id='item_value'><\/select> \
+											<\/div> \
+											<div class='input-group input-group-static mb-3'> \
+											<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+											<select name='item_target' class='form-control' id='item_target'> \
+											<option value='_self' " +
+                            target_self_select +
+                            ">_self<\/option> \
+											<option value='_blank' " +
+                            target_blank_select +
+                            ">_blank<\/option> \
+											<option value='_parent' " +
+                            target_parent_select +
+                            ">_parent<\/option> \
+											<option value='_top' " +
+                            target_top_select +
+                            ">_top<\/option> \
+											<\/select> \
+											<\/div> \
+											<div class='input-group input-group-static mb-2'> \
+											<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+											<input type='text' name='item_class' id='item_class' value='" +
+                            item_class +
+                            "' class='form-control' \/> \
+											<\/div> \
+											<\/div>"
+                        );
+                        $("#item_value").append(
+                          "<option value=''>{lang_emenu_select_block_element}<\/option>"
+                        );
+                        if (
+                          data.menu_item.item_value ==
+                          "blog_recent_comments_block"
+                        ) {
+                          $("#item_value").append(
+                            "<option value='blog_recent_comments_block' selected='selected'>{lang_menu_blog_recent_comments_block}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='blog_recent_comments_block'>{lang_menu_blog_recent_comments_block}<\/option>"
+                          );
+                        }
+                        if (
+                          data.menu_item.item_value == "blog_recent_post_block"
+                        ) {
+                          $("#item_value").append(
+                            "<option value='blog_recent_post_block' selected='selected'>{lang_menu_blog_recent_post_block}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='blog_recent_post_block'>{lang_menu_blog_recent_post_block}<\/option>"
+                          );
+                        }
+                        if (
+                          data.menu_item.item_value == "blog_archive_link_block"
+                        ) {
+                          $("#item_value").append(
+                            "<option value='blog_archive_link_block' selected='selected'>{lang_menu_blog_archive_link_block}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='blog_archive_link_block'>{lang_menu_blog_archive_link_block}<\/option>"
+                          );
+                        }
+                        if (
+                          data.menu_item.item_value ==
+                          "blog_category_link_block"
+                        ) {
+                          $("#item_value").append(
+                            "<option value='blog_category_link_block' selected='selected'>{lang_menu_blog_category_link_block}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='blog_category_link_block'>{lang_menu_blog_category_link_block}<\/option>"
+                          );
+                        }
+                        //pclass_names_searchlinks
+                        if (
+                          data.menu_item.item_value ==
+                          "pclass_searchlinks_block"
+                        ) {
+                          $("#item_value").append(
+                            "<option value='pclass_searchlinks_block' selected='selected'>{lang_menu_pclass_searchlinks_block}<\/option>"
+                          );
+                        } else {
+                          $("#item_value").append(
+                            "<option value='pclass_searchlinks_block'>{lang_menu_pclass_searchlinks_block}<\/option>"
+                          );
+                        }
+                        break;
+                    }
+                    $("#item_type").change(function () {
+                      $("#item_value_container").remove();
+                      switch ($(this).val()) {
+                        case "1":
+                          //Build a drop down of actions
+                          $("#item_type").after(
+                            "<div id='item_value_container'> \
+												<div class='input-group input-group-static mb-3'> \
+												<label for='item_value' class='ms-0'>{lang_emenu_or_action}<\/label> \
+												<select name='item_value' class='form-control' id='item_value'><\/select> \
+												<\/div> \
+												<div class='input-group input-group-static mb-3'> \
+												<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+												<select name='item_target' class='form-control' id='item_target'> \
+												<option value='_self'>_self<\/option> \
+												<option value='_blank'>_blank<\/option> \
+												<option value='_parent'>_parent<\/option> \
+												<option value='_top'>_top<\/option> \
+												<\/select> \
+												<\/div> \
+												<div class='input-group input-group-static mb-2'> \
+												<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+												<input type='text' name='item_class' id='item_class' value='' class='form-control' \/> \
+												<\/div> \
+												<\/div>"
+                          );
+                          $("#item_value").append(
+                            "<option value=''>{lang_emenu_action_select}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_view_agents'>{lang_menu_view_agents}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_search'>{lang_menu_search_listings}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_blog'>{lang_menu_blog}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_index'>{lang_menu_home}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_search_results'>{lang_menu_user_browse_listings}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_logout'>{lang_menu_logout}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_member_signup'>{lang_menu_member_signup}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_agent_signup'>{lang_menu_agent_signup}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_member_login'>{lang_menu_member_login}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_agent_login'>{lang_menu_agent_login}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_view_favorites'>{lang_menu_url_view_favorites}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_view_calculator'>{lang_menu_calculators}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_view_saved_searches'>{lang_menu_saved_searches}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='url_edit_profile'>{lang_menu_edit_profile}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='rss_lastmodified'>{lang_menu_rss_lastmodified}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='rss_latestlisting'>{lang_menu_rss_latestlisting}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='rss_featured'>{lang_menu_rss_featured}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='rss_blog_posts'>{lang_menu_rss_blog_posts}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='rss_blog_comments'>{lang_menu_rss_blog_comments}<\/option>"
+                          );
+
+                          break;
+                        case "2":
+                          //Build a drop down of wysiwyg pages
+                          jQuery.ajax({
+                            url: "ajax.php?action=ajax_get_pages",
+                            success: function (pdata) {
+                              if (pdata.error) {
+                                alert("{lang_emenu_error}");
+                              } else {
+                                $("#item_type").after(
+                                  "<div id='item_value_container'>\
+															<div class='input-group input-group-static mb-3'> \
+															<label for='item_value' class='ms-0'>{lang_emenu_page_editor}<\/label> \
+															<select name='item_value' class='form-control' id='item_value'><\/select> \
+															<\/div> \
+															<div class='input-group input-group-static mb-3'> \
+												<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+												<select name='item_target' class='form-control' id='item_target'> \
+												<option value='_self'>_self<\/option> \
+												<option value='_blank'>_blank<\/option> \
+												<option value='_parent'>_parent<\/option> \
+												<option value='_top'>_top<\/option> \
+												<\/select> \
+												<\/div> \
+												<div class='input-group input-group-static mb-2'> \
+												<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+												<input type='text' name='item_class' id='item_class' value='' class='form-control' \/> \
+												<\/div> \
+																<\/div>"
+                                );
+                                $("#item_value").append(
+                                  "<option value=''>{lang_emenu_action_select}<\/option>"
+                                );
+                                jQuery.each(
+                                  pdata.pages,
+                                  function (page_id, page_name) {
+                                    $("#item_value").append(
+                                      "<option value='" +
+                                        page_id +
+                                        "'>" +
+                                        page_name +
+                                        "<\/option>"
+                                    );
+                                  }
+                                );
+                              }
+                            },
+                            async: false,
+                            dataType: "json",
+                          });
+                          break;
+                        case "6":
+                          //Build a drop down of blogs
+                          jQuery.ajax({
+                            url: "ajax.php?action=ajax_get_blogs",
+                            success: function (pdata) {
+                              if (pdata.error) {
+                                alert("{lang_emenu_error}");
+                              } else {
+                                $("#item_type").after(
+                                  "<div id='item_value_container'>\
+															<div class='input-group input-group-static mb-3'> \
+															<label for='item_value' class='ms-0'>{lang_emenu_blog_article}<\/label> \
+															<select name='item_value' class='form-control' id='item_value'><\/select> \
+															<\/div> \
+															<div class='input-group input-group-static mb-3'> \
+												<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+												<select name='item_target' class='form-control' id='item_target'> \
+												<option value='_self'>_self<\/option> \
+												<option value='_blank'>_blank<\/option> \
+												<option value='_parent'>_parent<\/option> \
+												<option value='_top'>_top<\/option> \
+												<\/select> \
+												<\/div> \
+												<div class='input-group input-group-static mb-2'> \
+												<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+												<input type='text' name='item_class' id='item_class' value='' class='form-control' \/> \
+												<\/div> \
+																<\/div>"
+                                );
+                                $("#item_value").append(
+                                  "<option value=''>{lang_emenu_action_select}<\/option>"
+                                );
+                                jQuery.each(
+                                  pdata.blogs,
+                                  function (blog_id, blog_name) {
+                                    $("#item_value").append(
+                                      "<option value='" +
+                                        blog_id +
+                                        "'>" +
+                                        blog_name +
+                                        "<\/option>"
+                                    );
+                                  }
+                                );
+                              }
+                            },
+                            async: false,
+                            dataType: "json",
+                          });
+                          break;
+                        case "3":
+                          //Build a text box for custom url entry.
+                          $("#item_type").after(
+                            "<div id='item_value_container'>\
+											<div class='input-group input-group-static mb-2'> \
+											<label for='item_class'>{lang_emenu_type_customurl}<\/label> \
+											<input type='text' name='item_class' id='item_class' value='" +
+                              data.menu_item.item_value +
+                              "' class='form-control' \/> \
+											<\/div> \
+											<div class='input-group input-group-static mb-3'> \
+												<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+												<select name='item_target' class='form-control' id='item_target'> \
+												<option value='_self'>_self<\/option> \
+												<option value='_blank'>_blank<\/option> \
+												<option value='_parent'>_parent<\/option> \
+												<option value='_top'>_top<\/option> \
+												<\/select> \
+												<\/div> \
+												<div class='input-group input-group-static mb-2'> \
+												<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+												<input type='text' name='item_class' id='item_class' value='' class='form-control' \/> \
+												<\/div> \
+												<\/div>"
+                          );
+                          $("#item_value").focus();
+                          break;
+                        case "4":
+                          //Do nothing this is just a divider
+                          $("#item_type").after(
+                            "<div id='item_value_container'><input type='hidden' name='item_value' id='item_value' value='' \/>\
+												<input type='hidden' name='item_target' id='item_target' value='_self' \/><br \/>\
+												<input type='hidden' name='item_class' id='item_class' value='' \/> \
+												<\/div>"
+                          );
+                          break;
+                        case "5":
+                          //Build a drop down of Block Items
+                          $("#fs_menu_item_type").append(
+                            "<div id='item_value_container'>\
+											<div class='input-group input-group-static mb-3'> \
+											<label for='item_value' class='ms-0'>{lang_emenu_block_element}<\/label> \
+											<select name='item_value' class='form-control' id='item_value'><\/select> \
+											<\/div> \
+											<div class='input-group input-group-static mb-3'> \
+												<label for='item_target' class='ms-0'>{lang_emenu_target}<\/label> \
+												<select name='item_target' class='form-control' id='item_target'> \
+												<option value='_self'>_self<\/option> \
+												<option value='_blank'>_blank<\/option> \
+												<option value='_parent'>_parent<\/option> \
+												<option value='_top'>_top<\/option> \
+												<\/select> \
+												<\/div> \
+												<div class='input-group input-group-static mb-2'> \
+												<label for='item_class'>{lang_emenu_custom_css}<\/label> \
+												<input type='text' name='item_class' id='item_class' value='' class='form-control' \/> \
+												<\/div> \
+												<\/div>"
+                          );
+                          $("#item_value").append(
+                            "<option value='' selected='selected'>{lang_emenu_select_block_element}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='blog_recent_comments_block'>{lang_menu_blog_recent_comments_block}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='blog_recent_post_block'>{lang_menu_blog_recent_post_block}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='blog_archive_link_block'>{lang_menu_blog_archive_link_block}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='blog_category_link_block'>{lang_menu_blog_category_link_block}<\/option>"
+                          );
+                          $("#item_value").append(
+                            "<option value='pclass_searchlinks_block'>{lang_menu_pclass_searchlinks_block}<\/option>"
+                          );
+                          //pclass_searchlinks_block
+                          break;
+                      }
+                    });
+                    $("#item_detail_form").append(
+                      "<button id='save_item' class='btn btn-primary'>{lang_emenu_save_item}<\/button>"
+                    );
+                    $("#save_item").click(function () {
+                      //Validate
+                      if ($("#item_name").val() == "") {
+                        alert("{lang_emenu_error_enter_item_name}");
+                        return false;
+                      }
+                      if ($("#item_type").val() == "") {
+                        alert("{lang_emenu_error_enter_item_type}");
+                        return false;
+                      }
+                      if (
+                        $("#item_value").val() == "" &&
+                        $("#item_type").val() != "4"
+                      ) {
+                        alert("{lang_emenu_error_enter_item_value}");
+                        return false;
+                      }
+                      $.post(
+                        "ajax.php?action=ajax_save_menu_item",
+                        {
+                          item_id: item_id,
+                          item_name: $("#item_name").val(),
+                          item_type: $("#item_type").val(),
+                          item_value: $("#item_value").val(),
+                          item_target: $("#item_target").val(),
+                          item_class: $("#item_class").val(),
+                          visible_guest: function () {
+                            if ($("#visible_guest").is(":checked")) {
+                              return 1;
+                            } else {
+                              return 0;
+                            }
+                          },
+                          visible_member: function () {
+                            if ($("#visible_member").is(":checked")) {
+                              return 1;
+                            } else {
+                              return 0;
+                            }
+                          },
+                          visible_agent: function () {
+                            if ($("#visible_agent").is(":checked")) {
+                              return 1;
+                            } else {
+                              return 0;
+                            }
+                          },
+                          visible_admin: function () {
+                            if ($("#visible_admin").is(":checked")) {
+                              return 1;
+                            } else {
+                              return 0;
+                            }
+                          },
+                        },
+                        function (data) {
+                          if (!data.error) {
+                            $("#menu_editor_jstree_container").jstree(
+                              "rename_node",
+                              item_obj,
+                              $("#item_name").val()
+                            );
+                            //Set Type
+                            switch ($("#item_type").val()) {
+                              case "4":
+                                $(item_obj).attr("rel", "divider");
+                                break;
+                              case "5":
+                                $(item_obj).attr("rel", "block");
+                                break;
+                              default:
+                                $(item_obj).attr("rel", "default");
+                                break;
+                            }
+                            if (
+                              !$("#visible_guest").is(":checked") &&
+                              !$("#visible_member").is(":checked") &&
+                              !$("#visible_agent").is(":checked") &&
+                              !$("#visible_admin").is(":checked")
+                            ) {
+                              $(item_obj).addClass("menu_item_invisible");
+                            } else {
+                              $(item_obj).removeClass("menu_item_invisible");
+                            }
+                            status_msg("{lang_emenu_item_saved}");
+                          }
+                        },
+                        "json"
+                      );
+                    });
+                  }
+                },
+                "json"
+              );
+            }
+          })
+          .bind("move_node.jstree", function (e, data) {
+            var myelements = tree_order(0);
+            $.post(
+              "ajax.php?action=ajax_set_menu_order",
+              {
+                menu_id: menu_id,
+                menu_items: myelements,
+              },
+              function (data) {},
+              "json"
+            );
+          })
+          .bind("loaded.jstree", function (event, data) {
+            $("#menu_editor_jstree_container").jstree("open_node", "#t_0");
+          });
+
+        //debugger;
+      }
+    });
+  });
+  function tree_order(parent) {
+    var elements = {};
+    var parent_id = "#t_" + parent + " > ul > li";
+
+    $(parent_id).each(function (index, elm) {
+      var item_id = $(elm).attr("id").substring(2);
+
+      elements[parseInt(item_id)] = { order: index, parent: parent };
+      if ($("#t_" + item_id + " > ul > li").length) {
+        var new_elements = tree_order(item_id);
+        var old_elements = elements;
+        elements = $.extend(old_elements, new_elements);
+      }
+    });
+    return elements;
+  }
+</script>
+
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+    <!-- begin first tab contents -->
+    <div class="row" style="min-height: 550px">
+      <div class="col-3">
+        <h5 class="menu_rounded_box_title">{lang_emenu_manage_menu}</h5>
+        <div id="manage_menu">
+          <form id="menu_selection_form" action="" method="POST">
+            <input type="hidden" name="token" value="{csrf_token}" />
+            <div class="input-group input-group-static mb-3">
+              <label for="menu_selection" class="ms-0"
+                >{lang_emenu_select_menu}</label
+              >
+              <select
+                name="menu_selection"
+                class="form-control"
+                id="menu_selection"
+              >
+                <option value="">{lang_emenu_select_one}</option>
+              </select>
+            </div>
+
+            <div id="menu_new_delete">
+              <span id="menu_editor_new_menu" class="btn btn-primary btn-sm"
+                >{lang_emenu_new_menu}</span
+              >
+              <span id="menu_editor_delete_menu" class="btn btn-danger btn-sm"
+                >{lang_emenu_delete_menu}</span
+              >
+            </div>
+          </form>
+
+          <div class="mt-2">
+            {lang_emenu_now_editing} <span id="cur_menu_name"></span>
+          </div>
+
+          <div id="menu_editor_jstree_container"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="menu_rounded_box_container">
+          <h5 class="menu_rounded_box_title">
+            {lang_emenu_options_for} <span id="cur_menu_item_name"></span>
+          </h5>
+          <div id="menu_editor_detail_container"></div>
+        </div>
+      </div>
+      <!-- /end first tab contents -->
+    </div>
+
+    <div id="add_menu_modal" class="d-none">
+      <form
+        class="add_menu_form"
+        action="ajax.php?action=ajax_create_menu"
+        method="POST"
+      >
+        <input type="hidden" name="token" value="{csrf_token}" />
+        <div class="input-group input-group-static mb-2">
+          <label for="add_menu_name">{lang_emenu_name}</label>
+          <input
+            type="text"
+            name="add_menu_name"
+            value="{add_menu_name}"
+            class="form-control add_menu_name"
+            required
+          />
+        </div>
+        <a href="#" class="btn btn-primary float-end" id="add_menu_save"
+          >{lang_emenu_add_menu}</a
+        >
+      </form>
+    </div>
+
+    <div id="add_item_modal" class="d-none">
+      <form
+        class="add_item_form"
+        method="POST"
+        action="ajax.php?action=ajax_add_menu_item"
+      >
+        <input type="hidden" name="token" value="{csrf_token}" />
+        <input type="hidden" name="menu_id" value="" id="add_item_menu_id" />
+        <input
+          type="hidden"
+          name="parent_id"
+          value=""
+          id="add_item_parent_id"
+        />
+        <div class="input-group input-group-static mb-2">
+          <label for="item_name">{lang_emenu_item_name}</label>
+          <input
+            type="text"
+            name="item_name"
+            value="{add_item_name}"
+            class="form-control"
+            required
+          />
+        </div>
+        <a href="#" class="btn btn-primary float-end" id="add_item_save"
+          >{lang_emenu_add_item}</a
+        >
+      </form>
+    </div>
+  </div>
+</div>

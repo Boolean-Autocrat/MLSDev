@@ -1,0 +1,463 @@
+<div class="card card-frame mb-4">
+	<div class="card-body py-2">
+		<div class="row">
+
+			<div class="col">
+
+				<form
+				 action="{blog_edit_action}"
+				 method="post"
+				 id="blog_edit_form"
+				>
+
+					<input
+					 type="hidden"
+					 name="edit"
+					 value="yes"
+					/>
+					<input
+					 type="hidden"
+					 id="blogID"
+					 name="blogID"
+					 value="{blog_id}"
+					/>
+
+
+					<div
+					 class="row justify-content-between"">
+	
+						<div class="
+					 col-auto"
+					>
+						<div class="input-group input-group-static mb-2">
+							<label for="title">{lang_blog_title}</label>
+							<input
+							 type="text"
+							 name="title"
+							 id="blog_edit_title"
+							 value=""
+							 class="form-control required"
+							/>
+						</div>
+					</div>
+
+					<div class="col-auto">
+
+						<form
+						 class="form"
+						 action="#"
+						 method="post"
+						>
+							<div class="input-group input-group-static">
+								<label
+								 for="blog_status_value"
+								 class="ms-0"
+								>{lang_blog_status}</label>
+								<select
+								 class="form-control"
+								 id="blog_status_value"
+								>
+									{blog_status_option_block}
+									<option
+									 value="{blog_status_value}"
+									 {blog_status_selected}
+									>
+										{blog_status_text}
+									</option>
+									{/blog_status_option_block}
+								</select>
+							</div>
+						</form>
+					</div>
+					<div class="col-auto">
+
+						<!-- Revert Button -->
+						<button
+						 class="btn btn-primary btn-sm collapse"
+						 id="blog_revert_button"
+						>
+							<i class="fa-solid fa-undo"></i></span> {lang_revert_changes}
+						</button>
+
+						<!-- Save Button -->
+						{blog_update_block}
+						<button
+						 class="btn btn-primary btn-sm"
+						 id="blog_update_button"
+						>
+							<i class="fa-solid fa-save"></i></span> {lang_blog_update_post}
+						</button>
+						{/blog_update_block}
+
+						<!-- Delete Button -->
+						{blog_delete_block}
+						<button
+						 class="btn btn-danger btn-sm"
+						 id="blog_delete_button"
+						>
+							<i class="fa-solid fa-trash"></i></span> {lang_delete_blog}
+						</button>
+						{/blog_delete_block}
+					</div>
+			</div>
+
+			<div
+			 class="alert alert-warning collapse"
+			 id="unsaved_changes"
+			 role="alert"
+			>
+				{lang_unsaved_changes}
+			</div>
+			<div id="edit_blog_post_editor">
+				<textarea
+				 name="ta"
+				 id="ta"
+				></textarea>
+			</div>
+
+			<div
+			 class="row mt-4"
+			 id="blog_stats"
+			>
+				<div class="col-auto">
+
+					<div class="input-group input-group-static mb-2">
+						<label for="word_count">{lang_word_count}</label>
+						<span
+						 class="form-control"
+						 id="word_count"
+						></span>
+					</div>
+
+					<div class="input-group input-group-static mb-2">
+						<label for="blog_tag">{lang_template_tag_for_page}</label>
+						<input
+						 type="text"
+						 name="blog_tag"
+						 id="blog_tag"
+						 value="&#123;blog_link_{blog_id}&#125;"
+						 class="form-control"
+						 readonly
+						/>
+					</div>
+
+					<div class="input-grouup mb-2">
+						<span class="form-label">{lang_link_to_page}</span>
+						<a
+						 class="form-control-plaintext"
+						 id="blog_link"
+						 href="{blog_article_url}"
+						 title=""
+						>{blog_article_url}</a>
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-group input-group-static mb-2">
+					<label for="seotitle">{lang_blog_seo_title}</label>
+					<input
+					 type="text"
+					 name="seotitle"
+					 id="seotitle"
+					 value=""
+					 class="form-control"
+					/>
+				</div>
+				<div class="input-group input-group-static mb-2">
+					<label for="description">{lang_blog_meta_description}</label>
+					<input
+					 type="text"
+					 name="metadata_description"
+					 id="metadata_description"
+					 value=""
+					 class="form-control"
+					/>
+				</div>
+				<div class="input-group input-group-static mb-2">
+					<label for="keywords">{lang_blog_meta_keywords}</label>
+					<input
+					 type="text"
+					 name="metadata_keywords"
+					 id="metadata_keywords"
+					 value=""
+					 class="form-control"
+					/>
+				</div>
+
+			</div>
+
+			</form>
+
+		</div>
+
+
+		<div
+		 class="col-auto"
+		 id="show_cat"
+		>
+			<div
+			 id="cat_column"
+			 class="cat_column"
+			>
+				<div
+				 class="application_rounded_box blog_rounded_box"
+				 id="blog_edit_section_category_container"
+				></div>
+				<div
+				 class="application_rounded_box blog_rounded_box"
+				 id="blog_edit_section_tag_container"
+				></div>
+				<div
+				 id="status_div"
+				 style="display:none;"
+				></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+<script
+ type="text/javascript"
+ src="{baseurl}/node_modules/ckeditor4/ckeditor.js"
+></script>
+<script
+ type="text/javascript"
+ src="{baseurl}/node_modules/ckeditor4/adapters/jquery.js"
+></script>
+<script type="text/javascript">
+	var custom_folder = "{baseurl}/include/class/ckeditor/custom";
+	var baseurl = "{baseurl}";
+
+	var blogIsDirty = false;
+
+	window.onbeforeunload = function () {
+		if (blogIsDirty == true) {
+			return "{lang_unsaved_changes}";
+		}
+	}
+	window.onunload = function () {
+		if (blogIsDirty == true) {
+			//Clear Dirty State
+			//Do a autosave with no content to keep alive session.
+			$.post("ajax.php?action=ajax_update_blog_post_autosave", {
+				"blogID": $("#blogID").val(),
+				"ta": "",
+			},
+				function (data) {
+					if (data.error == "1") {
+						status_error(data.error_msg);
+					} else {
+						//alert("Null Auto Saved");
+					}
+				}, "json");
+			blogIsDirty = false;
+		}
+	}
+	var CKEDITOR_BASEPATH = "{basepath}/include/class/ckeditor";
+	var CKEDITOR_BASEURL = "{baseurl}/include/class/ckeditor";
+
+	$(document).ready(function () {
+		$("#ta").ckeditor({
+			toolbar: "Blog",
+			templates: "custom",
+			templates_files: [CKEDITOR_BASEURL + "/custom/mytemplates.js"],
+
+			customConfig: CKEDITOR_BASEURL + "/custom/blog_config.js",
+			on: {
+				instanceReady: instanceReadyEvent,
+			},
+			filebrowserBrowseUrl: CKEDITOR_BASEURL + "/custom/filemanager/index.php",
+			language: "{lang}",
+		});
+
+		//Bind onchange event to text boxes
+		$("#blog_update_button").click(function (e) {
+			e.preventDefault();
+			send_blog_update($("#blog_status_value").val());
+		});
+		$("#blog_edit_form").submit(function (e) {
+			e.preventDefault();
+			send_blog_update($("#blog_status_value").val());
+		});
+		$("#blog_delete_button").click(function (e) {
+			e.preventDefault();
+			agree = confirmDelete("{lang_confirm_delete}");
+			if (agree) {
+				ShowPleaseWait();
+				$.post("ajax.php?action=ajax_delete_blog_post", { "blogID": $("#blogID").val() },
+					function (data) {
+						if (data.error == "1") {
+							alert(data.error_msg);
+						} else {
+							document.location.href = "index.php?action=edit_blog";
+						}
+					}, "json");
+				HidePleaseWait();
+			}
+		});
+		$("#blog_revert_button").click(function (e) {
+			e.preventDefault();
+			var okToRevert = confirmDelete("{lang_revert_changes_confirmation}");
+			if (okToRevert) {
+				$.post("ajax.php?action=ajax_update_blog_post_autosave", {
+					"blogID": $("#blogID").val(),
+					"ta": "",
+				},
+					function (data) {
+						if (data.error == "1") {
+							status_error(data.error_msg);
+						} else {
+							//status_msg("{lang_revert_chagnes_complete}");
+							//alert("Null Auto Saved");
+						}
+					}, "json");
+				blogIsDirty = false;
+				document.location.href = "index.php?action=edit_blog_post&id=" + $("#blogID").val();
+			}
+		});
+		//Load Category Section
+		ShowPleaseWait();
+		$("#blog_edit_section_category_container").load("ajax.php?action=edit_blog_post_categories");
+		//Load Tag Section
+		$("#blog_edit_section_tag_container").load("ajax.php?action=edit_blog_post_tags");
+		HidePleaseWait();
+		setInterval(send_blog_autosave, 60000);
+	});
+	//FUNCTIONS
+	function change_blog_cat_status(me) {
+		var cat_id = me.val();
+		if (me.is(":checked")) {
+			$.post("ajax.php?action=ajax_set_blog_cat", { "status": "1", "cat_id": cat_id, "blog_id": "'.intval($blog_id).'" },
+				function (data) {
+					//alert("Set Category: " + data.cat_id + "for blog " + data.blog_id);
+				}, "json");
+		} else {
+			$.post("ajax.php?action=ajax_set_blog_cat", { "status": "0", "cat_id": cat_id, "blog_id": "'.intval($blog_id).'" },
+				function (data) {
+					//alert("UnSet Category: " + data.cat_id + "for blog " + data.blog_id);
+				}, "json");
+		}
+	}
+	function send_blog_autosave() {
+		if (blogIsDirty == true) {
+			$.post("ajax.php?action=ajax_update_blog_post_autosave", {
+				"blogID": $("#blogID").val(),
+				"ta": CKEDITOR.instances.ta.getData(),
+			},
+				function (data) {
+					if (data.error == "1") {
+						status_error(data.error_msg);
+					} else {
+						status_msg("{lang_autosave_draft}");
+						$("#blog_revert_button:hidden").show();
+					}
+				}, "json");
+
+		} else {
+			//Do a autosave with no content to keep alive session.
+			$.post("ajax.php?action=ajax_update_blog_post_autosave", {
+				"blogID": $("#blogID").val(),
+				"ta": "",
+			},
+				function (data) {
+					if (data.error == "1") {
+						status_error(data.error_msg);
+					} else {
+						//alert("Null Auto Saved");
+					}
+				}, "json");
+		}
+	}
+	function send_blog_update(blog_status) {
+		ShowPleaseWait();
+		$.post("ajax.php?action=ajax_update_blog_post", {
+			"blogID": $("#blogID").val(),
+			"title": $("#blog_edit_title").val(),
+			"ta": CKEDITOR.instances.ta.getData(),
+			"description": $("#metadata_description").val(),
+			"keywords": $("#metadata_keywords").val(),
+			"status": blog_status,
+			"seotitle": $("#seotitle").val(),
+		},
+			function (data) {
+				if (data.error == "1") {
+					status_error(data.error_msg);
+				} else {
+					blogIsDirty = false;
+					$("#blog_revert_button").hide();
+					$("#unsaved_changes").hide();
+					status_msg("{lang_blog_saved}");
+
+					if (blog_status == "1") {
+						$("#blog_publish_button_div").hide();
+						$("#blog_review_button_div").hide();
+						$("#blog_status_text").text("{lang_blog_published}");
+					} else if (blog_status == "2") {
+						$("#blog_review_button_div").hide();
+						$("#blog_status_text").html("{lang_blog_review}");
+					}
+					$("#seotitle").val(data.seotitle);
+				}
+			}, "json");
+		HidePleaseWait();
+	}
+
+	function instanceReadyEvent() {
+		$.post("ajax.php?action=ajax_get_blog_post", {
+			"blogID": $("#blogID").val(),
+		},
+			function (data) {
+				if (data.error == "1") {
+					status_error(data.error_msg);
+				} else {
+					$("#blog_edit_title").val(data.title);
+					$("#seotitle").val(data.seotitle);
+					$("#metadata_description").val(data.description);
+					$("#metadata_keywords").val(data.keywords);
+					CKEDITOR.instances.ta.setData(data.full, function () {
+						ckeditor_word_count();
+						CKEDITOR.instances.ta.on("mode", function () {
+							if (this.mode == "source") {
+								var editable = CKEDITOR.instances.ta.editable();
+								editable.attachListener(editable, "input", function () {
+									set_blog_status_modified();
+								});
+							}
+						});
+						CKEDITOR.instances.ta.on("change", function () {
+							set_blog_status_modified();
+						});
+						$("#blog_edit_title").change(set_blog_status_modified);
+						$("#seotitle").change(set_blog_status_modified);
+						$("#metadata_description").change(set_blog_status_modified);
+						$("#metadata_keywords").change(set_blog_status_modified);
+						$("#blog_edit_title").keypress(set_blog_status_modified);
+						$("#seotitle").keypress(set_blog_status_modified);
+						$("#metadata_description").keypress(set_blog_status_modified);
+						$("#metadata_keywords").keypress(set_blog_status_modified);
+					});
+
+
+				}
+			}, "json");
+	}
+
+	function set_blog_status_modified() {
+		blogIsDirty = true;
+		//status_msg("{lang_blog_edit_post}");
+		$("#blog_revert_button").show();
+		$("#unsaved_changes").show();
+	}
+	function ckeditor_word_count() {
+		var matches = CKEDITOR.instances.ta.getData().replace(/<[^<|>]+?>|&nbsp;/gi, " ").replace(/((https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, " word ").match(/\b/g);
+		var count = 0;
+
+		if (matches) { count = Math.floor(matches.length / 2); }
+
+		document.getElementById("word_count").innerHTML = count;
+	}
+
+</script>

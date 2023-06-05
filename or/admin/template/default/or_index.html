@@ -1,0 +1,400 @@
+<div class="or_index">
+  <div class="row mb-4">
+    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute"
+          >
+            <i
+              class="fa-solid fa-check-circle fa-2x icon-md mt-2 text-white"
+            ></i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Open-Realty Version</p>
+            <h4 class="mb-0">{version}</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0" />
+        <div class="card-footer p-3">
+          {check_admin}
+          <span class="openrealty_upgrade">{openrealty_links}</span>
+          {/check_admin}
+        </div>
+      </div>
+    </div>
+    {check_admin}
+    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute"
+          >
+            <i
+              class="fa-solid fa-info-circle mt-2 fa-2x icon-md text-white"
+            ></i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">General Info</p>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0" />
+        <div class="card-footer p-3">{general_info}</div>
+      </div>
+    </div>
+    {/check_admin} {check_admin}
+    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute"
+          >
+            <i class="fa-solid fa-blog fa-2x icon-md mt-2 text-white"></i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">
+              {lang_admin_content_title}
+            </p>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0" />
+        <div class="card-footer p-3">
+          <div
+            style="
+              font-weight: bold;
+              padding: 3px;
+              font-size: 11pt;
+              font-weight: 400;
+            "
+          >
+            {lang_admin_view_leads}
+          </div>
+          <div>
+            <span class="pnb_links">
+              <a
+                href="{baseurl}/admin/index.php?action=leadmanager"
+                title="{lang_leadmanager_status_active}"
+              >
+                {lang_leadmanager_status_active}: {lead_active_count}
+              </a>
+              | {lang_leadmanager_status_inactive}
+              <span>({lead_inactive_count})</span>
+            </span>
+          </div>
+          <div class="space_5"></div>
+          <div
+            style="
+              font-weight: bold;
+              padding: 3px;
+              font-size: 11pt;
+              font-weight: 400;
+            "
+          >
+            {lang_admin_blog_manager}
+          </div>
+          <div>
+            <span class="pnb_links">
+              <a
+                href="{baseurl}/admin/index.php?action=edit_blog"
+                title="{lang_blog_view_all}"
+                >{lang_blog_all}
+                <span class="blog_edit_index_status_list_count"
+                  >({blog_edit_status_all_count})</span
+                ></a
+              >
+              |
+              <a
+                href="{baseurl}/admin/index.php?action=edit_blog&amp;status=Published"
+                title="{lang_blog_view_live}"
+                >{lang_blog_published}
+                <span class="blog_edit_index_status_list_count"
+                  >({blog_edit_status_published_count})</span
+                >
+              </a>
+              |
+              <a
+                href="{baseurl}/admin/index.php?action=edit_blog&amp;status=Draft"
+                title="{lang_blog_view_draft}"
+                >{lang_blog_draft}
+                <span class="blog_edit_index_status_list_count"
+                  >({blog_edit_status_draft_count})</span
+                >
+              </a>
+              |
+              <a
+                href="{baseurl}/admin/index.php?action=edit_blog&amp;status=Review"
+                title="{lang_blog_view_review}"
+                >{lang_blog_review}
+                <span class="blog_edit_index_status_list_count"
+                  >({blog_edit_status_review_count})</span
+                ></a
+              >
+            </span>
+          </div>
+          <div class="space_5"></div>
+          <div
+            style="
+              font-weight: bold;
+              padding: 3px;
+              font-size: 11pt;
+              font-weight: 400;
+            "
+          >
+            {lang_admin_page_editor}
+          </div>
+          <div>
+            <span class="pnb_links">
+              <a
+                href="{baseurl}/admin/index.php?action=edit_page"
+                title="{lang_blog_view_all}"
+                >{lang_page_all}
+                <span class="page_edit_index_status_list_count"
+                  >({page_edit_status_all_count})</span
+                ></a
+              >
+              |
+              <a
+                href="{baseurl}/admin/index.php?action=edit_page&amp;status=Published"
+                title="{lang_blog_view_live}"
+                >{lang_page_published}
+                <span class="page_edit_index_status_list_count"
+                  >({page_edit_status_published_count})</span
+                ></a
+              >
+              |
+              <a
+                href="{baseurl}/admin/index.php?action=edit_page&amp;status=Draft"
+                title="{lang_blog_view_draft}"
+                >{lang_page_draft}
+                <span class="page_edit_index_status_list_count"
+                  >({page_edit_status_draft_count})</span
+                ></a
+              >
+              |
+              <a
+                href="{baseurl}/admin/index.php?action=edit_page&amp;status=Review"
+                title="{lang_blog_view_review}"
+                >{lang_page_review}
+                <span class="page_edit_index_status_list_count"
+                  >({page_edit_status_review_count})</span
+                ></a
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {/check_admin}
+  </div>
+  <div class="row mb-4">
+    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute"
+          >
+            <i class="fa-solid fa-link fa-2x icon-md mt-2 text-white"></i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">{lang_admin_quick_links}</p>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0" />
+        <div class="card-footer p-3">
+          <a
+            href="{url_view_favorites}"
+            class="viewfavorites"
+            title="{lang_admin_favorites}"
+            >{lang_admin_favorites}</a
+          ><br />
+          <a
+            href="{url_view_saved_searches}"
+            class="viewsavedsearches"
+            title="{lang_admin_saved_search}"
+            >{lang_admin_saved_search}</a
+          ><br />
+          {check_admin}
+          <a
+            href="https://discord.gg/kabJYuykTZ"
+            class="viewforums"
+            rel="external"
+            >{lang_link_support_forums}</a
+          ><br />
+          <a href="http://docs.open-realty.org" class="viewdocs" rel="external"
+            >{lang_link_online_documentation}</a
+          ><br />
+          {/check_admin}
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8 col-sm-12 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute"
+          >
+            <i class="fa-solid fa-chart-line fa-2x icon-md mt-2 text-white"></i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">
+              {lang_admin_listing_stats}
+            </p>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0" />
+        <div class="card-footer p-3">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="all-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#all"
+                type="button"
+                role="tab"
+                aria-controls="all"
+                aria-selected="true"
+              >
+                All Listings
+              </button>
+            </li>
+            {foreach_pclass_block}
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="pclass-{pclass_id}-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#pclass-{pclass_id}"
+                type="button"
+                role="tab"
+                aria-controls="pclass-{pclass_id}"
+                aria-selected="false"
+              >
+                {pclass_name}
+              </button>
+            </li>
+            {/foreach_pclass_block}
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="all"
+              role="tabpanel"
+              aria-labelledby="all-tab"
+            >
+              <div class="stat_content">
+                <span class="stat_caption">{lang_total_listings}:</span>
+                <span class="stat_data">{active_listing_count}</span><br />
+                <span class="stat_caption">Average price:</span>
+                <span class="stat_data"
+                  >{listing_stat_avg_field_price_value}</span
+                ><br />
+                <span class="stat_caption">Median price:</span
+                ><span class="stat_data">
+                  {listing_stat_median_field_price_value}</span
+                ><br />
+                <span class="stat_caption">Highest price:</span
+                ><span class="stat_data">
+                  {listing_stat_max_field_price_value}</span
+                ><br />
+                <span class="stat_caption">Lowest price:</span>
+                <span class="stat_data"
+                  >{listing_stat_min_field_price_value}</span
+                ><br />
+                <span class="stat_caption">Average Square Feet:</span>
+                <span class="stat_data"
+                  >{listing_stat_avg_field_sq_feet_value}</span
+                >
+              </div>
+            </div>
+            {foreach_pclass_block}
+            <div
+              class="tab-pane fade"
+              id="pclass-{pclass_id}"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+              <div class="stat_content">
+                <span class="stat_caption">Total {pclass_name} Listings:</span
+                ><span class="stat_data"
+                  >{active_listing_count_pclass_{pclass_id}}</span
+                ><br />
+                <span class="stat_caption">Average price:</span>
+                <span class="stat_data"
+                  >{listing_stat_avg_field_price_value_pclass_{pclass_id}}</span
+                ><br />
+                <span class="stat_caption">Median price:</span
+                ><span class="stat_data">
+                  {listing_stat_median_field_price_value_pclass_{pclass_id}}</span
+                ><br />
+                <span class="stat_caption">Highest price:</span
+                ><span class="stat_data">
+                  {listing_stat_max_field_price_value_pclass_{pclass_id}}</span
+                ><br />
+                <span class="stat_caption">Lowest price:</span>
+                <span class="stat_data"
+                  >{listing_stat_min_field_price_value_pclass_{pclass_id}}</span
+                ><br />
+                <span class="stat_caption">Average Square Feet:</span>
+                <span class="stat_data"
+                  >{listing_stat_avg_field_sq_feet_value_pclass_{pclass_id}}</span
+                >
+              </div>
+            </div>
+            {/foreach_pclass_block}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute"
+          >
+            <i
+              class="fa-solid fa-puzzle-piece fa-2x icon-md mt-2 text-white"
+            ></i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Addons</p>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0" />
+        <div class="card-footer p-3">
+          <div class="row mb-0">{addon_links}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="upgrade_modal" class="d-none">
+  <p>{lang_confirm_upgrade_desc}</p>
+  <button class="btn btn-primary btn-sm" id="confirm_do_upgrade">
+    {lang_yes}
+  </button>
+  <button class="btn btn-primary btn-sm" id="cancel_do_upgrade">
+    {lang_no}
+  </button>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#customizeModal").on("click", "#confirm_do_upgrade", function (e) {
+      e.preventDefault();
+      $("#message_text").load("{baseurl}/admin/ajax.php?action=do_upgrade");
+    });
+    $("#customizeModal").on("click", "#cancel_do_upgrade", function (e) {
+      e.preventDefault();
+      closeModal();
+    });
+    $("#updatemelink").click(function (e) {
+      e.preventDefault();
+      var html = $("#upgrade_modal").html();
+      raiseModal("{lang_confirm_upgrade}", html);
+    });
+  });
+</script>

@@ -1,0 +1,70 @@
+{subject_block}{lang_member_signup_notification_subject}{/subject_block}
+
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>New Member</title>
+	</head>
+
+	<body style="font-family: Arial, Helvetica, sans-serif;">
+
+	<!--  Begin email -->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+   			<td bgcolor="#d8e7ea" style="background-color: #d8e7ea; padding: 10px;">
+
+            	<table width="620" align="center" style="padding: 5px; ">
+            		<tr>
+            			<td valign="top" >
+            				<h3 style="text-shadow: 1px 1px 1px #ffffff;">{company_name}</h3>
+            			</td>
+            		</tr>
+            	</table>
+
+        	 	<!--intro-->
+          	 	<table width="620" border="0" align="center" cellpadding="0" cellspacing="0">
+	        		<tr>
+           				<td width="64%" valign="middle" style="font-size: 14px; margin: 10px; line-height: 18px;">
+							<span style="font-weight:bold;">{lang_admin_new_user}:</span> {member_last_name}, {member_first_name} ({member_name})
+							<br />
+							<span style="font-weight:bold;">{lang_user_ip}:</span> {user_ip}
+							<br />
+							<span style="font-weight:bold;">{lang_notification_time}:</span> {notification_time}
+							<br />
+							<br />
+              			</td>
+              			<td width="36%" valign="top">
+ 		                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                             <tr>
+                             	<td>
+									<a href="{baseurl}/admin/index.php?action=edit_user&amp;user_id={member_id}" style="font-size: 12px; text-decoration: none; background-color: #CCCCCC; padding: 5px 10px; border: 1px solid #666; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; ">Edit Member</a>
+                      		   	</td>
+                           	</tr>
+                          </table>
+                      	</td>
+            		</tr>
+				</table>
+        		<!--/intro-->
+
+   				<!--footer-->
+  				<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 20px;">
+        			<tr>
+              			<td height="25" width="100%" style="border-top: 1px solid #666;">
+	           				<p style="font-size: 10px; color: #666; margin: 0; padding: 10px;  text-align: center;">
+            					&copy; 2019 {company_name}
+       	    					<br />
+           						<a href="{baseurl}">{baseurl}</a>
+           					</p>
+	           			</td>
+           			</tr>
+       			</table>
+    			<!--/footer-->
+
+			</td>
+		</tr>
+	</table>
+
+	</body>
+
+</html>

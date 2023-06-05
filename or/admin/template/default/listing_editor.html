@@ -1,0 +1,242 @@
+{quick_edit_bar}
+
+<div class="card card-frame">
+  <div class="card-body">
+    <ul class="list-group">
+      {listing_dataset}
+      <li
+        id="listing_{listingid}"
+        class="list-group-item border-0 w-100 ps-0 mb-2 border-radius-lg bg-light"
+      >
+        <div class="row justify-content-between">
+          <div class="col-auto">
+            <h6 class="mb-1 form-label">
+              <a href="{edit_listing_link}">({listingid}) {listing_title} </a>
+            </h6>
+          </div>
+          <div class="col-auto">
+            <a
+              class="btn btn-link text-dark px-3 mb-0"
+              href="{edit_listing_link}"
+              ><i class="fa-solid fa-pencil-alt"></i>
+              <span class="d-none d-md-inline">{lang_edit}</span></a
+            >
+            <a
+              class="btn btn-link text-dark px-3 mb-0"
+              href="{listing_url}"
+              target="_blank"
+              ><i class="fa-solid fa-eye"></i>
+              <span class="d-none d-md-inline">{lang_preview}</span></a
+            >
+            <a
+              class="btn btn-link text-danger text-gradient px-3 mb-0"
+              href="javascript:;"
+              onclick="delete_listing({listingid});"
+              ><i class="fa-solid fa-trash"></i>
+              <span class="d-none d-md-inline">{lang_delete}</span></a
+            >
+          </div>
+        </div>
+        <div class="row text-sm">
+          <div class="col-md-2 col-12">
+            <a href="{edit_listing_link}"
+              ><img
+                class="rounded mx-auto mx-sm-2 d-block"
+                src="{raw_image_thumb_1}"
+                width="150"
+                alt="{lang_admin_listings_editor_modify_listing}"
+            /></a>
+          </div>
+          <div class="col-md-5 col-8 text-md-start mt-3 mt-sm-0">
+            <span class="mb-2 form-label">{lang_listing_editor_agent}:</span>
+            <span class=""
+              ><a href="mailto:{listing_agent_email}"
+                >{listing_agent_last_name}, {listing_agent_first_name}
+                <i class="fa-solid fa-envelope"></i></a></span
+            ><br />
+            <span class="mb-2 form-label"
+              >{lang_admin_listings_editor_property_class}:</span
+            >
+            <span class="">{listing_pclass}</span><br />
+            <span class="form-label">{lang_creation_date}:</span>
+            <span class="">{listing_creation_date}</span><br />
+            {show_expiration_block}<span class="form-label"
+              >{lang_listing_editor_last_modified}:</span
+            >
+            <span class="">{listing_last_modified}</span
+            ><br />{/show_expiration_block}
+            <span class="form-label">{lang_admin_listings_active}:</span>
+            <span class="">{listing_active_status}</span>
+          </div>
+          <div class="col-md-5 col-4">
+            <ul class="list-group">
+              <li
+                class="list-group-item bg-light border-0 d-flex justify-content-end align-items-center"
+              >
+                <span class="form-label">{lang_admin_listings_active}:</span>
+                <span
+                  id="listing_status_{listing_id}"
+                  style="width: 45px; cursor: pointer"
+                  class="badge badge-{listing_active_status} badge-pill ms-3"
+                  data-or-active="{listing_active_status}"
+                  onclick="toggle_active({listing_id})"
+                  >{listing_active_status}</span
+                >
+              </li>
+              <li
+                class="list-group-item bg-light border-0 d-flex justify-content-end align-items-center"
+              >
+                <span class="form-label"
+                  >{lang_admin_listings_editor_featured}:</span
+                >
+                <span
+                  style="width: 45px; cursor: pointer"
+                  id="listing_featured_{listing_id}"
+                  data-or-active="{listing_featured_status}"
+                  onclick="toggle_featured({listing_id})"
+                  class="badge badge-{listing_featured_status} badge-pill ms-3"
+                  >{listing_featured_status}</span
+                >
+              </li>
+              <li
+                class="list-group-item bg-light border-0 d-flex justify-content-end align-items-center"
+              >
+                <span class="form-label"
+                  >{lang_admin_listings_editor_hit_count}:</span
+                >
+                <span
+                  style="width: 45px"
+                  class="badge badge-primary badge-pill ms-3"
+                  >{listing_hit_count}</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      {/listing_dataset}
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#add_listing_link").click(function () {
+      event.preventDefault();
+
+      $.get("ajax.php?action=ajax_display_add_listing").done(function (data) {
+        raiseModal("{lang_admin_menu_add_a_listing}", data);
+      });
+    });
+  });
+  function delete_listing(listingid) {
+    //Delete Listings
+    if (confirmDelete()) {
+      $.getJSON(
+        "ajax.php?action=ajax_delete_listing",
+        { listing_id: listingid },
+        function (json) {
+          if (json.error == 0) {
+            $("#listing_" + listingid).remove();
+            status_msg("Listing " + json.listing_id + " deleted");
+          } else {
+            status_error(json.error_msg);
+          }
+        }
+      );
+    }
+    return false;
+  }
+  function toggle_active(listingid) {
+    s = $("#listing_status_" + listingid).attr("data-or-active");
+    if (s == "yes") {
+      action = "ajax_make_inactive_listing";
+      new_status = "no";
+      new_text = "{lang_no}";
+    } else {
+      action = "ajax_make_active_listing";
+      new_status = "yes";
+      new_text = "{lang_yes}";
+    }
+    $.getJSON(
+      "ajax.php?action=" + action,
+      { listing_id: listingid },
+      function (json) {
+        if (json.error == 0) {
+          $("#listing_status_" + listingid)
+            .attr("data-or-active", new_status)
+            .text(new_text)
+            .removeClass("badge-" + s)
+            .addClass("badge-" + new_status);
+        } else {
+          status_error(json.error_msg);
+        }
+      }
+    );
+  }
+  function toggle_featured(listingid) {
+    s = $("#listing_featured_" + listingid).attr("data-or-active");
+    if (s == "yes") {
+      action = "ajax_make_unfeatured_listing";
+      new_status = "no";
+      new_text = "{lang_no}";
+    } else {
+      action = "ajax_make_featured_listing";
+      new_status = "yes";
+      new_text = "{lang_yes}";
+    }
+    $.getJSON(
+      "ajax.php?action=" + action,
+      { listing_id: listingid },
+      function (json) {
+        if (json.error == 0) {
+          $("#listing_featured_" + listingid)
+            .attr("data-or-active", new_status)
+            .text(new_text)
+            .removeClass("badge-" + s)
+            .addClass("badge-" + new_status);
+        } else {
+          status_error(json.error_msg);
+        }
+      }
+    );
+  }
+
+  function make_unfeatured(listingid) {
+    $.getJSON(
+      "ajax.php?action=ajax_make_unfeatured_listing",
+      { listing_id: listingid },
+      function (json) {
+        if (json.error == 0) {
+          $("#listing_featured_" + listingid).html(
+            '<a href="#" onclick="make_featured(' +
+              listingid +
+              ');return false;" class="edit_listings_no">{lang_no}<\/a>'
+          );
+          status_msg("Listing " + json.listing_id + " un-featured", false);
+        } else {
+          status_error(json.error_msg);
+        }
+      }
+    );
+  }
+  function make_featured(listingid) {
+    $.getJSON(
+      "ajax.php?action=ajax_make_featured_listing",
+      { listing_id: listingid },
+      function (json) {
+        if (json.error == 0) {
+          $("#listing_featured_" + listingid).html(
+            '<a href="#" onclick="make_unfeatured(' +
+              listingid +
+              ');return false;" class="edit_listings_yes">{lang_yes}<\/a>'
+          );
+          status_msg("Listing " + json.listing_id + " featured", false);
+        } else {
+          status_error(json.error_msg);
+        }
+        return false;
+      }
+    );
+  }
+</script>

@@ -1,0 +1,157 @@
+{subject_block}You have a new lead: {lead_id} from {member_first_name} {member_last_name}{/subject_block}
+
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Listing Information Request</title>
+		<style type="text/css">
+			.field_caption {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body style="font-family: Arial, Helvetica, sans-serif;">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+   			<tr>
+        		<td bgcolor="#d8e7ea" style="background-color: #d8e7ea;">
+            		<table width="620" align="center" style="padding: 5px; ">
+            			<tr>
+            				<td valign="top" >
+            					<h2 style="text-shadow: 1px 1px 1px #ffffff;">{company_name}</h2>
+            				</td>
+            			</tr>
+            		</table>
+
+		            <!--intro-->
+		            <table width="620" border="0" align="center" cellpadding="0" cellspacing="0">
+        		        <tr>
+                		    <td valign="middle" width="11" height="50"></td>
+                    		<td valign="middle" height="50">
+		                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        		                    <tr>
+                		                <td width="64%" valign="top">
+                        		            <div style=" font-size: 14px; margin: 0; padding: 0; color: #0d2d42; text-shadow: 1px 1px 1px #fff;">
+                        		            	<a href="{baseurl}/admin/index.php?action=edit_user&user_id={member_id}"><strong>{member_first_name}, {member_last_name} </strong></a>
+                                		    	<br>
+ 		                                   		is requesting more information regarding:
+  		                              		</div>
+ 		                               </td>
+ 		                               <td width="36%" valign="top">
+ 		                                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      		  <tr>
+                                       		     <td >
+													<a href="{lead_url}" style="font-size: 12px; float: right; text-decoration: none; background-color: #CCCCCC; padding: 5px 10px; border: 1px solid #666; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; ">View/Edit this lead </a>
+                      		                     </td>
+                           		             </tr>
+                                 		  </table>
+                      		          </td>
+                    		        </tr>
+              		          </table>
+              		      </td>
+            		    </tr>
+					</table>
+           		 	<!--/intro-->
+
+
+					<!--content section-->
+					<table width="620" border="0" align="center" cellpadding="0" cellspacing="0">
+      		          	<tr>
+      		              	<td height="82" width="11" valign="middle">
+       		             		<img style="margin: 0; padding: 0; display: block;" src="{template_url}/images/side-corner.png" width="11" height="83">
+      		              	</td>
+   	  		 	            <td height="82" bgcolor="#FFFFFF" valign="middle">
+								<table width="594" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+                                		<td style="background-image: url({template_url}/images/bar-end.png); background-repeat: no-repeat; background-position: right;" valign="middle" height="37" bgcolor="#666666">
+	                                    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    	                                    	<tr>
+        	                                    	<td style="background-color:#666666;" bgcolor="#666666" width="25" height="37"></td>
+            	                                	<td height="37">
+            	                                		{listing_contact_block}
+            	                                		<!--  Display if contact triggered from a listing page -->
+                	                                	<h2 style="font-size: 18px;  margin: 0; padding: 0; text-shadow: 1px 1px 1px #000;">
+                    	                            		<a href="{fulllink_to_listing}" style="color: #E1E1E1;" title="">{listing_title}</a>
+                        	                        	</h2>
+                        	                        	{/listing_contact_block}
+                            	               		</td>
+                                	        	</tr>
+                                    		</table>
+	                                	</td>
+    	                       		</tr>
+        	                	</table>
+            	        	</td>
+                		</tr>
+	                	<tr>
+    	                	<td valign="top"></td>
+        	            	<td bgcolor="#FFFFFF" valign="top">
+            	            	<table width="560" border="0" align="center" cellpadding="0" cellspacing="0">
+                	           		<tr>
+                    	            	<td valign="top">
+                        	            	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            	           		<tr>
+	                            	                <td valign="top" width="158" style="font-size: 14px;">
+
+	                                	             	{listing_contact_block}
+	                                	             	<!--  Display if contact triggered from a listing page -->
+														<a href="{fulllink_to_listing}" title="">
+	                                        	           	<img src="{raw_image_full_1}" style="border: 1px solid #666; padding: 2px;"  width="100" />
+                                	            	        <br />
+															{listing_title}
+														</a>
+
+	             										<p style="color: #333333; margin: 0; padding: 0; ">
+
+	             										</p>
+														{/listing_contact_block}
+
+        	                                    	</td>
+            	                                	<td width="402" valign="top" style="font-size: 14px; color: #333333;">
+                	                                	<p style="margin: 0; padding: 4px;">
+                    	                            		Contact via: <a href="mailto:{member_email}">{member_email}</a>
+                        	                        	</p>
+                                                		<p style="margin: 4px; padding: 0; line-height: 1.4;">
+                                                			{display_all_lead_fields}
+                                                		</p>
+	                                            	</td>
+    	                                    	</tr>
+        	                            	</table>
+                	                    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    	                    	<tr>
+                        	                    	<td height="25">
+                            	                		<p style="text-align: right; font-size: 11px; color: #666; margin: 0; padding: 0; ">
+                        									{via}
+														</p>
+													</td>
+                                        		</tr>
+                                    		</table>
+	                                	</td>
+    	                        	</tr>
+        	                	</table>
+            	        	</td>
+                		</tr>
+	            	</table>
+    	        	<!--/content section-->
+
+
+        	   		<!--footer-->
+            		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	                	<tr>
+    	                	<td height="25" width="100%">
+        	            		<p style="font-size: 10px; color: #666; margin: 0; padding: 10px;  text-align: center;">
+            	        			&copy; 2019 {company_name}
+                	    			<br />
+                    				<a href="{baseurl}">{baseurl}</a>
+                    			</p>
+	                    	</td>
+    	            	</tr>
+        	    	</table>
+            		<!--/footer-->
+
+				</td>
+    		</tr>
+		</table>
+
+	</body>
+</html>

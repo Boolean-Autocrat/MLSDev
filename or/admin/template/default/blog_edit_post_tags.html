@@ -1,0 +1,154 @@
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+    <h6>{lang_blog_tags}</h6>
+    <div id="add_blog_tag" style="text-align: center">
+      <form
+        id="add_blog_tag_form"
+        class="add_blog_tag_form"
+        action="#"
+        method="post"
+      >
+        <input type="hidden" name="token" value="{csrf_token}" />
+
+        <div class="input-group input-group-static mb-2">
+          <label for="tag_title">{lang_blog_tag_name}</label>
+          <input
+            type="text"
+            name="title"
+            id="tag_title"
+            value=""
+            class="form-control"
+            required
+          />
+        </div>
+        <input
+          id="new_tag"
+          type="submit"
+          class="btn btn-primary btn-sm"
+          value="{lang_blog_add_tag}"
+        />
+      </form>
+      <br />
+    </div>
+    <div id="blog_edit_tag_list">
+      {blog_tags_block}
+      <span id="tag_{blog_tag_id}" class="badge rounded-pill bg-info"
+        >{blog_tag_name}
+        <a
+          href="#"
+          class="blog_tag_delete text-danger"
+          id="deletetag_{blog_tag_id}"
+          ><i class="fa-solid fa-trash"></i></a
+      ></span>
+      {/blog_tags_block}
+      <br />
+    </div>
+
+    <br />
+    <div style="text-align: center">
+      <a href="#" class="btn btn-primary btn-sm" id="show_most_used_tags"
+        >{lang_show_most_used_tags}</a
+      >
+    </div>
+    <div id="most_used_tags" style="display: none; text-align: center">
+      {blog_most_used_tags_block}
+      <a
+        href="#"
+        class="blog_tag_add_existing badge rounded-pill bg-info"
+        style="font-size:{blog_tag_fontsize}pt;"
+        id="mostusedtag_{blog_tag_id}"
+        >{blog_tag_name}</a
+      >&nbsp;&nbsp; {/blog_most_used_tags_block}
+    </div>
+    <br />
+  </div>
+</div>
+
+<script type="text/javascript">
+  //Initialize Tabs
+
+  $("#show_most_used_tags").click(function () {
+    $("#most_used_tags").toggle();
+  });
+  $(".blog_tag_add_existing").on("click", function () {
+    ShowPleaseWait();
+    //deletetag_{blog_tag_id}
+    var tag_id = $(this).attr("id");
+    tag_id = tag_id.replace("mostusedtag_", "");
+    $.post(
+      "ajax.php?action=ajax_add_assigned_blog_tag_byid",
+      { tag_id: tag_id },
+      function (data) {
+        if (data.error == "0") {
+          $("#blog_edit_tag_list").append(
+            "<span id='tag_" +
+              data.tag_id +
+              "' class='badge rounded-pill bg-info'>" +
+              data.tag_name +
+              " <a href='#' class='blog_tag_delete text-danger' id='deletetag_" +
+              data.tag_id +
+              "'><i class='fas fa-trash'></i></a></span>"
+          );
+          status_msg("{lang_tag_created}");
+        } else {
+          alert(data.error_msg);
+        }
+      },
+      "json"
+    );
+    $("#most_used_tags").load("ajax.php?action=load_most_used_tags");
+
+    HidePleaseWait();
+    return false;
+  });
+  $(".blog_tag_delete").on("click", function () {
+    if (confirmDelete()) {
+      ShowPleaseWait();
+      //deletetag_{blog_tag_id}
+      var tag_id = $(this).attr("id");
+      tag_id = tag_id.replace("deletetag_", "");
+      $.post(
+        "ajax.php?action=ajax_remove_assigned_blog_tag",
+        { tag_id: tag_id },
+        function (data) {
+          if (data.error == "0") {
+            $("#tag_" + tag_id).remove();
+            status_msg("{lang_tag_deleted}");
+          }
+        },
+        "json"
+      );
+      $("#most_used_tags").load("ajax.php?action=load_most_used_tags");
+      HidePleaseWait();
+      return true;
+    }
+  });
+  $("#add_blog_tag_form").submit(function (e) {
+    e.preventDefault();
+    ShowPleaseWait();
+    $.post(
+      "ajax.php?action=ajax_create_blog_tag",
+      $("#add_blog_tag_form").serialize(),
+      function (data) {
+        if (data.error == "1") {
+          alert(data.error_msg);
+        } else {
+          $("#blog_edit_tag_list").append(
+            "<span id='tag_" +
+              data.tag_id +
+              "' class='badge rounded-pill bg-info'>" +
+              data.tag_name +
+              " <a href='#' class='blog_tag_delete text-danger' id='deletetag_" +
+              data.tag_id +
+              "'><i class='fas fa-trash'></i></a></span>"
+          );
+          status_msg("{lang_tag_created}");
+          $("#tag_title").val("");
+        }
+      },
+      "json"
+    );
+    $("#most_used_tags").load("ajax.php?action=load_most_used_tags");
+    HidePleaseWait();
+  });
+</script>

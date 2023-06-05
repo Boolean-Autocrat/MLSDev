@@ -1,0 +1,289 @@
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+    <form
+      method="POST"
+      action="index.php?action=user_manager"
+      class="row align-items-end mb-2 g-3"
+    >
+      <input type="hidden" name="token" value="{csrf_token}" />
+      <div class="order-2 order-md-1 col-5 col-md-auto">
+        <div class="input-group input-group-static">
+          <label for="lookup_fields" class="ms-0"
+            >{lang_user_manager_quick_edit}</label
+          >
+          <select
+            id="lookup_fields"
+            name="lookup_field"
+            class="form-control"
+            aria-label="Lookup Field"
+          >
+            <option value="userdb_id" selected="selected">
+              {lang_user_manager_user_id}
+            </option>
+            <option value="userdb_emailaddress">
+              {lang_user_manager_email_address}
+            </option>
+            <option value="userdb_user_name">
+              {lang_user_manager_user_name}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="order-3 order-md-2 col-4 col-md-auto">
+        <div class="input-group input-group-outline">
+          <label class="form-label">{lang_listing_editor_field_value}</label>
+          <input
+            name="lookup_value"
+            type="text"
+            class="form-control"
+            value=""
+            autofocus
+          />
+        </div>
+      </div>
+      <div class="order-1 col-12 order-md-4 col-md justify-content-end">
+        <button type="submit" class="btn btn-primary mt-auto mb-0">
+          <i class="fa fa-search"></i
+          ><span class="d-none d-md-inline-block"
+            >{lang_user_manager_lookup}</span
+          >
+        </button>
+      </div>
+
+      <div class="order-1 col-12 order-md-4 col-md justify-content-end">
+        <a
+          class="btn btn-primary float-end mt-auto mb-0"
+          id="add_user_link"
+          href="#"
+          role="button"
+        >
+          <i class="fa-solid fa-plus"></i>
+          {lang_user_manager_add_user}</a
+        >
+      </div>
+    </form>
+
+    <form
+      name="form1"
+      method="post"
+      action=""
+      class="row align-items-end mb-2 g-3"
+    >
+      <input type="hidden" name="token" value="{csrf_token}" />
+      <div class="order-2 order-md-1 col-5 col-md-auto">
+        <div class="input-group input-group-static">
+          <label for="filter" class="ms-0">{lang_user_manager_show}</label>
+          <select
+            id="filter"
+            name="filter"
+            class="form-control"
+            aria-label="{lang_user_manager_show}"
+          >
+            {user_manager_show_filter_block}
+            <option value="{value}" {selected}>{text}</option>
+            {/user_manager_show_filter_block}
+          </select>
+        </div>
+      </div>
+      <div class="col-4 col-md-auto">
+        <div class="input-group input-group-outline">
+          <button type="submit" class="btn btn-primary mt-auto mb-0">
+            <i class="fa-solid fa-filter"></i
+            ><span class="d-none d-md-inline-block">
+              {lang_user_manager_filter}</span
+            >
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card card-frame">
+  <div class="card-body">
+    <div class="application_rounded_box_new">
+      {quick_edit_bar}
+      <div class="space_5"></div>
+      {next_prev}
+    </div>
+    <br />
+
+    <ul class="list-group">
+      {user_dataset}
+      <li
+        id="user_{user_id}"
+        class="list-group-item border-0 w-100 ps-0 mb-2 border-radius-lg bg-light"
+      >
+        <div class="row justify-content-between">
+          <div class="col-auto">
+            <h6 class="mb-1 form-label">
+              <a href="index.php?action=edit_user&user_id={user_id}"
+                ><span class="user_full_name"
+                  >({user_id}) {user_last_name}, {user_first_name}</span
+                ></a
+              ><br />{user_email}
+            </h6>
+          </div>
+
+          <div class="col-auto">
+            <a
+              href="index.php?action=edit_user&user_id={user_id}"
+              class="btn btn-link text-dark px-3 mb-0"
+              ><i class="fa-solid fa-pencil-alt"></i
+              ><span class="d-none d-md-inline"> {lang_edit}</span></a
+            >
+            <a
+              class="btn btn-link text-danger text-gradient px-3 mb-0 delete_user"
+              href="#"
+              data-id="{user_id}"
+              ><i class="fa-solid fa-trash"></i
+              ><span class="d-none d-md-inline"> {lang_delete}</span></a
+            >
+            {check_edit_all_users}
+            <a
+              href="#"
+              class="btn btn-link text-dark px-3 mb-0 reset_pass"
+              data-id="{user_id}"
+              ><i class="fa-solid fa-key"></i
+              ><span class="d-none d-md-inline"> {lang_reset_password}</span></a
+            >
+            {/check_edit_all_users}
+          </div>
+        </div>
+        <div class="row text-sm">
+          <div class="col-md-2 col-12">
+            <a href="index.php?action=edit_user&user_id={user_id}"
+              ><img
+                src="{raw_user_image_thumb_1}"
+                class="rounded mx-auto mx-sm-2 d-block"
+                alt="{user_last_name}, {user_first_name}"
+            /></a>
+          </div>
+          <div class="col-md-5 col-8 text-md-start mt-3 mt-sm-0">
+            <div class="username">
+              <strong>{lang_user_manager_user_name}:</strong>
+              <a href="mailto:{user_email}"
+                >{user_name}&nbsp;<i class="fa-solid fa-envelope"></i
+              ></a>
+            </div>
+            <div class="usertype">
+              <strong>{lang_user_manager_account_type}:</strong>
+              {user_type}
+            </div>
+            <div class="userlastmodified">
+              <strong>{lang_creation_date}:</strong>
+              {user_creation_date}
+            </div>
+            <div class="userlastmodified">
+              <strong>{lang_last_modified}:</strong>
+              {user_last_modified}
+            </div>
+          </div>
+          <div class="col-md-5 col-4">
+            <strong>{lang_user_manager_active}:</strong>
+            <span class="value" id="active_link_{user_id}">
+              <a
+                href="#"
+                class="btn btn-primary btn-sm user_status_btn"
+                data-id="{user_id}"
+                data-status="{user_status}"
+                >{lang_{user_status}}</a
+              >
+            </span>
+          </div>
+        </div>
+      </li>
+
+      {/user_dataset}
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(".user_status_btn").click(function (e) {
+      e.preventDefault();
+      var id = $(this).attr("data-id");
+      var status = $(this).attr("data-status");
+      if (status == "yes") {
+        listing_warn = "{lang_confirm_listing_change}";
+        user_status_new = "no";
+        lang_user_status = "{lang_no}";
+        confirm_status = "{lang_confirm_status_inactive}";
+      } else {
+        listing_warn = "{lang_agent_listings_updated}";
+        user_status_new = "yes";
+        lang_user_status = "{lang_yes}";
+        confirm_status = "{lang_confirm_status_active}";
+      }
+
+      $.post(
+        "ajax.php?action=ajax_change_user_status",
+        {
+          user_id: id,
+          user_active: user_status_new,
+        },
+        function (data) {
+          if (data.error == 0) {
+            //var change_func = "change_user_status('" + UID + "', '" + user_first_name + "', '" + user_last_name + "', '" + user_photo + "', '" + user_status_new + "', '" + is_agent + "'); return false;";
+            $("#active_link_" + id + " a").text(lang_user_status);
+            $("#active_link_" + id + " a").attr("data-status", user_status_new);
+            status_msg(data.status_msg);
+          } else {
+            status_error(data.error_msg);
+          }
+        },
+        "json"
+      );
+    });
+
+    $(".reset_pass").click(function (e) {
+      e.preventDefault();
+      var id = $(this).attr("data-id");
+      var confirm = confirmDelete("{lang_confirm_pass_reset}");
+      $.getJSON(
+        "ajax.php?action=ajax_reset_password",
+        {
+          user_id: id,
+        },
+        function (json) {
+          if (json.error == 0) {
+            status_msg("{lang_password_changed}");
+          } else {
+            status_error(json.error_msg);
+          }
+        }
+      );
+    });
+    $(".delete_user").click(function (e) {
+      e.preventDefault();
+
+      //Delete Listings
+      if (confirmDelete()) {
+        ShowPleaseWait();
+        var id = $(this).attr("data-id");
+        $.getJSON(
+          "ajax.php?action=ajax_delete_user",
+          { user_id: id },
+          function (json) {
+            if (json.error == 0) {
+              window.location =
+                "{baseurl}/admin/index.php?action=user_manager";
+              status_msg("{lang_log_deleted_user} " + json.user_id);
+            } else {
+              status_error(json.error_msg);
+            }
+          }
+        );
+        HidePleaseWait();
+      }
+    });
+
+    $("#add_user_link").click(function (e) {
+      e.preventDefault();
+      $.get("ajax.php?action=ajax_display_add_user").done(function (data) {
+        raiseModal("{lang_user_manager_add_user}", data);
+      });
+    });
+  });
+</script>

@@ -1,0 +1,1002 @@
+<form
+ id="site_config_uploads"
+ method="post"
+ action=""
+>
+<input type="hidden" name="token" value="{csrf_token}" />
+  <h3 class="mt-4">{lang_site_config_heading_upload_settings}</h3>
+  <hr />
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_allowed_upload_extensions">{lang_allowed_upload_extensions}</label>
+        <input
+         type="text"
+         name="controlpanel_allowed_upload_extensions"
+         id="controlpanel_allowed_upload_extensions"
+         value="{controlpanel_allowed_upload_extensions}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_allowed_upload_extensions_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_thumbnail_prog"
+         class="ms-0"
+        >{lang_thumbnail_prog}</label>
+        <select
+         name="controlpanel_thumbnail_prog"
+         class="form-control"
+         id="controlpanel_thumbnail_prog"
+        >
+          {thumbnail_prog_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/thumbnail_prog_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_thumbnail_prog_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_path_to_imagemagick">{lang_path_to_imagemagick}</label>
+        <input
+         type="text"
+         name="controlpanel_path_to_imagemagick"
+         id="controlpanel_path_to_imagemagick"
+         value="{controlpanel_path_to_imagemagick}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_path_to_imagemagick_desc}</div>
+  </div>
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_make_thumbnail"
+         class="ms-0"
+        >{lang_make_thumbnail}</label>
+        <select
+         name="controlpanel_make_thumbnail"
+         class="form-control"
+         id="controlpanel_make_thumbnail"
+        >
+          {make_thumbnail_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/make_thumbnail_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_make_thumbnail_desc}</div>
+  </div>
+
+  <h3 class="mt-4">{lang_site_config_heading_listing_image_upload}</h3>
+  <hr />
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_listings_uploads">{lang_max_listings_uploads}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_listings_uploads"
+         id="controlpanel_max_listings_uploads"
+         value="{controlpanel_max_listings_uploads}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_listings_uploads_desc}</div>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <div class="input-group input-group-static mb-2">
+      <label for="controlpanel_max_listings_upload_size">{lang_max_listings_upload_size}</label>
+      <input
+       type="number"
+       required
+       min="0"
+       name="controlpanel_max_listings_upload_size"
+       id="controlpanel_max_listings_upload_size"
+       value="{controlpanel_max_listings_upload_size}"
+       class="form-control"
+      />
+    </div>
+  </div>
+  <div class="col text-sm">{lang_max_listings_upload_size_desc}</div>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <div class="input-group input-group-static mb-2">
+      <label for="controlpanel_jpeg_quality">{lang_jpeg_quality}</label>
+      <input
+       type="number"
+       required
+       min="0"
+       max="100"
+       step="1"
+       name="controlpanel_jpeg_quality"
+       id="controlpanel_jpeg_quality"
+       value="{controlpanel_jpeg_quality}"
+       class="form-control"
+      />
+    </div>
+  </div>
+  <div class="col text-sm">{lang_jpeg_quality_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_resize_img"
+         class="ms-0"
+        >{lang_resize_img}</label>
+        <select
+         name="controlpanel_resize_img"
+         class="form-control"
+         id="controlpanel_resize_img"
+        >
+          {resize_img_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/resize_img_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_resize_img_desc}</div>
+  </div>
+
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_resize_by"
+         class="ms-0"
+        >{lang_resize_by}</label>
+        <select
+         name="controlpanel_resize_by"
+         class="form-control"
+         id="controlpanel_resize_by"
+        >
+          {resize_by_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/resize_by_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_resize_by_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_listings_upload_width">{lang_max_listings_upload_width}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_listings_upload_width"
+         id="controlpanel_max_listings_upload_width"
+         value="{controlpanel_max_listings_upload_width}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_listings_upload_width_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_listings_upload_height">{lang_max_listings_upload_height}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_listings_upload_height"
+         id="controlpanel_max_listings_upload_height"
+         value="{controlpanel_max_listings_upload_height}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_listings_upload_height_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_resize_thumb_by"
+         class="ms-0"
+        >{lang_resize_thumb_by}</label>
+        <select
+         name="controlpanel_resize_thumb_by"
+         class="form-control"
+         id="controlpanel_resize_thumb_by"
+        >
+          {resize_thumb_by_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/resize_thumb_by_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_resize_thumb_by_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_thumbnail_width">{lang_thumbnail_width}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_thumbnail_width"
+         id="controlpanel_thumbnail_width"
+         value="{controlpanel_thumbnail_width}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_thumbnail_width_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_thumbnail_height">{lang_thumbnail_height}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_thumbnail_height"
+         id="controlpanel_thumbnail_height"
+         value="{controlpanel_thumbnail_height}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_thumbnail_height_desc}</div>
+  </div>
+
+
+  <h3 class="mt-4">{lang_listing_image_display_setting}</h3>
+  <hr />
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_main_image_display_by"
+         class="ms-0"
+        >{lang_main_image_display_by}</label>
+        <select
+         name="controlpanel_main_image_display_by"
+         class="form-control"
+         id="controlpanel_main_image_display_by"
+        >
+          {main_image_display_by_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/main_image_display_by_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_main_image_display_by_desc}</div>
+  </div>
+
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_main_image_width">{lang_main_image_width}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_main_image_width"
+         id="controlpanel_main_image_width"
+         value="{controlpanel_main_image_width}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_main_image_width_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_main_image_height">{lang_main_image_height}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_main_image_height"
+         id="controlpanel_main_image_height"
+         value="{controlpanel_main_image_height}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_main_image_height_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_number_columns">{lang_number_columns}</label>
+        <input
+         type="number"
+         required
+         min="1"
+         name="controlpanel_number_columns"
+         id="controlpanel_number_columns"
+         value="{controlpanel_number_columns}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_number_columns_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_listingimages_slideshow_group_thumb">{lang_listingimages_slideshow_group_thumb}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_listingimages_slideshow_group_thumb"
+         id="controlpanel_listingimages_slideshow_group_thumb"
+         value="{controlpanel_listingimages_slideshow_group_thumb}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_listingimages_slideshow_group_thumb_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_show_no_photo"
+         class="ms-0"
+        >{lang_show_no_photo}</label>
+        <select
+         name="controlpanel_show_no_photo"
+         class="form-control"
+         id="controlpanel_show_no_photo"
+        >
+          {show_no_photo_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/show_no_photo_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_show_no_photo_desc}</div>
+  </div>
+
+  <h3 class="mt-4">{lang_site_config_heading_user_image_upload}</h3>
+  <hr />
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_user_uploads">{lang_max_user_uploads}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_user_uploads"
+         id="controlpanel_max_user_uploads"
+         value="{controlpanel_max_user_uploads}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_user_uploads_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_user_upload_size">{lang_max_user_upload_size}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_user_upload_size"
+         id="controlpanel_max_user_upload_size"
+         value="{controlpanel_max_user_upload_size}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_user_upload_size_desc}</div>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <div class="input-group input-group-static mb-2">
+      <label for="controlpanel_user_jpeg_quality">{lang_jpeg_quality}</label>
+      <input
+       type="number"
+       required
+       min="0"
+       max="100"
+       step="1"
+       name="controlpanel_user_jpeg_quality"
+       id="controlpanel_user_jpeg_quality"
+       value="{controlpanel_user_jpeg_quality}"
+       class="form-control"
+      />
+    </div>
+  </div>
+  <div class="col text-sm">{lang_jpeg_quality_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_user_resize_img"
+         class="ms-0"
+        >{lang_resize_img}</label>
+        <select
+         name="controlpanel_user_resize_img"
+         class="form-control"
+         id="controlpanel_user_resize_img"
+        >
+          {user_resize_img_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/user_resize_img_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_resize_img_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_user_resize_by"
+         class="ms-0"
+        >{lang_resize_by}</label>
+        <select
+         name="controlpanel_user_resize_by"
+         class="form-control"
+         id="controlpanel_user_resize_by"
+        >
+          {user_resize_by_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/user_resize_by_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_resize_by_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_user_upload_width">{lang_max_user_upload_width}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_user_upload_width"
+         id="controlpanel_max_user_upload_width"
+         value="{controlpanel_max_user_upload_width}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_user_upload_width_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_user_upload_height">{lang_max_user_upload_height}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_user_upload_height"
+         id="controlpanel_max_user_upload_height"
+         value="{controlpanel_max_user_upload_height}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_user_upload_height_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_user_resize_thumb_by"
+         class="ms-0"
+        >{lang_resize_thumb_by}</label>
+        <select
+         name="controlpanel_user_resize_thumb_by"
+         class="form-control"
+         id="controlpanel_user_resize_thumb_by"
+        >
+          {user_resize_thumb_by_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/user_resize_thumb_by_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_resize_thumb_by_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_user_thumbnail_width">{lang_thumbnail_width}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_user_thumbnail_width"
+         id="controlpanel_user_thumbnail_width"
+         value="{controlpanel_user_thumbnail_width}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_thumbnail_width_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_user_thumbnail_height">{lang_thumbnail_height}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_user_thumbnail_height"
+         id="controlpanel_user_thumbnail_height"
+         value="{controlpanel_user_thumbnail_height}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_thumbnail_height_desc}</div>
+  </div>
+
+  <h3 class="mt-4">{lang_user_image_display_setting}</h3>
+  <hr />
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_show_agent_no_photo"
+         class="ms-0"
+        >{lang_show_agent_no_photo}</label>
+        <select
+         name="controlpanel_show_agent_no_photo"
+         class="form-control"
+         id="controlpanel_show_agent_no_photo"
+        >
+          {show_agent_no_photo_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/show_agent_no_photo_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_show_agent_no_photo_desc}</div>
+  </div>
+
+  <h3 class="mt-4">{lang_site_config_heading_upload_file_settings}</h3>
+  <hr />
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_allowed_file_upload_extensions">{lang_allowed_upload_extensions}</label>
+        <input
+         type="text"
+         required
+         name="controlpanel_allowed_file_upload_extensions"
+         id="controlpanel_allowed_file_upload_extensions"
+         value="{controlpanel_allowed_file_upload_extensions}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_allowed_upload_extensions_desc}</div>
+  </div>
+
+  <h3 class="mt-4">{lang_site_config_heading_upload_file_limits}</h3>
+  <hr />
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_listings_file_uploads">{lang_max_file_uploads}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_listings_file_uploads"
+         id="controlpanel_max_listings_file_uploads"
+         value="{controlpanel_max_listings_file_uploads}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_file_uploads_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_listings_file_upload_size">{lang_max_file_upload_size}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_listings_file_upload_size"
+         id="controlpanel_max_listings_file_upload_size"
+         value="{controlpanel_max_listings_file_upload_size}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_file_upload_size_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_users_file_uploads">{lang_max_user_file_uploads}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_users_file_uploads"
+         id="controlpanel_max_users_file_uploads"
+         value="{controlpanel_max_users_file_uploads}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_user_file_uploads_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_users_file_upload_size">{lang_max_user_file_upload_size}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_users_file_upload_size"
+         id="controlpanel_max_users_file_upload_size"
+         value="{controlpanel_max_users_file_upload_size}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_user_file_upload_size_desc}</div>
+  </div>
+
+
+  <h3 class="mt-4">{lang_file_display_settings}</h3>
+  <hr />
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_show_file_icon"
+         class="ms-0"
+        >{lang_show_file_icon}</label>
+        <select
+         name="controlpanel_show_file_icon"
+         class="form-control"
+         id="controlpanel_show_file_icon"
+        >
+          {show_file_icon_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/show_file_icon_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_show_file_icon_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_file_display_option"
+         class="ms-0"
+        >{lang_show_file_display_option}</label>
+        <select
+         name="controlpanel_file_display_option"
+         class="form-control"
+         id="controlpanel_file_display_option"
+        >
+          {file_display_option_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/file_display_option_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_show_file_display_option_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static">
+        <label
+         for="controlpanel_show_file_size"
+         class="ms-0"
+        >{lang_show_file_size}</label>
+        <select
+         name="controlpanel_show_file_size"
+         class="form-control"
+         id="controlpanel_show_file_size"
+        >
+          {show_file_size_block}
+          <option
+           value="{value}"
+           {selected}
+          >{text}</option>
+          {/show_file_size_block}
+        </select>
+      </div>
+    </div>
+    <div class="col text-sm">{lang_show_file_size_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_icon_image_width">{lang_file_icon_width}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_icon_image_width"
+         id="controlpanel_icon_image_width"
+         value="{controlpanel_icon_image_width}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_file_icon_width_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_icon_image_height">{lang_file_icon_height}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_icon_image_height"
+         id="controlpanel_icon_image_height"
+         value="{controlpanel_icon_image_height}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_file_icon_height_desc}</div>
+  </div>
+
+  <h3 class="mt-4">{lang_site_config_heading_vtour_options}</h3>
+  <hr />
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_vtour_uploads">{lang_max_vtour_uploads}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_vtour_uploads"
+         id="controlpanel_max_vtour_uploads"
+         value="{controlpanel_max_vtour_uploads}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_vtour_uploads_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_vtour_upload_size">{lang_max_vtour_upload_size}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_vtour_upload_size"
+         id="controlpanel_max_vtour_upload_size"
+         value="{controlpanel_max_vtour_upload_size}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_vtour_upload_size_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_max_vtour_upload_width">{lang_max_vtour_upload_width}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_max_vtour_upload_width"
+         id="controlpanel_max_vtour_upload_width"
+         value="{controlpanel_max_vtour_upload_width}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_max_vtour_upload_width_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_vtour_width">{lang_vtour_width}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_vtour_width"
+         id="controlpanel_vtour_width"
+         value="{controlpanel_vtour_width}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_vtour_width_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_vtour_height">{lang_vtour_height}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_vtour_height"
+         id="controlpanel_vtour_height"
+         value="{controlpanel_vtour_height}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_vtour_height_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_vt_popup_width">{lang_vt_popup_width}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_vt_popup_width"
+         id="controlpanel_vt_popup_width"
+         value="{controlpanel_vt_popup_width}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_vt_popup_width_desc}</div>
+  </div>
+
+  <div class="row align-items-end mb-2">
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-static mb-2">
+        <label for="controlpanel_vt_popup_height">{lang_vt_popup_height}</label>
+        <input
+         type="number"
+         required
+         min="0"
+         name="controlpanel_vt_popup_height"
+         id="controlpanel_vt_popup_height"
+         value="{controlpanel_vt_popup_height}"
+         class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col text-sm">{lang_vt_popup_height_desc}</div>
+  </div>
+
+  <input
+   type="submit"
+   class="btn btn-primary float-end"
+   value="{lang_save_changes}"
+  />
+</form>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#site_config_uploads").submit(function (e) {
+      e.preventDefault();
+      $.post(
+        "ajax.php?action=update_site_config",
+        $("#site_config_uploads").serialize(),
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          } else {
+            status_msg(data.status);
+          }
+        },
+        "json"
+      );
+    });
+  });
+</script>

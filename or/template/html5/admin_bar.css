@@ -1,0 +1,399 @@
+#oradminbar * {
+	height: auto;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	position: static;
+	text-transform: none;
+	letter-spacing: normal;
+	line-height: 1;
+}
+
+#oradminbar :before,#oradminbar :after {
+	content: normal;
+}
+
+#oradminbar a,#oradminbar a:hover,#oradminbar a img,#oradminbar a img:hover {
+	outline: none;
+	border: none;
+	text-decoration: none;
+	background: none;
+}
+
+#oradminbar {
+	direction: ltr;
+	background: #666666; /* Old browsers */
+background: -moz-linear-gradient(top, #666666 0%, #7f7f7f 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(100%,#7f7f7f)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #666666 0%,#7f7f7f 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #666666 0%,#7f7f7f 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #666666 0%,#7f7f7f 100%); /* IE10+ */
+background: linear-gradient(to bottom, #666666 0%,#7f7f7f 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#7f7f7f',GradientType=0 ); /* IE6-9 */
+	color: #ddd;
+	font: normal 12px/24px Arial, Helvetica, sans-serif;
+	height: 24px;
+	border-bottom-style: solid;
+	border-width: 1px;
+	border-color: #888;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+	min-width: 960px;
+}
+
+#oradminbar ul,#oradminbar ul li {
+	background: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 999;
+}
+
+#oradminbar .quicklinks ul {
+	text-align: left;
+}
+
+#oradminbar .quicklinks ul li {
+	float: left;
+}
+
+#oradminbar .quicklinks>ul>li>a {
+	border-right: 1px solid #686868;
+	border-left: 1px solid #808080;
+}
+
+#oradminbar .quicklinks>ul>li:last-child>a {
+	border-right: none;
+}
+
+#oradminbar .quicklinks>ul>li:hover>a {
+	border-left-color: #707070;
+}
+
+#oradminbar .quicklinks a,#oradminbar .shortlink-input {
+	color: #ccc;
+	height: 24px;
+	text-shadow: #555 0 -1px 0;
+	display: block;
+	font: normal 13px/24px Arial, Helvetica, sans-serif;
+	padding: 0 .85em;
+	margin: 0;
+}
+
+#oradminbar .quicklinks a>span {
+	line-height: 24px;
+}
+
+#oradminbar .quicklinks .menupop ul,#oradminbar .shortlink-input {
+	-moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background: #fff;
+	background: rgba(255, 255, 255, 0.97);
+	display: none;
+	position: absolute;
+	border: 1px solid #dfdfdf;
+	border-top: none;
+	float: none;
+}
+
+#oradminbar .selected .shortlink-input {
+	display: block;
+}
+
+#oradminbar .quicklinks .menupop ul li {
+	float: none;
+}
+
+#oradminbar .quicklinks .menupop ul li a,#oradminbar .shortlink-input {
+	color: #555;
+	text-shadow: none;
+	white-space: nowrap;
+	min-width: 140px;
+}
+
+#oradminbar .shortlink-input {
+	width: 200px;
+}
+
+#oradminbar .quicklinks .menupop ul li:hover>a {
+	color: #fff;
+	text-shadow: #666 0 -1px 0;
+}
+
+#oradminbar .quicklinks li:hover>ul,#oradminbar .quicklinks li.hover>ul {
+	display: block;
+}
+
+#oradminbar .quicklinks .menupop li:hover>ul,#oradminbar .quicklinks .menupop li.hover>ul {
+	margin-left: 100%;
+	margin-top: -24px;
+}
+
+#oradminbar .quicklinks li:hover,#oradminbar .quicklinks .selected {
+	background: #555;
+	background: -moz-linear-gradient(bottom, #555, #3e3e3e);
+	background: -webkit-gradient(linear, left bottom, left top, from(#555),	to(#3e3e3e) );
+}
+
+#oradminbar .quicklinks .menupop li:hover {
+	background: #888;
+	background: -moz-linear-gradient(bottom, #888, #9d9d9d);
+	background: -webkit-gradient(linear, left bottom, left top, from(#888),	to(#9d9d9d) );
+}
+
+#oradminbar .quicklinks .menupop a>span {
+	display: inline;
+	background: url({template_url}/images/admin-bar-sprite.png) right -29px	no-repeat;
+	padding-right: .8em;
+}
+
+#oradminbar .quicklinks .menupop ul li a>span {
+	display: block;
+	background: url({template_url}/images/admin-bar-sprite.png) right no-repeat;
+	padding-right: 1.5em;
+}
+
+#oradminbar .quicklinks a span#ab-awaiting-mod,#oradminbar .quicklinks a span#ab-updates {
+	background: #eee;
+	color: #333;
+	text-shadow: none;
+	display: inline;
+	padding: 2px 5px;
+	font-size: 10px;
+	font-weight: bold;
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#oradminbar .quicklinks a:hover span#ab-awaiting-mod,#oradminbar .quicklinks a:hover span#ab-updates{
+	background: #fff;
+	color: #000;
+}
+
+#oradminbar .quicklinks li#or-admin-bar-my-account>a {
+	border-left: none;
+}
+
+#oradminbar #adminbarsearch {
+	float: right;
+	height: 18px;
+	padding: 3px;
+	margin: 0;
+}
+
+#online_status {
+	float:right;
+	margin-right:5px;
+	padding:4px;
+	font-size:10pt;
+	font-weight: 400;
+	border-top:1px;
+	border-right:2px;
+	border-bottom:2px #FF0;
+	border-left:1px;
+	-moz-border-radius:8px;
+	-khtml-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	border-color:#eee;
+	border-style:solid;
+	background-color: #cff93e;
+}
+
+* html #oradminbar {
+	overflow: hidden;
+	position: absolute;
+}
+
+* html #oradminbar .quicklinks ul li a {
+	float: left;
+}
+
+* html #oradminbar .menupop a span {
+	background-image: none;
+}
+
+
+/*
+    ColorBox Core Style
+    The following rules are the styles that are consistant between themes.
+    Avoid changing this area to maintain compatability with future versions of ColorBox.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxOverlay{position:fixed; width:100%; height:100%; }
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative; overflow:hidden;}
+#cboxLoadedContent{overflow:auto; }
+#cboxLoadedContent iframe{display:block; width:100%; height:100%; border:0; }
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+
+/*
+    ColorBox example user style
+    The following rules are ordered and tabbed in a way that represents the
+    order/nesting of the generated HTML, so that the structure easier to understand.
+*/
+#cboxOverlay{background:#222;} //sets overall background color
+#cboxLoadingOverlay{width:0px;height:0px;display:hidden;}
+#cboxLoadingGraphic{width:0px;height:0px;display:hidden;}
+#colorBox{}
+
+#cboxContent{
+    	/* Opera */
+background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjpyZ2JhKDIyMSwyMjEsMjIxLDEpOyIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOnJnYmEoMjU1LDI1NSwyNTUsMSk7IiAvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjZ3JhZGllbnQpIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIiAvPjwvc3ZnPg==);
+
+/* Firefox */
+background: -moz-linear-gradient( top, rgba(221,221,221,1), rgba(255,255,255,1) );
+
+/* Chrome & Safari */
+background: -webkit-gradient( linear, left top, left bottom, color-stop( 0, rgba(221,221,221,1) ), color-stop( 1, rgba(255,255,255,1) ) );
+
+/* IE5.5 - IE7 */
+filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#FFDDDDDD,EndColorStr=#FFFFFFFF);
+
+/* IE8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#FFDDDDDD,EndColorStr=#FFFFFFFF)";
+    	border-top: 1px solid #888;
+    	border-bottom: 2px solid #888;
+    	border-left: 1px solid #888;
+    	border-right: 2px solid #888;
+    	-moz-border-radius: 10px;
+    	-webkit-border-radius: 10px;
+    	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    	-moz-opacity:1;
+    	opacity:1;
+    	margin-bottom: 50px;
+    }
+#colorbox.PleaseWaitColorBox #cboxContent{
+		background-image: url('{template_url}/images/gray_gradient_100.png');
+    	background-repeat: repeat-x;
+    	/*background-color:#eee;*/
+    	border-top: 1px solid #888;
+    	border-bottom: 2px solid #888;
+    	border-left: 1px solid #888;
+    	border-right: 2px solid #888;
+    	-moz-border-radius: 10px;
+    	-webkit-border-radius: 10px;
+    	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    	-moz-opacity:10;
+    	opacity:1;
+		width: 90%;
+    }
+
+#cboxLoadedContent{
+    	margin: 30px 10px 20px 10px;
+    	padding-bottom: 20px;
+}
+#cboxLoadedContent .form_div {
+	border: 1px solid #bbb;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin-top: 8px;
+	padding: 5px;
+
+}
+
+#cboxLoadedContent .field_caption,  #cboxLoadedContent .field_element, #cboxLoadedContent option, #cboxLoadedContent select, #cboxLoadedContent input{
+	font-size: 1em;
+}
+
+
+#cboxLoadedContent input{
+	vertical-align: middle;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+
+#cboxLoadedContent input, #cboxLoadedContent select {
+	background-color: #FFFFCC;
+	color: #666;
+	border-width: 1px;
+	padding: 1px 1px;
+	width: 250px;
+	text-shadow:0 1px 0 #eee;
+	font-weight: 600;
+	border-color: #ccc;
+}
+
+#colorbox.PleaseWaitColorBox #cboxLoadedContent{
+    margin: 20px 0px 0px 25px;
+    padding: 0px;
+    font-size: 10pt;
+    font-weight: bold;
+    border:0px;
+}
+
+#cboxTitle{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    text-shadow:0 1px 0 #403232;
+	font-size:1.2em;
+    border: 1px solid #888;
+    padding: 4px;
+    /* Opera */
+	background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjpyZ2JhKDEyNiwxNzIsMTc4LDEpOyIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOnJnYmEoMTcwLDIyOSwyMzEsMSk7IiAvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjZ3JhZGllbnQpIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIiAvPjwvc3ZnPg==);
+
+	/* Firefox */
+	background: -moz-linear-gradient( top, rgba(126,172,178,1), rgba(170,229,231,1) );
+
+	/* Chrome & Safari */
+	background: -webkit-gradient( linear, left top, left bottom, color-stop( 0, rgba(126,172,178,1) ), color-stop( 1, rgba(170,229,231,1) ) );
+
+	/* IE5.5 - IE7 */
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#FF7EACB2,EndColorStr=#FFAAE5E7);
+
+	/* IE8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#FF7EACB2,EndColorStr=#FFAAE5E7)";
+}
+
+#colorbox.PleaseWaitColorBox #cboxTitle{
+	border: none;
+	padding: 0px;
+}
+
+#cboxClose{
+   	background: url("{template_url}/images/close_window.png");
+   	position:absolute;
+   	top:4px;
+   	right:8px;
+   	width: 16px;
+   	height: 16px;
+   	display:block;
+}
+#colorbox.PleaseWaitColorBox #cboxClose{background-image:none;position:absolute; top:0; left:0; display:block; color:#000; font-weight:bold;}
+ #cboxCurrent{position:absolute; bottom:0px; left:100px; color:#999;}
+ #cboxSlideshow{position:absolute; bottom:0px; right:42px; color:#444;}
+ #cboxPrevious{position:absolute; bottom:0px; left:0; color:#444;}
+ #cboxNext{position:absolute; bottom:0px; left:63px; color:#444;}
+
+ /*
+  The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
+  when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to or needed in IE9.
+  See: http://jacklmoore.com/notes/ie-transparency-problems/
+*/
+.cboxIE #cboxTopLeft,
+.cboxIE #cboxTopCenter,
+.cboxIE #cboxTopRight,
+.cboxIE #cboxBottomLeft,
+.cboxIE #cboxBottomCenter,
+.cboxIE #cboxBottomRight,
+.cboxIE #cboxMiddleLeft,
+.cboxIE #cboxMiddleRight {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+}

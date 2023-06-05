@@ -1,0 +1,25 @@
+<!-- bof "random_listing_horizontal.html" -->
+<div class="horiz_feat">
+	<h4>Random Listings</h4>
+	{featured_listing_block_row repeat="4"}
+	
+		{featured_listing_block}
+		<div class="feat_list">           
+			<a href="{link_to_listing}" title="">
+				<img src="{raw_image_thumb_1}" alt="{listing_title}" title="" />
+			</a>
+			<div class="feat_text">
+				{listing_field_price_value}
+				<br />
+				{listing_field_city_value}, {listing_field_state_value}
+				<br />
+				{listing_field_beds_value} {listing_field_beds_caption} / {listing_field_baths_value} {listing_field_baths_caption}
+			</div>
+		</div>
+		{/featured_listing_block}
+		<div class="clear"></div>
+		
+	{/featured_listing_block_row}		  
+</div>
+<div class="clear"></div>
+<!-- eof "random_listing_horizontal.html" -->
