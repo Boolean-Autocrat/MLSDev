@@ -18,7 +18,7 @@ header {
 }
 
 .header__navbar {
-  width: 75%;
+  width: 50%;
 }
 
 .header__menu-btn {
@@ -34,6 +34,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header__wordart {
+  width: 25%;
 }
 
 .header__navbar > ul {
