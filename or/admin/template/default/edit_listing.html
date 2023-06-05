@@ -1,0 +1,691 @@
+{listing_not_found_block} {lang_access_denied} {/listing_not_found_block}
+{listing_found_block}
+
+<div class="card card-frame mb-4">
+  <div class="card-body py-2">
+
+
+    <div class="nav-wrapper position-relative end-0">
+      <ul
+       class="nav nav-pills nav-fill d-md-none mb-4"
+       role="tablist"
+      >
+        <li class="nav-item">
+          <a
+           class="nav-link mb-0 px-0 py-1 active"
+           data-bs-toggle="tab"
+           role="tab"
+           data-bs-target="#listing_details_pane"
+           aria-selected="true"
+           href="#"
+          >Listing Details</a>
+        </li>
+        <li class="nav-item">
+          <a
+           class="nav-link mb-0 px-0 py-1"
+           data-bs-toggle="tab"
+           role="tab"
+           data-bs-target="#media_widget_pane"
+           aria-selected="false"
+           href="#"
+          >Media</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content edit_listing_tab_content row">
+      <div
+       role="tabpanel"
+       id="listing_details_pane"
+       class="tab-pane active col-12 col-md"
+      >
+        <h6
+         id="alert_listing_inactive"
+         class="d-none text-danger font-weight-bold"
+        >{lang_alert_listing_inactive}</h6>
+        <form
+         id="listing_data"
+         action="#"
+         method="post"
+        >
+          <input type="hidden" name="token" value="{csrf_token}" />
+          <input
+           type="hidden"
+           name="edit"
+           value="{listing_id}"
+          />
+          <div class="row justify-content-between">
+            <div class="col-auto">
+              <div class="input-group input-group-static">
+                <label class="ms-0">{lang_listing_editor_last_modified}</label>
+                <input
+                 value="{listing_last_modified}"
+                 class="form-control"
+                 readonly
+                />
+              </div>
+            </div>
+            <div class="col-auto">
+              <a
+               class="btn btn-link text-dark px-3 mb-0"
+               href="{listing_url}"
+               target="_blank"
+              ><i class="fa-solid fa-eye"></i>
+                <span class="d-none d-md-inline">{lang_preview}</span></a>
+              <button
+               type="submit"
+               id="update_listingdata"
+               class="btn btn-link text-dark px-3 mb-0"
+               href="javascript:;"
+              >
+                <i class="fa-solid fa-save"></i>
+                <span class="d-none d-md-inline">{lang_update}</span></button>
+              <a
+               id="delete_listing"
+               class="btn btn-link text-danger px-3 mb-0"
+               href="javascript:;"
+              ><i class="fa-solid fa-trash"></i>
+                <span class="d-none d-md-inline">{lang_delete}</span></a>
+            </div>
+          </div>
+          <div class="row justify-content-between">
+            <div class="col-auto">
+              <div class="input-group input-group-static">
+                <label class="ms-0">{lang_creation_date}</label>
+                <input
+                 value="{listing_creation_date}"
+                 class="form-control"
+                 readonly
+                />
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="row">
+                <div class="col-6">
+                  {listing_status_block}
+                  <div class="input-group input-group-static">
+                    <label
+                     for="listing_active"
+                     class="ms-0"
+                    >{lang_admin_listings_active}</label>
+                    <select
+                     name="edit_active"
+                     class="form-control"
+                     id="listing_active"
+                    >
+                      {listing_status_option_block}
+                      <option
+                       value="{value}"
+                       {selected}
+                      >{text}</option>
+                      {/listing_status_option_block}
+                    </select>
+                  </div>
+                  {/listing_status_block}
+                </div>
+                <div class="col-6">
+                  {featured_listing_block}
+                  <div class="input-group input-group-static">
+                    <label
+                     for="featuredListing"
+                     class="ms-0"
+                    >{lang_admin_listings_editor_featured}</label>
+                    <select
+                     name="featured"
+                     class="form-control"
+                     id="featuredListing"
+                    >
+                      {featured_listing_option_block}
+                      <option
+                       value="{value}"
+                       {selected}
+                      >{text}</option>
+                      {/featured_listing_option_block}
+                    </select>
+                  </div>
+                  {/featured_listing_block}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="input-group input-group-static mb-2">
+                <label for="title">{lang_admin_listings_editor_title}</label>
+                <input
+                 type="text"
+                 name="title"
+                 id="title"
+                 value="{listing_title}"
+                 class="form-control"
+                 required
+                />
+              </div>
+              <div class="input-group input-group-static mb-2">
+                <label for="listing_seotitle">{lang_admin_listings_editor_seotitle}</label>
+                <input
+                 type="text"
+                 name="seotitle"
+                 id="listing_seotitle"
+                 value="{listing_seotitle}"
+                 class="form-control"
+                 required
+                />
+              </div>
+              <div class="input-group input-group-static mb-2">
+                <label for="pclass_name">{lang_admin_listings_editor_property_class}</label>
+                <input
+                 type="text"
+                 name="pclass"
+                 id="pclass_name"
+                 value="{listing_pclass}"
+                 class="form-control"
+                 disabled
+                />
+              </div>
+              {listing_agent_block}
+              <div class="input-group input-group-static">
+                <label
+                 for="listing_owner"
+                 class="ms-0"
+                >{lang_listing_editor_listing_agent}</label>
+                <select
+                 name="or_owner"
+                 class="form-control"
+                 id="listing_owner"
+                >
+                  {listing_agent_option_block}
+                  <option
+                   value="{value}"
+                   {selected}
+                  >{text}</option>
+                  {/listing_agent_option_block}
+                </select>
+              </div>
+              {/listing_agent_block}
+              {!listing_agent_block}
+              <input type="hidden" name="or_owner" value="{listing_agent_id}" />
+              {/!listing_agent_block}
+            </div>
+            <div class="col-6">
+              {listing_expiration_block}
+              <div class="input-group input-group-static mb-2">
+                <label for="edit_expiration">{lang_expiration}</label>
+                <input
+                 type="date"
+                 name="edit_expiration"
+                 id="edit_expiration"
+                 value="{listing_expiration}"
+                 class="form-control required"
+                />
+              </div>
+              {/listing_expiration_block}
+
+              {listing_export_block}
+              <div class="input-group input-group-static">
+                <label
+                 for="mlsexport"
+                 class="ms-0"
+                >{lang_admin_listings_editor_mlsexport}</label>
+                <select
+                 name="mlsexport"
+                 class="form-control"
+                 id="mlsexport"
+                 {!listing_agent_block}disabled{/!listing_agent_block}
+                >
+                  {listing_export_option_block}
+                  <option
+                   value="{value}"
+                   {selected}
+                  >{text}</option>
+                  {/listing_export_option_block}
+                </select>
+              </div>
+              {/listing_export_block}
+              {!listing_export_block}
+              <input
+               type="hidden"
+               name="mlsexport"
+               value="no"
+              />
+              {/!listing_export_block}
+
+              {listing_notes_block}
+              <div class="input-group input-group-static mb-2">
+                <label for="listing_notes">{lang_admin_listings_editor_notes}</label>
+                <textarea
+                 rows="5"
+                 name="notes"
+                 id="listing_notes"
+                 class="form-control"
+                >{listing_note}</textarea>
+              </div>
+              {/listing_notes_block}
+
+              {!listing_notes_block}
+              <input
+               type="hidden"
+               name="notes"
+               value="{listing_note}"
+              />
+              {/!listing_notes_block}
+            </div>
+          </div>
+          <div
+           class="row justify-content-center my-2 border border-primary"
+           style="min-height:50px;"
+          >
+            <div
+             id="headline"
+             class="col-auto"
+            >
+              <div class="w-100 text-center">Headline</div>
+              {headline}
+            </div>
+          </div>
+          <div class="row">
+            <div
+             id="top_left"
+             class="col-6  my-2 border border-primary"
+            >
+              <div class="w-100 text-center">Top Left</div>
+              {top_left}
+            </div>
+            <div
+             id="top_right"
+             class="col-6  my-2 border border-primary"
+            >
+              <div class="w-100 text-center">Top Right</div>
+              {top_right}
+            </div>
+          </div>
+          <div
+           class="row justify-content-center my-2  border border-primary"
+           style="min-height:50px;"
+          >
+            <div
+             id="center"
+             class="col-auto"
+            >
+              <div class="w-100 text-center">Center</div>
+              {center}
+            </div>
+          </div>
+          <div class="row">
+            <div
+             id="feature1"
+             class="col-6  my-2 border border-primary"
+            >
+              <div class="w-100 text-center">Feature 1</div>
+              {feature1}
+            </div>
+            <div
+             id="feature2"
+             class="col-6  my-2 border border-primary"
+            >
+              <div class="w-100 text-center">Feature 2</div>
+              {feature2}
+            </div>
+          </div>
+          <div class="row">
+            <div
+             id="bottom_left"
+             class="col-6  my-2 border border-primary"
+            >
+              <div class="w-100 text-center">Bottom Left</div>
+              {bottom_left}
+            </div>
+            <div
+             id="bottom_right"
+             class="col-6  my-2 border border-primary"
+            >
+              <div class="w-100 text-center">Bottom Right</div>
+              {bottom_right}
+            </div>
+          </div>
+          <div
+           class="row justify-content-center my-2  border border-primary"
+           style="min-height:50px;"
+          >
+            <div
+             id="unassigned"
+             class="col-auto"
+            >
+              <div class="w-100 text-center">Unassigned</div>
+              {misc_hold}
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+       id="media_widget_pane"
+       role="tabpanel"
+       class="tab-pane col-12 col-md-auto media-pane-holder justify-content-center"
+      >
+        <div
+         class="accordion"
+         id="accordionExample"
+        >
+          <div class="accordion-item">
+            <h2
+             class="accordion-header"
+             id="headingOne"
+            >
+              <button
+               class="btn btn-primary w-100 mb-0 collapsed"
+               id="listing_file_tab"
+               type="button"
+               data-bs-toggle="collapse"
+               data-bs-target="#listing_file_pane"
+               aria-expanded="true"
+               aria-controls="listing_file_pane"
+              >
+                {lang_files}
+              </button>
+            </h2>
+            <div
+             id="listing_file_pane"
+             class="accordion-collapse collapse"
+             aria-labelledby="headingOne"
+             data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body"></div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2
+             class="accordion-header"
+             id="headingTwo"
+            >
+              <button
+               class="btn btn-primary w-100 mb-0 collapsed"
+               type="button"
+               id="listing_vtour_tab"
+               data-bs-toggle="collapse"
+               data-bs-target="#listing_vtour_pane"
+               aria-expanded="false"
+               aria-controls="listing_vtour_pane"
+              >
+                {lang_vtours}
+              </button>
+            </h2>
+            <div
+             id="listing_vtour_pane"
+             class="accordion-collapse collapse"
+             aria-labelledby="headingTwo"
+             data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body"></div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2
+             class="accordion-header"
+             id="headingThree"
+            >
+              <button
+               class="btn btn-primary w-100 mb-0"
+               type="button"
+               id="listing_image_tab"
+               data-bs-toggle="collapse"
+               data-bs-target="#listing_image_pane"
+               aria-expanded="false"
+               aria-controls="listing_image_pane"
+              >
+                {lang_images}
+              </button>
+            </h2>
+            <div
+             id="listing_image_pane"
+             class="accordion-collapse"
+             aria-labelledby="headingThree"
+             data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  image/file Container -->
+
+<div
+ class="modal fade"
+ id="edit_listing_image_modal"
+ tabindex="-1"
+ aria-labelledby="customizeModal"
+ aria-hidden="true"
+>
+  <form
+   id="edit_media_form"
+   action="#"
+   method="post"
+  >
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h5
+           class="modal-title"
+           id="edit_listing_image_modal_title"
+          >{lang_edit_media}</h5>
+          <button
+           type="button"
+           class="btn-close"
+           data-bs-dismiss="modal"
+           aria-label="Close"
+          ></button>
+        </div>
+        <div
+         class="modal-body"
+         id="edit_listing_image_modal_body"
+        >
+         <input type="hidden" id="media_token" name="token" value="{csrf_token}" />
+
+          <input
+           type="hidden"
+           name="media_id"
+           id="media_id_holder"
+          />
+          <input
+           type="hidden"
+           name="media_type"
+           id="media_type_holder"
+          />
+
+          <img
+           id="edit_media_full_tag"
+           class="img-fluid"
+           src="{baseurl}/images/nophotobig.gif"
+           border="0"
+           alt=""
+          />
+
+          <div
+           class="text-sm my-2"
+           id="edit_media_file_name"
+          ></div>
+
+          <div class="row mb-2">
+            <div class="col-12">
+              <div class="input-group input-group-static my-2">
+                <label for="edit_media_caption">{lang_upload_caption}</label>
+                <input
+                 type="text"
+                 name="caption"
+                 id="edit_media_caption"
+                 value=""
+                 class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-12">
+              <div class="input-group input-group-static mb-2">
+                <label for="edit_media_description">{lang_upload_description}</label>
+                <textarea
+                 class="form-control"
+                 id="edit_media_description"
+                 name="description"
+                 rows="6"
+                 cols="40"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <img
+           id="edit_media_thumb_tag"
+           src="{baseurl}/images/nophoto.gif"
+           class="img-thumbnail"
+           alt=""
+          />
+
+        </div>
+        <div class="modal-footer">
+          <a
+           id="update_media"
+           href="#"
+           class="btn btn-sm btn-primary"
+          >{lang_update}</a>
+          <a
+           id="delete_media"
+           href="#"
+           class="btn btn-sm btn-danger"
+          >{lang_delete}</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- jQuery to set specific paired div heights uniformly -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    //Handle Initial Listing Active Status Warning.
+    if ($("#listing_active").val() == "no") {
+      $("#alert_listing_inactive").removeClass("d-none");
+    } else {
+      $("#alert_listing_inactive").addClass("d-none");
+    }
+    $("#listing_active").change(function () {
+      if ($("#listing_active").val() == "no") {
+        $("#alert_listing_inactive").removeClass("d-none");
+      } else {
+        $("#alert_listing_inactive").addClass("d-none");
+      }
+    });
+
+    $("#listing_image_tab").click(function () {
+      ShowPleaseWait();
+      $("#listing_image_pane  div.accordion-body").load(
+        "ajax.php?action=ajax_display_listing_images&listing_id={listing_id}",
+        function () {
+          HidePleaseWait();
+        }
+      );
+    });
+    
+    //Click to load initial images.
+    $("#listing_image_tab").click();
+    
+    $("#update_media").click(function (e) {
+      e.preventDefault();
+      var media_id = $("#media_id_holder").val();
+      var media_type = $("#media_type_holder").val();
+      var media_token = $("#media_token").val();
+      $.post("ajax.php?action=ajax_update_media", { "token": media_token, "media_type": media_type, parent_id: "{listing_id}", "media_id": media_id, "caption": $("#edit_media_caption").val(), "description": $("#edit_media_description").val() },
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          }
+          else {
+            status_msg("Media Updated");
+          }
+          if (media_type == "listingsimages") {
+            $("#listing_image_pane").load(
+              "{baseurl}/admin/ajax.php?action=ajax_display_listing_images&listing_id={listing_id}"
+            );
+          }
+        }, "json");
+      $("#edit_listing_image_modal").modal("hide");
+    });
+    //Handle Image Deletion
+    $("#delete_media").click(function () {
+      if (confirmDelete()) {
+        var media_id = $("#media_id_holder").val();
+        var media_type = $("#media_type_holder").val();
+        $.post("ajax.php?action=ajax_delete_media", { "media_type": media_type, parent_id: "{listing_id}", "media_id": media_id },
+          function (data) {
+            if (data.error == "1") {
+              status_error(data.error_msg);
+            }
+            else {
+              status_msg("{lang_image} {lang_has_been_deleted}");
+            }
+            if (media_type == "listingsimages") {
+              $("#listing_image_pane").load(
+                "{baseurl}/admin/ajax.php?action=ajax_display_listing_images&listing_id={listing_id}"
+              );
+            }
+          }, "json");
+        $("#edit_listing_image_modal").modal("hide");
+      }
+      return false;
+    });
+    //Load Vtour Pane on click
+    $("#listing_vtour_tab").click(function () {
+      ShowPleaseWait();
+      $("#listing_vtour_pane  div.accordion-body").load(
+        "ajax.php?action=ajax_display_listing_vtours&listing_id={listing_id}",
+        function () {
+          HidePleaseWait();
+        }
+      );
+    });
+    //Load File Pane on click
+    $("#listing_file_tab").click(function () {
+      ShowPleaseWait();
+      $("#listing_file_pane  div.accordion-body").load(
+        "ajax.php?action=ajax_display_listing_files&listing_id={listing_id}",
+        function () {
+          HidePleaseWait();
+        }
+      );
+    });
+    //Submit the form on click of update link
+    $('#listing_data').on('submit', function (e) {
+      e.preventDefault();
+      ShowPleaseWait();
+      $.post("ajax.php?action=ajax_update_listing_data", $("#listing_data").serialize(),
+        function (data) {
+          if (data.error == "1") {
+            status_error(data.error_msg);
+          } else {
+
+            status_msg("{lang_admin_listings_editor_listing_number}" + data.listing_id + " {lang_has_been_updated}");
+            $("#listing_seotitle").val(data.listing_seotitle);
+            $("#preview_button").attr("title", data.listing_url);
+          }
+          HidePleaseWait();
+        }, "json");
+    });
+    //Delete Listings
+    $("#delete_listing").click(function () {
+      if (confirmDelete()) {
+        $.getJSON("ajax.php?action=ajax_delete_listing", { listing_id: "{listing_id}" }, function (json) {
+          if (json.error == 0) {
+            window.location = "{baseurl}/admin/index.php?action=edit_my_listings";
+            status_msg("Listing " + json.listing_id + " deleted");
+          } else {
+            status_error(json.error_msg);
+          }
+        });
+      }
+    });
+  });
+
+</script>
+{/listing_found_block}

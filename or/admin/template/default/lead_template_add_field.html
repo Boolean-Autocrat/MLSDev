@@ -1,0 +1,188 @@
+<div class="edit_field_div">
+
+
+    <form
+     action="{baseurl}/admin/index.php?action=edit_{user_type}_template_add_field"
+     method="post"
+     id="update_field_form"
+    >
+       
+        <div class="input-group input-group-static mb-2">
+            <label
+             for="add_field_edit_field"
+             class="ms-0"
+            >{lang_admin_template_editor_field_name}</label>
+            <input
+             type="text"
+             id="add_field_edit_field"
+             name="edit_field"
+             pattern="[A-Za-z0-9_]+"
+             value=""
+             class="form-control"
+             required
+            />
+        </div>
+
+        <div class="input-group input-group-static mb-2">
+            <label
+             for="add_field_field_caption"
+             class="ms-0"
+            >{lang_admin_template_editor_field_caption}</label>
+            <input
+             type="text"
+             id="add_field_field_caption"
+             name="field_caption"
+             value=""
+             class="form-control"
+             required
+            />
+        </div>
+
+        <div class="input-group input-group-static mb-2">
+            <label
+             for="add_field_field_type"
+             class="ms-0"
+            >{lang_admin_template_editor_field_type}</label>
+            <select
+             name="field_type"
+             class="form-control"
+             id="add_field_field_type"
+            >
+                <option
+                 value="text"
+                 selected="selected"
+                >{lang_text}</option>
+                <option value="textarea">{lang_textarea}</option>
+                <option value="select">{lang_select}</option>
+                <option value="select-multiple">{lang_select-multiple}</option>
+                <option value="option">{lang_option}</option>
+                <option value="checkbox">{lang_checkbox}</option>
+                <option value="divider">{lang_divider}</option>
+                <option value="price">{lang_price}</option>
+                <option value="url">{lang_url}</option>
+                <option value="email">{lang_email}</option>
+                <option value="number">{lang_number}</option>
+                <option value="decimal">{lang_decimal}</option>
+                <option value="date">{lang_date}</option>
+                <option value="lat">{lang_lat}</option>
+                <option value="long">{lang_long}</option>
+            </select>
+        </div>
+
+        <div class="input-group input-group-static mb-2">
+            <label
+             for="add_field_required"
+             class="ms-0"
+            >{lang_admin_template_editor_field_required}</label>
+            <select
+             name="required"
+             class="form-control"
+             id="add_field_required"
+            >
+                <option
+                 value="No"
+                 selected="selected"
+                >{lang_no}</option>
+                <option value="Yes">{lang_yes}</option>
+            </select>
+        </div>
+
+        <div class="input-group input-group-static mb-2">
+            <label
+             for="add_field_field_elements"
+             class="ms-0"
+            >{lang_admin_template_editor_field_elements}</label>
+            <input
+             type="text"
+             id="add_field_field_elements"
+             name="field_elements"
+             value=""
+             class="form-control"
+            />
+        </div>
+
+        <div class="input-group input-group-static mb-2">
+            <label
+             for="add_field_default_text"
+             class="ms-0"
+            >{lang_admin_template_editor_field_default_text}</label>
+            <input
+             type="text"
+             id="add_field_default_text"
+             name="default_text"
+             value=""
+             class="form-control"
+            />
+        </div>
+
+        <div class="input-group input-group-static mb-2">
+            <label
+             for="add_field_tool_tip"
+             class="ms-0"
+            >{lang_admin_template_editor_tool_tip}</label>
+            <textarea
+             id="add_field_tool_tip"
+             class="form-control"
+             name="tool_tip"
+            ></textarea>
+        </div>
+
+        <div class="input-group input-group-static mb-2">
+            <label
+             for="add_field_rank"
+             class="ms-0"
+            >{lang_field_order_on_form}</label>
+            <input
+             type="number"
+             id="add_field_rank"
+             name="rank"
+             value="0"
+             class="form-control"
+            />
+
+        </div>
+
+        <div class="input-group input-group-static mb-2">
+            <label
+             for="add_field_location"
+             class="ms-0"
+            >{lang_location_on_form}</label>
+            <select
+             name="location"
+             class="form-control"
+             id="add_field_location"
+            >
+                <option value="">-- {lang_do_not_display} --</option>
+                {location_block}
+                <option
+                value="{value}"
+                {selected}
+               >{text}</option>
+                {/location_block}
+            </select>
+        </div>
+
+        <input
+         type="submit"
+         id="add_field_submit"
+         class="btn btn-primary float-end"
+         value="{lang_add_field}"
+        />
+    </form>
+</div>
+<script type="text/javascript">
+    $("#update_field_form").on("submit", function (e) {
+        e.preventDefault();
+        $.post("ajax.php?action=ajax_insert_form_field", $("#update_field_form").serialize(),function(data){
+            if(data.error == "1"){ 	
+                status_error(data.error_msg)
+            }
+            else{
+                status_msg("{lang_admin_template_editor_field_added}");
+                document.location = "{baseurl}/admin/index.php?action=leadmanager_form_edit";
+            }	
+            },"json");
+    });
+
+
+</script>

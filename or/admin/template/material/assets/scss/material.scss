@@ -1,0 +1,33 @@
+@import "./theme-customizations/colors.scss";
+
+// Bootstrap Functions
+@import "material-dashboard/assets/scss/material-dashboard/bootstrap/functions";
+
+// Custom Variables
+@import "material-dashboard/assets/scss/material-dashboard/custom/variables";
+
+// Theme Variables
+@import "material-dashboard/assets/scss/material-dashboard/variables";
+
+// Add in bootstrap config for accordians
+@import "./theme-customizations/accordian.scss";
+@import "./theme-customizations/overrides.scss";
+
+// Bootstrap Core
+@import "material-dashboard/assets/scss/material-dashboard/bootstrap/bootstrap";
+
+// Theme Core
+@import "material-dashboard/assets/scss/material-dashboard/theme";
+
+// Custom Variables
+@import "material-dashboard/assets/scss/material-dashboard/custom/styles";
+
+
+//Include Open-Realty Component SCSS
+@import "./open-realty/forms.scss";
+@import "./open-realty/edit_listing.scss";
+@import "./open-realty/edit_user.scss";
+@import "./open-realty/media_widget.scss";
+@import "./open-realty/datatables.scss";
+@import "./open-realty/badges.scss";
+@import "./open-realty/autocomplete.scss";

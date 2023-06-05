@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="robots" content="{meta_index},{meta_follow}" />
+    {meta_canonical_block}
+    <link rel="canonical" href="{canonical_link}" />
+    {/meta_canonical_block}
+    <meta name="Generator" content="Open-Realty" />
+    <link rel="shortcut icon" href="{template_url}/images/favicon.ico" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{company_name} - {lang_rss_lastmodified_link_title}"
+      href="{rss_lastmodified}"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{company_name} - {lang_rss_featured_link_title}"
+      href="{rss_featured}"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{company_name} - {lang_rss_blog_post_link_title}"
+      href="{rss_blog_posts}"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{company_name} - {lang_rss_blog_comments_link_title}"
+      href="{rss_blog_comments}"
+    />
+    <meta name="viewport" content="width=device-width;initial-scale=1.0" />
+    {load_css_style_default} {load_css_style}
+    <link
+      href="http://fonts.googleapis.com/css?family=Luckiest+Guy"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{baseurl}/node_modules/lightslider/dist/css/lightslider.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/jquery/dist/jquery.min.js"
+    ></script>
+    <script type="text/javascript">
+      /* solution to undefined msie */
+      jQuery.browser = {};
+      (function () {
+        jQuery.browser.msie = false;
+        jQuery.browser.version = 0;
+        if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+          jQuery.browser.msie = true;
+          jQuery.browser.version = RegExp.$1;
+        }
+      })();
+      /* solution to undefined msie */
+    </script>
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/lightslider/dist/js/lightslider.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/jquery-migrate/dist/jquery-migrate.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/jquery-ui/jquery-ui.min.js"
+    ></script>
+    <script type="text/javascript">
+      $.fn.uitabs = $.fn.tabs;
+    </script>
+    <script
+      type="text/javascript"
+      src="{baseurl}/include/class/jquery/jquery_plugins/jquery.betterserialize.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="{baseurl}/node_modules/jquery-colorbox/jquery.colorbox-min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{base_url}/node_modules/superfish/dist/js/superfish.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{base_url}/node_modules/@audithsoftworks/jquery.uniform/dist/js/jquery.uniform.standalone.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{base_url}/node_modules/jquery-equalheights/jquery.equalheights.min.js"
+    ></script>
+    <script type="text/javascript">
+      jQuery.validator.messages.required = "{lang_field_is_required}";
+      jQuery.validator.defaults.errorClass = "redtext";
+      /* Eable the Validator Plugins Debug Feature
+ jQuery.validator.defaults.debug = true;
+*/
+      jQuery.validator.defaults.meta = "validate";
+      jQuery.validator.addMethod(
+        "ordate",
+        function (value, element, datefmt) {
+          if (value == "") {
+            return true;
+          }
+          if (datefmt == 1) {
+            return value.match(
+              /^(01|02|03|04|05|06|07|08|09|10|11|12)\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/\d\d\d\d$/
+            );
+          }
+          if (datefmt == 2) {
+            return value.match(
+              /^\d\d\d\d\/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)$/
+            );
+          }
+          if (datefmt == 3) {
+            return value.match(
+              /^(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)\/(01|02|03|04|05|06|07|08|09|10|11|12)\/\d\d\d\d$/
+            );
+          }
+        },
+        "{lang_enter_date_in_format} "
+      );
+    </script>
+
+    {load_ORjs}
+  </head>
+  <body>
+    <header>
+      <hgroup class="flexbox">
+        <h1 class="flexbox"><a href="#">{company_name}</a></h1>
+        <h2 class="flexbox">
+          {company_location}
+          <div id="mobile_menu_container">
+            <button id="btn_mobile_menu">Menu +</button>
+            <div id="mobile_menu">
+              <ul>
+                <li>
+                  <a href="{url_search_results}" title="View All Listings"
+                    >View All Listings</a
+                  >
+                </li>
+                <li><a href="{url_blog}" title="View Blog">View Blog</a></li>
+                {pclass_names_searchlinks}
+              </ul>
+            </div>
+          </div>
+        </h2>
+        <div class="clear"></div>
+      </hgroup>
+    </header>
+    <section id="main" class="flexbox">
+      <section id="box-1" class="flexbox">
+        <article>{content}</article>
+      </section>
+      <section id="box-2" class="flexbox">
+        <nav id="menu">{render_menu_1}</nav>
+      </section>
+      <section id="box-3" class="flexbox">
+        <nav>
+          <h1>Syndication</h1>
+          <ul>
+            <li>
+              <a href="{rss_featured}" title="Featured Listings"
+                >Featured Listings</a
+              >
+            </li>
+            <li>
+              <a href="{rss_latestlisting}" title="Last Added Listings"
+                >Last Added Listings</a
+              >
+            </li>
+            <li>
+              <a href="{rss_lastmodified}" title="Last Modified Listings"
+                >Last Modified Listings</a
+              >
+            </li>
+            <li>
+              <a href="{rss_blog_posts}" title="Featured Listings"
+                >Recent Blog Posts</a
+              >
+            </li>
+            <li>
+              <a href="{rss_blog_comments}" title="Featured Listings"
+                >Recent Blog Comments</a
+              >
+            </li>
+          </ul>
+          <h1>Recent Post</h1>
+          <ul>
+            {blog_recent_post_block}
+            <li>
+              <a href="{blog_recent_post_url}" title="{blog_recent_post_title}"
+                >{blog_recent_post_title}</a
+              >
+            </li>
+            {/blog_recent_post_block}
+          </ul>
+          <h1>Recent Comments</h1>
+          <ul>
+            {blog_recent_comments_block}
+            <li>
+              <a
+                href="{blog_recent_comments_url}"
+                title="{blog_recent_comments_title}"
+                >{blog_recent_comments_title}</a
+              >
+            </li>
+            {/blog_recent_comments_block}
+          </ul>
+        </nav>
+      </section>
+    </section>
+    <footer></footer>
+    {load_js_last}
+  </body>
+</html>

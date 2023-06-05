@@ -1,0 +1,70 @@
+<div class="browse_tool_table">
+	<div class="jump_to_page clear">
+		<span class="browse_tool_text">{lang_jump_to_page}&nbsp;&nbsp;</span>
+		{nextprev_is_firstpage_block}
+			<span class="bt_pages_ghost">&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;</span>
+		{/nextprev_is_firstpage_block}
+		
+		{!nextprev_is_firstpage_block}
+			<span class="bt_pages">
+				<a href="index.php?cur_page={nextprev_prevpage}{nextprev_guidestring}" class="bt_pages left">&lt;&lt;&nbsp;&nbsp;</a>
+			</span>
+		{/!nextprev_is_firstpage_block}
+		 
+		<!-- begin 10 page menu selection -->
+		{nextprev_page_section} 
+			{nextprev_page_current_block}
+				<span class="browse_tool_curpage">{nextprev_disp_count}</span>
+			{/nextprev_page_current_block}
+		
+			{nextprev_page_other_block}
+				<span class="bt_pages">
+					<a href="index.php?cur_page={nextprev_count}{nextprev_guidestring}" class="bt_pages">{nextprev_disp_count}</a>
+				</span>
+			{/nextprev_page_other_block}
+		{/nextprev_page_section} 
+		
+		{nextprev_lastpage_block}
+			<span class="bt_pages_ghost">&nbsp;&gt;&gt;&nbsp;&nbsp;</span>
+		{/nextprev_lastpage_block}
+		
+		{!nextprev_lastpage_block}
+			<span class="bt_pages">
+				<a href="index.php?cur_page={nextprev_nextpage}{nextprev_guidestring}" class="bt_pages">&nbsp;&gt;&gt;&nbsp;&nbsp;</a>
+			</span>
+		{/!nextprev_lastpage_block}
+		 
+		<!--  Search Buttons -->
+       {nextprev_prev_100_button_block}
+			<span class="browse_tool_button">
+				<a href="index.php?cur_page={nextprev_prev10page}{nextprev_guidestring}">{lang_previous_100}</a>
+			</span>
+		{/nextprev_prev_100_button_block}
+		
+		{!nextprev_prev_100_button_block}
+			<span class="browse_tool_ghost">{lang_previous_100}</span>
+		{/!nextprev_prev_100_button_block}
+		
+		{nextprev_next_100_button_block}
+			<span class="browse_tool_button">
+				<a href="index.php?cur_page={nextprev_next10page}{nextprev_guidestring}">{lang_next_100}</a>
+			</span>
+		{/nextprev_next_100_button_block}
+		
+		{!nextprev_next_100_button_block}
+			<span class="browse_tool_ghost">{lang_next_100}</span>
+		{/!nextprev_next_100_button_block}
+		
+		{nextprev_clearlog_block}
+			<span style="text-align:center;">
+				<a href="index.php?action=clear_log" onclick="return confirmDelete()">
+					<img src="images/no_lang/clear_log.gif" style="border:none;" alt="" />
+					<br />
+					{lang_clear_log}
+				</a>
+			</span>
+		{/nextprev_clearlog_block}
+	</div>
+	<div class="clear"></div>	
+</div>
+

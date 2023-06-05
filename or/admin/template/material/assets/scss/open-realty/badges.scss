@@ -1,0 +1,20 @@
+
+.badge-primary {
+    background-color: $primary;
+}
+.badge-yes {
+    background-color: $success;
+}
+.badge-no {
+    background-color: $danger;
+}
+
+.badge-Live {
+    background-color: $success;
+}
+.badge-Draft {
+    background-color: $info;
+}
+.badge-Review {
+    background-color: $warning;
+}

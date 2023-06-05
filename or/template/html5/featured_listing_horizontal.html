@@ -1,0 +1,52 @@
+<!-- bof "featured_listing_horizontal.html" -->
+
+<div style="margin-left: 18px">
+  <a class="prev p_horiz" title="Previous page"></a>
+
+  <div class="feat_scrollable">
+    <h4>{lang_featured_listings}</h4>
+
+    <ul id="content-slider">
+      <!-- Change repeat value to howe many to show at a time. You need to adjust your CSS accordingly -->
+      {featured_listing_block}
+      <li>
+        <a href="{featured_url}" title="" class="feat_list">
+          {featured_img_block}
+          <img
+            src="{featured_thumb_src}"
+            alt="{listing_title}"
+            class="thumbimg"
+            title=""
+          />
+          {/featured_img_block}
+          <div class="feat_text">
+            {listing_field_price_value}
+            <br />
+            {listing_field_city_value}, {listing_field_state_value}
+            <br />
+            {listing_field_beds_value} {listing_field_beds_caption} /
+            {listing_field_baths_value} {listing_field_baths_caption}
+          </div>
+        </a>
+      </li>
+      {/featured_listing_block}
+    </ul>
+  </div>
+  <a class="next n_horiz" title="Next page"></a>
+
+  <div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#content-slider").lightSlider({
+      keyPress: false,
+      item: 4,
+      loop: true,
+      onSliderLoad: function () {
+        $("#content-slider").removeClass("cS-hidden");
+      },
+    });
+  });
+</script>
+<!-- eof "featured_listing_horizontal.html" -->
