@@ -156,6 +156,13 @@ main {
     margin-bottom: 1rem;
 }
 
+.hero__main-para {
+    font-family: 'Nohemi', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
 
 /* General Layout */
 
