@@ -86,6 +86,7 @@ header {
 
 .container {
     max-width: 996px;
+    margin: 0 auto;
 }
 
 
