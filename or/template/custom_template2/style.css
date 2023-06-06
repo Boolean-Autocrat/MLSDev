@@ -19,10 +19,6 @@ header {
     align-items: center;
 }
 
-.header__logo {
-    width: 10%;
-}
-
 .header__navbar {
     width: 65%;
 }
