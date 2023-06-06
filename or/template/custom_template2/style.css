@@ -131,6 +131,16 @@ header {
 }
 
 
+/* Home Page */
+
+.hero__main-heading {
+    font-family: 'Nohemi', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+
 /* General Layout */
 
 a {
