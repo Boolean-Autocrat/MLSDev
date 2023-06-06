@@ -188,6 +188,9 @@ main {
 
 .hero__left {
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero__right {
