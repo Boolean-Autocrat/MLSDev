@@ -24,7 +24,22 @@ header {
 }
 
 .header__menu-btn {
+    width: 30px;
     display: none;
+}
+
+@media (max-width: 668px) {
+    .header__menu-btn {
+        display: block;
+        cursor: pointer;
+    }
+    .header__navbar>ul {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
 }
 
 .header__logo__img {
