@@ -182,6 +182,14 @@ main {
     margin-bottom: 0.5rem
 }
 
+.hero__left {
+    width: 60%;
+}
+
+.hero__right {
+    width: 40%;
+}
+
 
 /* General Layout */
 
