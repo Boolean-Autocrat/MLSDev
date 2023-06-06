@@ -59,6 +59,10 @@ header {
     align-items: center;
 }
 
+.justify-space-between {
+    justify-content: space-between;
+}
+
 .header__wordart {
     width: 25%;
     font-family: 'Nohemi', sans-serif;
