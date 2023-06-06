@@ -738,7 +738,8 @@ footer a {
     border-color: transparent;
     border-style: solid;
     /*width: 100%;*/
-    text-decoration: none background: #f4f7ff;
+    text-decoration: none;
+    background: #f4f7ff;
     background: -moz-linear-gradient(top, #f4f7ff 0%, #d2d8e0 40%, #c0cec7 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f7ff), color-stop(40%, #d2d8e0), color-stop(100%, #c0cec7));
     background: -webkit-linear-gradient(top, #f4f7ff 0%, #d2d8e0 40%, #c0cec7 100%);
