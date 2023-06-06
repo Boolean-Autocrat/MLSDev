@@ -24,8 +24,13 @@ header {
 }
 
 .header__menu-btn {
-    width: 30px;
     display: none;
+}
+
+.header__menu-btn>i {
+    font-size: 1.5rem;
+    color: #000;
+    cursor: pointer;
 }
 
 @media (max-width: 668px) {
