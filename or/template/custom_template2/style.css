@@ -166,9 +166,11 @@ main {
 
 .hero__main-para {
     font-family: 'Nohemi', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 400;
     margin-bottom: 3rem;
+    line-height: 1.75rem;
+    color: #504F59;
 }
 
 .hero__partners {
