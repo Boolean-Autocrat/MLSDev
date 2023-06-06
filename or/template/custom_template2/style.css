@@ -194,7 +194,7 @@ main {
     z-index: 2;
     box-shadow: 0px 24px 34px rgba(80, 79, 89, 0.14);
     top: 2rem;
-    justify-content: space-evenly;
+    gap: 2rem;
 }
 
 .list__opt>p {
