@@ -209,113 +209,118 @@
                 {render_menu_2}
             </nav>
             <div class="clear"></div> -->
-
-    <div class="space_5"></div>
-    <!--  Left navigation -->
-
-    <nav id="menu_nav">
-        <div id="menu_nav_inner">
-            {render_menu_1}
-        </div>
-        <div class="clear"></div>
-    </nav>
-    <article>
-        <div id="article_inner">
-            <div>
-                <h2>Open-Realty v3</h2>
-
-                <p>Open-Realty is a open source, web-based, real estate listing Content Management System (CMS). Designed to be flexible, powerful, MLS-connectable, easy to install and maintain, Open-Realty powers millions of real estate web pages worldwide
-                    and has been in active use and development since 2003.</p>
-                {featured_listings_horizontal}
-
-                <h3>Features:</h3>
-
-                <ul>
-                    <li>Written in PHP and javascript for compatibility and ease of third party development.</li>
-                    <li>Integrated add-on system framework and program API allows developers to connect, extend, and alter Open-Realty's capabilities while maximizing upgrade compatibility with newer versions.</li>
-                    <li>All dynamically generated site-visitor content validates to W3C web standards.</li>
-                    <li>Graphical, easy to use site administration interface.</li>
-                    <li>Built-in WYSIWYG page editor for creating and modifying the content of key pages, including this one!</li>
-                    <li>Built-in Blog system allows for painless rich content creation.</li>
-                    <li>Property information is easily updated. No special skills are required to add, delete, or modify listings.</li>
-                    <li>Upload photos via a web browser. If photos are not available for a listing after creation, a default photo not available image is automatically displayed.</li>
-                    <li>Automatic thumbnail creation. Smaller versions of any uploaded photos are created using the industry standard <a href="http://www.libgd.org" title="The GD Graphics Library home page">GD Graphics Library</a>.</li>
-                    <li>Optional Search Engine Optimized (SEO) page links, dynamically generated site map, and other desirable and configurable SEO features.</li>
-                    <li>Secured access. Only the site Administrator or delegated Agents can modify or add listings and content.</li>
-                    <li>Showcase special or exceptional properties as &quot;Featured&quot; listings.</li>
-                    <li>Search and browse properties according to a user-definable criteria.</li>
-                    <li>Configurable search forms and fields -- All search forms and fields in Open-Realty are completely definable to meet virtually any needs.</li>
-                    <li>Site visitors can easily elect to become Members to save searches and be informed of new listings that would interest them.</li>
-                    <li>HTML/CSS/jQuery template system -- Web Designers can produce a sophisticated functional site template without any knowledge of PHP.</li>
-                    <li>Optional one-click upgrade system helps keep your software up to date.</li>
-                    <li>Many, many, many more features.</li>
-                </ul>
-
-                <p>Open-Realty utilizes a W3C standards compliant HTML &amp; CSS template system. Designing a new template from scratch or incorporating the look of an existing web site is greatly simplified.</p>
+    <main>
+        <nav id="menu_nav">
+            <div id="menu_nav_inner">
+                {render_menu_1}
             </div>
+            <div class="clear"></div>
+        </nav>
+        <section>
+            <div class="home__hero flex">
+                <div>
+                    <h1 class="hero__main-heading">
+                        Let’s start the search for your dream home!
+                    </h1>
+                    <p class="hero__main-para">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus nemo cum accusamus rerum dicta magni esse, recusandae ratione tempora illo natus necessitatibus quas.
+                    </p>
 
-            <div class="space_10">&nbsp;</div>
-            <!--  Latest, Popular and Random listings -->
-
-            <div>{latest_listings_horizontal_class_1}
-                <div class="space_10">&nbsp;</div>
-                {popular_listings_horizontal}</div>
-
-            <div class="space_10">&nbsp;</div>
-
-            <p>{random_listings_horizontal}
-                <!--  end Latest, Popular and Random listings -->
-            </p>
-
-            <div class="space_10">&nbsp;</div>
-            <!--  Statistics block -->
-
-            <div id="listingstats">
-                <div class="listingstats_header"><span class="stat_caption">Listing statistics for:</span>
-                    <script type="text/javascript">
-                        <!--
-                        var currentTime = new Date()
-                        var month = currentTime.getMonth() + 1
-                        var day = currentTime.getDate()
-                        var year = currentTime.getFullYear()
-                        document.write(month + "/" + day + "/" + year)
-                            //-->
-                    </script>
                 </div>
+            </div>
+        </section>
+        <div>
+            <img src="https://cdn.jsdelivr.net/gh/Boolean-Autocrat/MLS-Sample-Images@main/home-decor.webp" alt="white house">
+            <h2>Open-Realty v3</h2>
 
-                <div class="ui-tabs-nav" id="mini-tabs">
-                    <ul>
-                        <li><a href="#listing_stats_data_all" id="tab_stats_{pclass_id}">All Listings</a></li>
-                        <li>{foreach_pclass_block}</li>
-                        <li><a href="#listing_stats_data_{pclass_id}" id="tab_stats_{pclass_id}">{pclass_name}</a></li>
-                        <li>{/foreach_pclass_block}</li>
-                    </ul>
+            <p>Open-Realty is a open source, web-based, real estate listing Content Management System (CMS). Designed to be flexible, powerful, MLS-connectable, easy to install and maintain, Open-Realty powers millions of real estate web pages worldwide
+                and has been in active use and development since 2003.</p>
+            {featured_listings_horizontal}
 
-                    <div id="listing_stats_data_all"><span class="stat_caption">Average price:</span> {listing_stat_avg_field_price_value}<br />
-                        <span class="stat_caption">Median price:</span> {listing_stat_median_field_price_value}<br />
-                        <span class="stat_caption">Highest price:</span> {listing_stat_max_field_price_value}<br />
-                        <span class="stat_caption">Lowest price:</span> {listing_stat_min_field_price_value}<br />
-                        <span class="stat_caption">Average Square Feet:</span> {listing_stat_avg_field_sq_feet_value}</div>
-                    {foreach_pclass_block}
+            <h3>Features:</h3>
 
-                    <div id="listing_stats_data_{pclass_id}"><span class="stat_caption">Total {pclass_name} Listings:</span> {active_listing_count_pclass_{pclass_id}}<br />
-                        <span class="stat_caption">Average price:</span> {listing_stat_avg_field_price_value_pclass_{pclass_id}}<br />
-                        <span class="stat_caption">Median price:</span> {listing_stat_median_field_price_value_pclass_{pclass_id}}<br />
-                        <span class="stat_caption">Highest price:</span> {listing_stat_max_field_price_value_pclass_{pclass_id}}<br />
-                        <span class="stat_caption">Lowest price:</span> {listing_stat_min_field_price_value_pclass_{pclass_id}}<br />
-                        <span class="stat_caption">Average Square Feet:</span> {listing_stat_avg_field_sq_feet_value_pclass_{pclass_id}}</div>
-                    {/foreach_pclass_block}</div>
+            <ul>
+                <li>Written in PHP and javascript for compatibility and ease of third party development.</li>
+                <li>Integrated add-on system framework and program API allows developers to connect, extend, and alter Open-Realty's capabilities while maximizing upgrade compatibility with newer versions.</li>
+                <li>All dynamically generated site-visitor content validates to W3C web standards.</li>
+                <li>Graphical, easy to use site administration interface.</li>
+                <li>Built-in WYSIWYG page editor for creating and modifying the content of key pages, including this one!</li>
+                <li>Built-in Blog system allows for painless rich content creation.</li>
+                <li>Property information is easily updated. No special skills are required to add, delete, or modify listings.</li>
+                <li>Upload photos via a web browser. If photos are not available for a listing after creation, a default photo not available image is automatically displayed.</li>
+                <li>Automatic thumbnail creation. Smaller versions of any uploaded photos are created using the industry standard <a href="http://www.libgd.org" title="The GD Graphics Library home page">GD Graphics Library</a>.</li>
+                <li>Optional Search Engine Optimized (SEO) page links, dynamically generated site map, and other desirable and configurable SEO features.</li>
+                <li>Secured access. Only the site Administrator or delegated Agents can modify or add listings and content.</li>
+                <li>Showcase special or exceptional properties as &quot;Featured&quot; listings.</li>
+                <li>Search and browse properties according to a user-definable criteria.</li>
+                <li>Configurable search forms and fields -- All search forms and fields in Open-Realty are completely definable to meet virtually any needs.</li>
+                <li>Site visitors can easily elect to become Members to save searches and be informed of new listings that would interest them.</li>
+                <li>HTML/CSS/jQuery template system -- Web Designers can produce a sophisticated functional site template without any knowledge of PHP.</li>
+                <li>Optional one-click upgrade system helps keep your software up to date.</li>
+                <li>Many, many, many more features.</li>
+            </ul>
+
+            <p>Open-Realty utilizes a W3C standards compliant HTML &amp; CSS template system. Designing a new template from scratch or incorporating the look of an existing web site is greatly simplified.</p>
+        </div>
+
+        <div class="space_10">&nbsp;</div>
+        <!--  Latest, Popular and Random listings -->
+
+        <div>{latest_listings_horizontal_class_1}
+            <div class="space_10">&nbsp;</div>
+            {popular_listings_horizontal}</div>
+
+        <div class="space_10">&nbsp;</div>
+
+        <p>{random_listings_horizontal}
+            <!--  end Latest, Popular and Random listings -->
+        </p>
+
+        <div class="space_10">&nbsp;</div>
+        <!--  Statistics block -->
+
+        <div id="listingstats">
+            <div class="listingstats_header"><span class="stat_caption">Listing statistics for:</span>
                 <script type="text/javascript">
-                    $(document).ready(function() {
-                        $("#mini-tabs").tabs();
-                    });
+                    <!--
+                    var currentTime = new Date()
+                    var month = currentTime.getMonth() + 1
+                    var day = currentTime.getDate()
+                    var year = currentTime.getFullYear()
+                    document.write(month + "/" + day + "/" + year)
+                        //-->
                 </script>
             </div>
-            <!--  End Statistics block -->
 
-            <div class="space_10">&nbsp;</div>
+            <div class="ui-tabs-nav" id="mini-tabs">
+                <ul>
+                    <li><a href="#listing_stats_data_all" id="tab_stats_{pclass_id}">All Listings</a></li>
+                    <li>{foreach_pclass_block}</li>
+                    <li><a href="#listing_stats_data_{pclass_id}" id="tab_stats_{pclass_id}">{pclass_name}</a></li>
+                    <li>{/foreach_pclass_block}</li>
+                </ul>
+
+                <div id="listing_stats_data_all"><span class="stat_caption">Average price:</span> {listing_stat_avg_field_price_value}<br />
+                    <span class="stat_caption">Median price:</span> {listing_stat_median_field_price_value}<br />
+                    <span class="stat_caption">Highest price:</span> {listing_stat_max_field_price_value}<br />
+                    <span class="stat_caption">Lowest price:</span> {listing_stat_min_field_price_value}<br />
+                    <span class="stat_caption">Average Square Feet:</span> {listing_stat_avg_field_sq_feet_value}</div>
+                {foreach_pclass_block}
+
+                <div id="listing_stats_data_{pclass_id}"><span class="stat_caption">Total {pclass_name} Listings:</span> {active_listing_count_pclass_{pclass_id}}<br />
+                    <span class="stat_caption">Average price:</span> {listing_stat_avg_field_price_value_pclass_{pclass_id}}<br />
+                    <span class="stat_caption">Median price:</span> {listing_stat_median_field_price_value_pclass_{pclass_id}}<br />
+                    <span class="stat_caption">Highest price:</span> {listing_stat_max_field_price_value_pclass_{pclass_id}}<br />
+                    <span class="stat_caption">Lowest price:</span> {listing_stat_min_field_price_value_pclass_{pclass_id}}<br />
+                    <span class="stat_caption">Average Square Feet:</span> {listing_stat_avg_field_sq_feet_value_pclass_{pclass_id}}</div>
+                {/foreach_pclass_block}</div>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#mini-tabs").tabs();
+                });
+            </script>
         </div>
-    </article>
+    </main>
     <footer>
         <p>&copy; {company_name} 2023 | <a href="{page_link_4}">Legal Notice and Disclaimer</a> <br />
             <span class="reg_mark_h2">&#174;</span>- &copy;2021 - All Rights Reserved.</p>
