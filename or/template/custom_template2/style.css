@@ -82,6 +82,10 @@ main {
     align-items: center;
 }
 
+.gap-1 {
+    gap: 1rem;
+}
+
 .justify-space-between {
     justify-content: space-between;
 }
