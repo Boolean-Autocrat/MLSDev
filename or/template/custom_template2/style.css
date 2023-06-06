@@ -217,6 +217,14 @@ main {
     font-weight: 400;
 }
 
+.list__search-btn>button {
+    background-color: #1B00EA;
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Nohemi', sans-serif;
+    font-weight: 400;
+}
+
 
 /* General Layout */
 
