@@ -97,7 +97,7 @@ header {
 
 @media (max-width: 1024px) {
     .header__navbar {
-        display: none;
+        margin: 0 auto;
     }
     .header__nav {
         flex-direction: column;
