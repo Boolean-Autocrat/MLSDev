@@ -190,6 +190,33 @@ main {
     width: 50%;
 }
 
+.listing-search {
+    z-index: 2;
+    box-shadow: 0px 24px 34px rgba(80, 79, 89, 0.14);
+    top: 2rem;
+}
+
+.list__opt>p {
+    margin-right: 0.5rem;
+}
+
+.list__opt {
+    padding: 3rem 2rem;
+    border-right: 2px solid #000;
+}
+
+.list-opt:nth-child(3) {
+    border-right: none;
+}
+
+.span-block {
+    display: block;
+    font-family: 'Nohemi', sans-serif;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
 
 /* General Layout */
 
