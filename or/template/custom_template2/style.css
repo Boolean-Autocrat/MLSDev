@@ -207,7 +207,7 @@ main {
     text-align: center;
 }
 
-.list-opt:nth-child(3) {
+.list-opt:last-of-type {
     border-right: none;
 }
 
