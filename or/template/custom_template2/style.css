@@ -63,6 +63,7 @@ header {
 .header__navbar>ul>li {
     font-weight: 600;
     font-size: 1rem;
+    letter-spacing: 0.05rem;
     font-family: 'Nohemi', sans-serif;
     color: #000 !important;
     transition: all 0.3s ease-in-out;
