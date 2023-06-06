@@ -44,6 +44,9 @@ header {
         align-items: center;
         gap: 0.5rem;
     }
+    .header__nav {
+        align-items: stretch;
+    }
 }
 
 .header__logo__img {
