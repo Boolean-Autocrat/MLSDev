@@ -193,9 +193,8 @@ main {
 .listing-search {
     z-index: 2;
     box-shadow: 0px 24px 34px rgba(80, 79, 89, 0.14);
-    top: 2rem;
-    gap: 2rem;
     padding: 1rem;
+    justify-content: center;
 }
 
 .list__opt>p {
@@ -209,7 +208,7 @@ main {
 }
 
 .list-opt:last-of-type {
-    border-right: none;
+    border: none;
 }
 
 .span-block {
@@ -217,6 +216,7 @@ main {
     font-family: 'Nohemi', sans-serif;
     font-size: 1rem;
     font-weight: 400;
+    text-align: center;
 }
 
 .list__search-btn>button {
