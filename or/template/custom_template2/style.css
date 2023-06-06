@@ -33,12 +33,17 @@ header {
     cursor: pointer;
 }
 
+.show {
+    display: block;
+}
+
 @media (max-width: 668px) {
     .header__menu-btn {
         display: block;
         cursor: pointer;
     }
     .header__navbar>ul {
+        display: none;
         flex-direction: column;
         justify-content: center;
         gap: 0.75rem!important;
