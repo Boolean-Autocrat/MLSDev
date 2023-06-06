@@ -92,6 +92,12 @@ header {
     margin: 0 auto;
 }
 
+@media (min-width: 1024px) {
+    .header__navbar {
+        display: none;
+    }
+}
+
 
 /* General Layout */
 
