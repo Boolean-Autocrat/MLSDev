@@ -46,11 +46,12 @@ header {
     width: 25%;
 }
 
-.header__wordart>img {
+
+/* .header__wordart>img {
     max-width: 100%;
     display: block;
     margin: 0 auto;
-}
+} */
 
 .header__navbar>ul {
     display: flex;
