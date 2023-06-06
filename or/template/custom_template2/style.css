@@ -43,7 +43,7 @@ header {
         cursor: pointer;
     }
     .header__navbar>ul {
-        display: none;
+        display: none!important;
         flex-direction: column;
         justify-content: center;
         gap: 0.75rem!important;
