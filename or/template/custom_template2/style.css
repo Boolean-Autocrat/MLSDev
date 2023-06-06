@@ -194,6 +194,7 @@ main {
     z-index: 2;
     box-shadow: 0px 24px 34px rgba(80, 79, 89, 0.14);
     top: 2rem;
+    justify-content: space-evenly;
 }
 
 .list__opt>p {
@@ -201,8 +202,9 @@ main {
 }
 
 .list__opt {
-    padding: 3rem 2rem;
+    padding: 0rem 2rem;
     border-right: 2px solid #000;
+    text-align: center;
 }
 
 .list-opt:nth-child(3) {
@@ -219,10 +221,14 @@ main {
 
 .list__search-btn>button {
     background-color: #1B00EA;
-    padding: 2rem;
+    padding: 2rem 1rem;
     text-align: center;
     font-family: 'Nohemi', sans-serif;
     font-weight: 400;
+    color: #ffffffff;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
 }
 
 
