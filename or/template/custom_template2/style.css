@@ -34,7 +34,7 @@ header {
 }
 
 .show {
-    display: flex;
+    display: flex!important;
 }
 
 @media (max-width: 668px) {
