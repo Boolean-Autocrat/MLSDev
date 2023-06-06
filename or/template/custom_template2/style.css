@@ -84,6 +84,10 @@ header {
     background: #000;
 }
 
+.container {
+    max-width: 996px;
+}
+
 
 /* General Layout */
 
