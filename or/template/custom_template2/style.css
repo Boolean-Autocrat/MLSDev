@@ -94,6 +94,7 @@ header {
 @media (max-width: 1024px) {
     .header__navbar {
         margin: 0 auto;
+        width: 90%;
     }
     .header__nav {
         flex-direction: column;
