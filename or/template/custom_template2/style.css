@@ -86,6 +86,10 @@ main {
     justify-content: space-between;
 }
 
+#nav-list>li>a {
+    color: #191726;
+}
+
 .header__wordart {
     width: 25%;
     font-family: 'Nohemi', sans-serif;
