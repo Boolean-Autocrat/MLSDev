@@ -171,6 +171,17 @@ main {
     margin-bottom: 1rem;
 }
 
+.hero__partners {
+    margin-top: 2rem;
+}
+
+.hero__partners>h3 {
+    font-family: 'Nohemi', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem
+}
+
 
 /* General Layout */
 
