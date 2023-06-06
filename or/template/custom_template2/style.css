@@ -202,7 +202,7 @@ main {
 }
 
 .list__opt {
-    padding: 0rem 2rem;
+    padding: 0rem 3rem;
     border-right: 2px solid #000;
     text-align: center;
 }
@@ -219,9 +219,13 @@ main {
     text-align: center;
 }
 
+.list__search-btn {
+    padding: 0rem 3rem;
+}
+
 .list__search-btn>button {
     background-color: #1B00EA;
-    padding: 2rem 1rem;
+    padding: 1rem 2rem;
     text-align: center;
     font-family: 'Nohemi', sans-serif;
     font-weight: 400;
