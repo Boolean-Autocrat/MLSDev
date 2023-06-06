@@ -34,7 +34,7 @@ header {
 }
 
 .show {
-    display: block;
+    display: block!important;
 }
 
 @media (max-width: 668px) {
@@ -42,7 +42,7 @@ header {
         display: block;
         cursor: pointer;
     }
-    .header__navbar>ul {
+    #nav-list {
         display: none!important;
         flex-direction: column;
         justify-content: center;
