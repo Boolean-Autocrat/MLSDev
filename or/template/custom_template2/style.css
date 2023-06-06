@@ -555,6 +555,7 @@ ul#or_menu_2 .sf-sub-indicator {
 #menu_nav ul {
     padding: 0px;
     list-style: none;
+    display: flex;
 }
 
 #menu_nav li {
