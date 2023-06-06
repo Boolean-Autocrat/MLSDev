@@ -24,6 +24,10 @@ header {
     background-color: #fff;
 }
 
+main {
+    padding: 0.5rem;
+}
+
 .header__nav {
     padding: 0.5rem;
     display: flex;
