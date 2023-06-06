@@ -86,7 +86,7 @@ main {
     justify-content: space-between;
 }
 
-#nav-list>li>a {
+a {
     color: #191726;
 }
 
