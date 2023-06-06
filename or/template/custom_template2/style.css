@@ -77,10 +77,6 @@ main {
     margin-right: 1rem;
 }
 
-.home__hero {
-    margin-top: -5rem;
-}
-
 .flex {
     display: flex;
     align-items: center;
