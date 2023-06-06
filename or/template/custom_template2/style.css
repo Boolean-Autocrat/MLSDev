@@ -556,6 +556,9 @@ ul#or_menu_2 .sf-sub-indicator {
     padding: 0px;
     list-style: none;
     display: flex;
+    font-family: 'Nohemi', sans-serif;
+    font-size: 1.2rem;
+    color: #014D5F;
 }
 
 #menu_nav li {
@@ -580,9 +583,7 @@ ul#or_menu_2 .sf-sub-indicator {
 
 #menu_nav a {
     display: block;
-    color: #2B60DE;
     padding: 3px 1%;
-    border-bottom: 1px solid #e7e2d7;
     font-size: 1em;
     line-height: 1.2em;
     text-shadow: 1px 1px 1px #bbbbbb;
