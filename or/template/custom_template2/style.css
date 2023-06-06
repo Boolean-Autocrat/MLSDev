@@ -199,8 +199,10 @@ main {
     justify-content: center;
 }
 
-.list__opt>p {
+.list__opt>div>p {
     margin-right: 0.5rem;
+    color: #504F59;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .list__opt {
